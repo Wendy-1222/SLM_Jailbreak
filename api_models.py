@@ -8,7 +8,8 @@ from typing import List
 import google.generativeai as genai
 import time
 from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage
+# from mistralai.models.chat_completion import ChatMessage
+from mistralai import Mistral, UserMessage
 
 import re
 
@@ -261,7 +262,8 @@ class Mistral():
 
     def __init__(self, model_name, token):    
         self.model_name = model_name
-        self.client = MistralClient(api_key=token)
+        # self.client = MistralClient(api_key=token)
+        self.client = Mistral(api_key=token)
 
     def _generate(self, prompt: str, 
                 max_new_tokens: int, 
@@ -269,12 +271,24 @@ class Mistral():
                 top_p: float):
         
         output = self.API_ERROR_OUTPUT
+        # messages = [
+        #     ChatMessage(role="user", content=prompt)
+        # ]
         messages = [
-            ChatMessage(role="user", content=prompt)
+            {
+                "role": "user",
+                "content": prompt,
+            },
         ]
         for _ in range(self.API_MAX_RETRY):
             try:
-                chat_response = self.client.chat(
+                # chat_response = self.client.chat(
+                #     model=self.model,
+                #     temperature=temperature,
+                #     max_tokens=max_new_tokens,
+                #     messages=messages,
+                # )
+                chat_response = self.client.chat.complete(
                     model=self.model,
                     temperature=temperature,
                     max_tokens=max_new_tokens,

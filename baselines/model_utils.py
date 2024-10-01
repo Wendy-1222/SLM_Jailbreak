@@ -254,11 +254,21 @@ def load_model_and_tokenizer(
 ):  
     if token:
         hf_login(token=token)
-    
+
+    # 检查可用的GPU
+    available_device = None   # a6000多卡推理很慢
+    for i in range(torch.cuda.device_count()):
+        if torch.cuda.is_available() and i < num_gpus:
+            available_device = f"cuda:{i}"
+            break
+
+    if available_device is None:
+        raise RuntimeError("No available GPU found.")
 
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, 
         torch_dtype=_STR_DTYPE_TO_TORCH_DTYPE[dtype], 
-        device_map=device_map, 
+        # device_map=device_map,
+        device_map={"": available_device},  # 动态设置为可用的GPU
         trust_remote_code=trust_remote_code, 
         revision=revision, 
         **model_kwargs).eval()

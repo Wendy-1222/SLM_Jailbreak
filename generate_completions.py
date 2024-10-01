@@ -54,9 +54,9 @@ def main():
     num_gpus = model_configs[args.model_name].get('num_gpus', 0)
     # check num gpus available to see if greater than num_gpus in config
     num_gpus_available = torch.cuda.device_count()
-    if num_gpus_available != num_gpus:
-        print(f"Warning: num_gpus in config ({num_gpus}) does not match num_gpus available ({num_gpus_available}). Using {num_gpus_available} GPUs.")
-        num_gpus = num_gpus_available
+    # if num_gpus_available != num_gpus:  # 注释掉，a6000多卡推理很慢
+    #     print(f"Warning: num_gpus in config ({num_gpus}) does not match num_gpus available ({num_gpus_available}). Using {num_gpus_available} GPUs.")
+    #     num_gpus = num_gpus_available
     model_config = model_configs[args.model_name]['model']
     model_config['num_gpus'] = num_gpus
 
@@ -71,10 +71,12 @@ def main():
     with open(args.test_cases_path, 'r') as f:
         test_cases_data = json.load(f)
 
+    print("zwh begin generation")
     generation_function = load_generation_function(model_config,
                                                 args.max_new_tokens,
                                                 test_cases_path=args.test_cases_path,
                                                 generate_with_vllm=args.generate_with_vllm)
+    print("zwh end generation")
 
     returned_data = {}
 

@@ -1,5 +1,5 @@
 default_method_hyperparameters:
-    targets_path: ./data/optimizer_targets/harmbench_targets_text.json
+    targets_path: ./data/optimizer_targets/extra_targets/temp.json
     n_streams: 20 # N Number of concurrent jailbreak conversations.
     steps: 3 # K Number of steps (queries) to run the attack for each behavior.
     keep_last_n: 3 # Number of responses to save in conversation history of attack model. If this is too large, then it may exceed the context window of the model.
@@ -13,13 +13,13 @@ default_method_hyperparameters:
 
     # Attack and judge models: we support OpenSource (VLLM and HF) models
     attack_model:
-      model_name_or_path: mistralai/Mixtral-8x7B-Instruct-v0.1
+      model_name_or_path: /data/hzq/models/vicuna1.5_13b
       use_vllm: True
-      num_gpus: 2
+      num_gpus: 1
       dtype: bfloat16
 
     judge_model:
-      model_name_or_path: mistralai/Mixtral-8x7B-Instruct-v0.1 # will preload attack_model if same name
+      model_name_or_path: /data/hzq/models/Llama-2-13b-chat-hf # will preload attack_model if same name
     cutoff_score: 10
 
     # ====== or original implementation used gpt-4 as judge model ======
