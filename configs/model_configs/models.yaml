@@ -33,7 +33,7 @@
 # Llama 2
 llama2_7b:
   model:
-    model_name_or_path: meta-llama/Llama-2-7b-chat-hf
+    model_name_or_path: /data/hzq/models/Llama-2-7b-chat-hf
     use_fast_tokenizer: False
     dtype: float16
     chat_template: llama-2
@@ -42,7 +42,7 @@ llama2_7b:
 
 llama2_13b:
   model:
-    model_name_or_path: meta-llama/Llama-2-13b-chat-hf
+    model_name_or_path: /data/hzq/models/Llama-2-13b-chat-hf
     use_fast_tokenizer: False
     dtype: float16
     chat_template: llama-2
@@ -61,7 +61,7 @@ llama2_70b:
 # Vicuna
 vicuna_7b_v1_5:
   model:
-    model_name_or_path: lmsys/vicuna-7b-v1.5
+    model_name_or_path: /data/hzq/models/vicuna1.5_7b
     use_fast_tokenizer: False
     dtype: float16
     chat_template: vicuna
@@ -70,7 +70,7 @@ vicuna_7b_v1_5:
 
 vicuna_13b_v1_5:
   model:
-    model_name_or_path: lmsys/vicuna-13b-v1.5
+    model_name_or_path: /data/hzq/models/vicuna1.5_13b
     use_fast_tokenizer: False
     dtype: float16
     chat_template: vicuna
@@ -145,7 +145,7 @@ starling_7b:
 # Mistral
 mistral_7b_v2:
   model: 
-    model_name_or_path: mistralai/Mistral-7B-Instruct-v0.2
+    model_name_or_path: /data/hzq/models/mistral-7b-instruct-v0.2
     use_fast_tokenizer: False
     dtype: bfloat16
     chat_template: mistral
@@ -204,7 +204,7 @@ baichuan2_13b:
 # Qwen
 qwen_7b_chat:
   model:
-    model_name_or_path: Qwen/Qwen-7B-Chat
+    model_name_or_path: /data/hzq/models/qwen-7b-chat
     use_fast_tokenizer: True
     dtype: bfloat16
     pad_token: <|extra_0|>
