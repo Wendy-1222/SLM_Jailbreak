@@ -121,6 +121,11 @@ QWEN_CHAT_PROMPT = {
     "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
 }
 
+QWEN2_5_CHAT_PROMPT = {
+    "description": "Template used by Qwen-2.5-chat models",
+    "prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
+}
+
 ZEPHYR_ROBUST_PROMPT = {
     "description": "",
     "prompt": "<|user|>\n{instruction}</s>\n<|assistant|>\n"
@@ -175,6 +180,8 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = BAICHUAN_CHAT_PROMPT
     elif chat_template == "qwen":
         TEMPLATE = QWEN_CHAT_PROMPT
+    elif chat_template == "qwen2_5":
+        TEMPLATE = QWEN2_5_CHAT_PROMPT
     elif chat_template == "zephyr_7b_robust":
         TEMPLATE = ZEPHYR_ROBUST_PROMPT
     else:

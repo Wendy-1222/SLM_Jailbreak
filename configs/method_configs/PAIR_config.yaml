@@ -1,5 +1,5 @@
 default_method_hyperparameters:
-    targets_path: ./data/optimizer_targets/extra_targets/temp.json
+    targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
     n_streams: 20 # N Number of concurrent jailbreak conversations.
     steps: 3 # K Number of steps (queries) to run the attack for each behavior.
     keep_last_n: 3 # Number of responses to save in conversation history of attack model. If this is too large, then it may exceed the context window of the model.
@@ -41,6 +41,7 @@ test:
     use_vllm: True
     dtype: float16
 
+# ==== Vicuna models ======
 vicuna_7b_v1_5:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
@@ -83,6 +84,7 @@ llama2_70b:
     num_gpus: 2
     system_message: system_messages.LLAMA2_DEFAULT_SYSTEM_MESSAGE
 
+# ==== Koala models ======
 koala_7b:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
@@ -103,7 +105,8 @@ starling_7b:
     use_fast_tokenizer: False
     use_vllm: True
     dtype: bfloat16
-  
+
+# ==== Zephyr models ======
 zephyr_7b:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
@@ -125,6 +128,7 @@ openchat_3_5_1210:
     use_vllm: True
     dtype: bfloat16
 
+# ==== Orca models ======
 orca_2_7b:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
@@ -138,7 +142,8 @@ orca_2_13b:
     use_fast_tokenizer: False
     use_vllm: True
     dtype: bfloat16
-  
+
+# ==== Baichuan 2 models ======
 baichuan2_7b:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
@@ -159,6 +164,16 @@ solar_10_7b_instruct:
     use_fast_tokenizer: False
     use_vllm: True
     dtype: float16
+
+# ==== Qwen models ======
+qwen_1_8b_chat:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+    fschat_template: qwen-7b-chat
 
 qwen_7b_chat:
   target_model:
@@ -187,6 +202,105 @@ qwen_72b_chat:
     dtype: bfloat16
     num_gpus: 4
     fschat_template: qwen-7b-chat
+
+# ==== Qwen 1.5 models ====== 
+qwen1_5_0_5b_chat:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+    fschat_template: qwen-7b-chat
+
+qwen1_5_1_8b_chat:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+    fschat_template: qwen-7b-chat
+
+qwen1_5_4b_chat:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+    fschat_template: qwen-7b-chat
+
+qwen1_5_7b_chat:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+    fschat_template: qwen-7b-chat
+
+# ==== Qwen 2 models ======
+qwen2_0_5b_instruct:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+    fschat_template: qwen-7b-chat
+
+qwen2_1_5b_instruct:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+    fschat_template: qwen-7b-chat
+
+qwen2_7b_instruct:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+    fschat_template: qwen-7b-chat
+
+# ==== Qwen 2.5 models ======
+qwen2_5_0_5b_instruct:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+
+qwen2_5_1_5b_instruct:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+
+qwen2_5_3b_instruct:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+
+qwen2_5_7b_instruct:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_vllm: True
+    trust_remote_code: True
+    dtype: bfloat16
+
 
 mistral_7b_v2:
   target_model:

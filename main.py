@@ -3,9 +3,9 @@ import os
 # base_save_dir="./results"
 # base_log_dir="./slurm_logs"
 methods="PAIR"  # or "all" to use all methods
-models="llama2_7b,vicuna_7b_v1_5"  # or "all" to use all models
-# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
+models="qwen1_5_4b_chat,qwen1_5_7b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_7b_instruct"  # or "all" to use all models
+behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"

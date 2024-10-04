@@ -92,7 +92,7 @@ def get_expanded_pipeline_configs(pipeline_config, model_configs, proper_method_
                     'experiment_name': experiment_name,
                     'expected_target_models': [model],
                     'experiment_num_gpus': model_configs[model].get('num_gpus', 0),  # closed-source model configs don't have the num_gpus field, so we default to 0
-                    'behavior_chunk_size': expanded_pipeline_config.get('behavior_chunk_size', 5)
+                    'behavior_chunk_size': expanded_pipeline_config.get('behavior_chunk_size', 10)
                     })
                 expanded_pipeline_config['model_to_experiment'][model] = experiment_name
         else:
@@ -101,7 +101,7 @@ def get_expanded_pipeline_configs(pipeline_config, model_configs, proper_method_
                 'experiment_name': experiment_name,
                 'expected_target_models': models,
                 'experiment_num_gpus': 0,
-                'behavior_chunk_size': expanded_pipeline_config.get('behavior_chunk_size', 5)
+                'behavior_chunk_size': expanded_pipeline_config.get('behavior_chunk_size', 10)
                 })
             for model in models:
                 if model_configs[model]['model_type'] not in expanded_pipeline_config['allowed_target_model_types']:
@@ -212,12 +212,12 @@ def run_step2_single_job(mode, partition, job_name, num_gpus, output_log, model_
         # Execute the local command
         if mode == 'local':
             print(command)
-            subprocess.run(command, shell=True, capture_output=True, text=True)  # 屏蔽输出
+            # subprocess.run(command, shell=True, capture_output=True, text=True)  # 屏蔽输出
             # process_result = subprocess.run(command, shell=True, capture_output=True, text=True)   # 查看是否有报错
             # print("Return code:", process_result.returncode)
             # print("STDOUT:", process_result.stdout)
             # print("STDERR:", process_result.stderr)
-            # result = subprocess.run(command, shell=True, stdout=sys.stdout, stderr=sys.stderr, text=True)  # 直接看输出
+            result = subprocess.run(command, shell=True, stdout=sys.stdout, stderr=sys.stderr, text=True)  # 直接看输出
         else:
             future = run_subprocess_ray.options(resources={"visible_gpus": num_gpus}).remote(command)
             return future
@@ -240,8 +240,8 @@ def run_step3_single_job(mode, partition, job_name, output_log, cls_path, behavi
         
         # Execute the local command
         if mode == "local":
-            subprocess.run(command, shell=True, capture_output=True, text=True)
-            # result = subprocess.run(command, shell=True, stdout=sys.stdout, stderr=sys.stderr, text=True)  # 直接看输出
+            # subprocess.run(command, shell=True, capture_output=True, text=True)
+            result = subprocess.run(command, shell=True, stdout=sys.stdout, stderr=sys.stderr, text=True)  # 直接看输出
         # Return command to be executed parallel
         elif mode == "local_parallel":
             future = run_subprocess_ray.options(resources={"visible_gpus": 1}).remote(command)
