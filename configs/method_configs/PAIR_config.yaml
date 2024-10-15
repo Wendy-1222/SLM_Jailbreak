@@ -19,7 +19,7 @@ default_method_hyperparameters:
       dtype: bfloat16
 
     judge_model:
-      model_name_or_path: /data/hzq/models/Llama-2-13b-chat-hf # will preload attack_model if same name
+      model_name_or_path: gpt-4-turbo # will preload attack_model if same name
     cutoff_score: 10
 
     # ====== or original implementation used gpt-4 as judge model ======

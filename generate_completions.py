@@ -139,6 +139,8 @@ def _hf_generate_with_batching(model, tokenizer, test_cases, template, **generat
         for i in tqdm(range(0, len(test_cases), batch_size)):
             batched_test_cases = test_cases[i:i+batch_size]
             inputs = [template['prompt'].format(instruction=s) for s in batched_test_cases]
+            # print("emo")
+            # print(inputs[:10])
             inputs = tokenizer(inputs, return_tensors='pt', padding=True)
             inputs = inputs.to(model.device)
             with torch.no_grad():

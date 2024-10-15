@@ -92,7 +92,9 @@ class PAIR(SingleBehaviorRedTeamingMethod):
         conversation_streams = {id : [] for id in range(n_streams)}
         best_adv_prompt = behavior
         highest_score = 0
+        # print(f"=====================================emo, {n_streams}, {steps}")
         for step in range(0, steps):
+            # print(f"===============step: {step}")
             if step > 0:
                 processed_response_list = [process_target_response(completion, score, behavior, target, context_str) for completion, score in zip(completions, judge_scores)]
             # ======== Get adversarial prompts and improvement =========

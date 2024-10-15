@@ -34,7 +34,7 @@ def parse_args():
                         help="The path to the behaviors file")
     parser.add_argument("--step", type=str, default="1",
                         help="The step of the pipeline to run",
-                        choices=["1", "1.5", "2", "3", "2_and_3", "all"])
+                        choices=["1", "1.5", "2", "3", "1_and_2", "2_and_3", "all"])
     parser.add_argument("--mode", type=str, default="slurm",
                         help="Whether to run the pipeline in 'local', 'slurm', or 'local_parallel' mode",
                         choices=["local", "slurm", "local_parallel"])
@@ -483,6 +483,13 @@ def main():
         run_step2(args, expanded_pipeline_configs, model_configs)
     elif args.step == "3":
         run_step3(args, expanded_pipeline_configs)
+    elif args.step == "1_and_2":
+        dependency_job_ids = run_step1(args, expanded_pipeline_configs)
+        print("11111111111111111111111111111111111111111111111111")
+        dependency_job_ids = run_step1_5(args, expanded_pipeline_configs, dependency_job_ids)
+        print("151515151515151515151515151515151515151515151515151515151515")
+        dependency_job_ids = run_step2(args, expanded_pipeline_configs, model_configs, dependency_job_ids)
+        print("222222222222222222222222222222222222222222222222222")
     elif args.step == "2_and_3":
         dependency_job_ids = run_step2(args, expanded_pipeline_configs, model_configs)
         run_step3(args, expanded_pipeline_configs, dependency_job_ids)

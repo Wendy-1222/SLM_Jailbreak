@@ -385,6 +385,100 @@ qwen2_5_7b_instruct:
   num_gpus: 1
   model_type: open_source
 
+
+# Pythia
+pythia_14m:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-14m
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+    fschat_template: oasst_pythia
+  num_gpus: 1
+  model_type: open_source
+
+pythia_31m:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-31m
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+  num_gpus: 1
+  model_type: open_source
+
+pythia_70m:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-70m
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+  num_gpus: 1
+  model_type: open_source
+
+pythia_160m:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-160m
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+  num_gpus: 1
+  model_type: open_source
+
+pythia_410m:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-410m
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+  num_gpus: 1
+  model_type: open_source
+
+pythia_1b:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-1b
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+    chat_template: pythia
+  num_gpus: 1
+  model_type: open_source
+
+pythia_1_4b:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-1.4b
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+  num_gpus: 1
+  model_type: open_source
+
+pythia_2_8b:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-2.8b
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+  num_gpus: 1
+  model_type: open_source
+
+pythia_6_9b:
+  model:
+    model_name_or_path: /data2/pythia_series/pythia-6.9b
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+  num_gpus: 1
+  model_type: open_source
+
 # ===================== Closed-Source Models ===================== #
 
 # TODO: remove tokens before release

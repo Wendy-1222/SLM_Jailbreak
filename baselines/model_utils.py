@@ -3,7 +3,7 @@ import torch
 import random
 import json
 from typing import Dict
-from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig, GPTNeoXForCausalLM
 from vllm import LLM
 from huggingface_hub import login as hf_login
 import ray
@@ -34,7 +34,6 @@ OASST_PROMPT_v1_1 = {
     "description": "Template used by newer Open Assistant models",
     "prompt": "<|prompter|>{instruction}</s><|assistant|>"
 }
-
 
 LLAMA2_DEFAULT_SYSTEM_PROMPT = """You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.
 
@@ -135,6 +134,11 @@ MIXTRAL_PROMPT = {
     "description": "mistralai/Mixtral-8x7B-Instruct-v0.1",
     "prompt": "[INST] {instruction} [/INST]"
 }
+
+PYTHIA_PROMPT = {
+    "description": "",
+    "prompt": "{instruction}"
+}
 ########## CHAT TEMPLATE ###########
 
 def get_template(model_name_or_path=None, chat_template=None, fschat_template=None, system_message=None, return_fschat_conv=False, **kwargs):
@@ -184,6 +188,8 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = QWEN2_5_CHAT_PROMPT
     elif chat_template == "zephyr_7b_robust":
         TEMPLATE = ZEPHYR_ROBUST_PROMPT
+    elif chat_template == "pythia":
+        TEMPLATE = PYTHIA_PROMPT
     else:
         # ======== Else default to tokenizer.apply_chat_template =======
         try:
