@@ -20,6 +20,7 @@
 # Pythia series
 #declare -A models=(
 #  ["EleutherAI/pythia-14m"]="/data2/pythia_series/pythia-14m"
+#  ["EleutherAI/pythia-31m"]="/data2/pythia_series/pythia-31m"
 #  ["EleutherAI/pythia-70m"]="/data2/pythia_series/pythia-70m"
 #  ["EleutherAI/pythia-160m"]="/data2/pythia_series//pythia-160m"
 #  ["EleutherAI/pythia-410m"]="/data2/pythia_series/pythia-410m"
@@ -30,16 +31,16 @@
 #)
 
 # Phi series
-declare -A models=(
+#declare -A models=(
 #  ["microsoft/phi-1"]="/data2/phi_series/phi-1"
 #  ["microsoft/phi-1_5"]="/data2/phi_series/phi-1_5"
 #  ["microsoft/phi-2"]="/data2/phi_series/phi-2"
-  ["microsoft/Phi-3-mini-4k-instruct"]="/data2/phi_series/Phi-3-mini-4k-instruct"
-  ["microsoft/Phi-3-mini-128k-instruct"]="/data2/phi_series/Phi-3-mini-128k-instruct"
-  ["microsoft/Phi-3-small-8k-instruct"]="/data2/phi_series/Phi-3-small-8k-instruct"
-  ["microsoft/Phi-3-small-128k-instruct"]="/data2/phi_series/Phi-3-small-128k-instruct"
+#  ["microsoft/Phi-3-mini-4k-instruct"]="/data2/phi_series/Phi-3-mini-4k-instruct"
+#  ["microsoft/Phi-3-mini-128k-instruct"]="/data2/phi_series/Phi-3-mini-128k-instruct"
+#  ["microsoft/Phi-3-small-8k-instruct"]="/data2/phi_series/Phi-3-small-8k-instruct"
+#  ["microsoft/Phi-3-small-128k-instruct"]="/data2/phi_series/Phi-3-small-128k-instruct"
 #  ["microsoft/Phi-3.5-mini-instruct"]="/data2/phi_series/Phi-3.5-mini-instruct"
-)
+#)
 
 # 循环下载所有模型
 for model in "${!models[@]}"; do

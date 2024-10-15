@@ -394,7 +394,7 @@ pythia_14m:
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
-    fschat_template: oasst_pythia
+    chat_template: pythia
   num_gpus: 1
   model_type: open_source
 
@@ -405,6 +405,7 @@ pythia_31m:
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
+    chat_template: pythia
   num_gpus: 1
   model_type: open_source
 
@@ -415,6 +416,7 @@ pythia_70m:
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
+    chat_template: pythia
   num_gpus: 1
   model_type: open_source
 
@@ -425,6 +427,7 @@ pythia_160m:
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
+    chat_template: pythia
   num_gpus: 1
   model_type: open_source
 
@@ -435,6 +438,7 @@ pythia_410m:
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
+    chat_template: pythia
   num_gpus: 1
   model_type: open_source
 
@@ -456,6 +460,7 @@ pythia_1_4b:
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
+    chat_template: pythia
   num_gpus: 1
   model_type: open_source
 
@@ -466,6 +471,7 @@ pythia_2_8b:
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
+    chat_template: pythia
   num_gpus: 1
   model_type: open_source
 
@@ -476,8 +482,93 @@ pythia_6_9b:
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
+    chat_template: pythia
   num_gpus: 1
   model_type: open_source
+
+# Phi
+phi_1_5:
+  model:
+    model_name_or_path: /data2/phi_series/phi-1_5
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+    chat_template: phi2
+  num_gpus: 1
+  model_type: open_source
+
+phi_2:
+  model:
+    model_name_or_path: /data2/phi_series/phi-2
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float16
+    eos_token: <|endoftext|>
+    chat_template: phi2
+  num_gpus: 1
+  model_type: open_source
+
+phi_3_mini_4k_instruct:
+  model:
+    model_name_or_path: /data2/phi_series/Phi-3-mini-4k-instruct
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|endoftext|>
+    chat_template: phi3_mini
+  num_gpus: 1
+  model_type: open_source
+
+phi_3_mini_128k_instruct:
+  model:
+    model_name_or_path: /data2/phi_series/Phi-3-mini-128k-instruct
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|endoftext|>
+    chat_template: phi3_mini
+  num_gpus: 1
+  model_type: open_source
+
+phi_3_small_8k_instruct:
+  model:
+    model_name_or_path: /data2/phi_series/Phi-3-small-8k-instruct
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|endoftext|>
+    chat_template: phi3_small
+  num_gpus: 1
+  model_type: open_source
+
+phi_3_small_128k_instruct:
+  model:
+    model_name_or_path: /data2/phi_series/Phi-3-small-128k-instruct
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|endoftext|>
+    chat_template: phi3_small
+  num_gpus: 1
+  model_type: open_source
+
+phi_3_5_mini_instruct:
+  model:
+    model_name_or_path: /data2/phi_series/Phi-3.5-mini-instruct
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|endoftext|>
+    chat_template: phi3_mini
+  num_gpus: 1
+  model_type: open_source
+
 
 # ===================== Closed-Source Models ===================== #
 

@@ -135,10 +135,26 @@ MIXTRAL_PROMPT = {
     "prompt": "[INST] {instruction} [/INST]"
 }
 
-PYTHIA_PROMPT = {
+PYTHIA_PROMPT = {  # 模型配置文件、官方repo、fastchat仓库都没有找到相应的chat template，因此模仿pythia的quickstart创建template（仅输入Instruction）
     "description": "",
     "prompt": "{instruction}"
 }
+
+PHI2_PROMPT = {  # phi-1、phi-1.5、phi-2三个模型都没有经过RLHF，huggingface和模型文件都没有提供chat template
+    "description": "",
+    "prompt": "{instruction}"
+}
+
+PHI3_MINI_PROMPT = {
+    "description": "Template used by Phi-3-mini and Phi-3.5-mini", # https://huggingface.co/microsoft/Phi-3-mini-4k-instruct
+    "prompt": "<|system|>\nYou are a helpful assistant.<|end|>\n<|user|>\n{instruction}<|end|>\n<|assistant|>\n"
+}
+
+PHI3_SMALL_PROMPT = {
+    "description": "Template used by Phi-3-small", # https://huggingface.co/microsoft/Phi-3-small-8k-instruct
+    "prompt": "<|endoftext|><|user|>\n{instruction}<|end|>\n<|assistant|>\n"
+}
+
 ########## CHAT TEMPLATE ###########
 
 def get_template(model_name_or_path=None, chat_template=None, fschat_template=None, system_message=None, return_fschat_conv=False, **kwargs):
@@ -190,6 +206,12 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = ZEPHYR_ROBUST_PROMPT
     elif chat_template == "pythia":
         TEMPLATE = PYTHIA_PROMPT
+    elif chat_template == "phi2":
+        TEMPLATE = PHI2_PROMPT
+    elif chat_template == "phi3_mini":
+        TEMPLATE = PHI3_MINI_PROMPT
+    elif chat_template == "phi3_small":
+        TEMPLATE = PHI3_SMALL_PROMPT
     else:
         # ======== Else default to tokenizer.apply_chat_template =======
         try:
