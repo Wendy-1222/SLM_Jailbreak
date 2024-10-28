@@ -5,7 +5,7 @@ import random
 from ..baseline import SingleBehaviorRedTeamingMethod
 import ray
 from copy import deepcopy
-from .templates import persuasion_taxonomy, one_shot_kd, one_shot_kd_contexual
+from .templates import persuasion_taxonomy, one_shot_kd, one_shot_kd_contexual, in_context_persuasion_template, in_context_persuasion_template_contextual
 from .language_models import load_indiv_model
 
 
@@ -31,14 +31,51 @@ class PAP(SingleBehaviorRedTeamingMethod):
         
         # ======== PAP template =======
         self.persuasion_templates = [dict(technique=d['ss_technique'], definition=d['ss_definition'], example=d['ss_example']) for d in persuasion_taxonomy[:top_k_persuasion_taxonomy]]
+    
+    # one-shot
+    # def generate_test_cases_single_behavior(self, behavior_dict, verbose=False, **kwargs): 
+    #     """
+    #     Generates test cases for a single behavior
 
+    #     :param behavior: a dictionary specifying the behavior to generate test cases for
+    #     :param verbose: whether to print progress
+    #     :return: a test case and logs
+    #     """
+        
+    #     # ========== Behavior meta data ==========
+    #     behavior = behavior_dict['Behavior']
+    #     context_str = behavior_dict['ContextString']
+    #     attack_model = self.attack_model
+
+    #     attack_gen_config = self.attack_gen_config
+    #     # === PAP Method variables ===
+    #     pap_template = deepcopy(one_shot_kd if not context_str else one_shot_kd_contexual)
+    #     persuasion_templates = self.persuasion_templates
+    #     test_cases = []
+
+    #     # ==== Generate persuasions with attack models==== #
+    #     _inputs = [pap_template.format(behavior=behavior, context=context_str, **t) for t in persuasion_templates]
+    #     persuasions = get_generations(attack_model, _inputs, **attack_gen_config)
+    #     persuasions = [remove_quotes(p.strip()) for p in persuasions]
+
+
+    #     # ===== Output Test Case =====
+    #     test_cases = []
+    #     for persuasion in persuasions:
+    #         if context_str:
+    #             persuasion = f"{context_str}\n\n---\n\n{persuasion}"
+    #         test_cases.append(persuasion)
+
+    #     return test_cases, {}
+    
+    # ICL
     def generate_test_cases_single_behavior(self, behavior_dict, verbose=False, **kwargs):
         """
         Generates test cases for a single behavior
 
         :param behavior: a dictionary specifying the behavior to generate test cases for
         :param verbose: whether to print progress
-        :return: a test case and logs
+        :return: five test cases and logs
         """
         
         # ========== Behavior meta data ==========
@@ -48,15 +85,21 @@ class PAP(SingleBehaviorRedTeamingMethod):
 
         attack_gen_config = self.attack_gen_config
         # === PAP Method variables ===
-        pap_template = deepcopy(one_shot_kd if not context_str else one_shot_kd_contexual)
-        persuasion_templates = self.persuasion_templates
-        test_cases = []
+        # persuasion_techniques = ["Evidence-based Persuasion", "Expert Endorsement", "Misrepresentation", "Authority endorsement", "Logical appeal"]
+        _inputs = []
+        for key, value in in_context_persuasion_template.items():
+            _inputs.append(value.format(behavior=behavior, context=context_str))
 
         # ==== Generate persuasions with attack models==== #
-        _inputs = [pap_template.format(behavior=behavior, context=context_str, **t) for t in persuasion_templates]
-        persuasions = get_generations(attack_model, _inputs, **attack_gen_config)
-        persuasions = [remove_quotes(p.strip()) for p in persuasions]
-
+        raw_outputs = get_generations(attack_model, _inputs, **attack_gen_config)
+        persuasions = []
+        for raw_output in raw_outputs:
+            persuasion = extract_content("#mutated_text_with_same_specific_harmful_or_unlawful_intention: ", raw_output)
+            if persuasion:
+                persuasions.append(persuasion)
+            else:
+                print(f"Failed to extract persuasion from: {raw_output}")
+                persuasions.append(raw_output)
 
         # ===== Output Test Case =====
         test_cases = []
@@ -84,3 +127,16 @@ def remove_quotes(s):
     elif s.startswith("'") and s.endswith("'"):
         s = s[1:-1]  # Remove single quotes
     return s
+
+def extract_content(tag, text):
+    # Find the starting position of the tag
+    start_idx = text.find(tag)
+
+    # If tag is not found, return None
+    if start_idx == -1:
+        return None
+    
+    # Extract the content after the tag
+    content_after_tag = text[start_idx+len(tag):].strip()
+    end_idx = text.find("#", start_idx + 1)
+    return content_after_tag if end_idx == -1 else content_after_tag[:end_idx].strip()
