@@ -128,13 +128,21 @@ class GCG(SingleBehaviorRedTeamingMethod):
         cache_input_ids += tokenizer([behavior, after_tc, target], padding=False, add_special_tokens=False)['input_ids']
         cache_input_ids = [torch.tensor(input_ids, device=device).unsqueeze(0) for input_ids in cache_input_ids] # make tensor separately because can't return_tensors='pt' in tokenizer
         before_ids, behavior_ids, after_ids, target_ids = cache_input_ids
-        before_embeds, behavior_embeds, after_embeds, target_embeds = [embed_layer(input_ids) for input_ids in cache_input_ids]
-        
+        # before_embeds, behavior_embeds, after_embeds, target_embeds = [embed_layer(input_ids) for input_ids in cache_input_ids]
+        before_embeds = embed_layer(before_ids) if before_ids.numel() > 0 else torch.zeros(1, 0,
+                                                                                           embed_layer.embedding_dim,
+                                                                                           device=before_ids.device)
+        behavior_embeds = embed_layer(behavior_ids)
+        after_embeds = embed_layer(after_ids) if after_ids.numel() > 0 else torch.zeros(1, 0, embed_layer.embedding_dim,
+                                                                                        device=after_ids.device)
+        target_embeds = embed_layer(target_ids)
+
         if self.use_prefix_cache:
             # precompute KV cache for everything before the optimized tokens
             input_embeds = torch.cat([before_embeds, behavior_embeds], dim=1)
             with torch.no_grad():
                 outputs = model(inputs_embeds=input_embeds, use_cache=True)
+                # outputs = model(inputs_embeds=input_embeds.half(), use_cache=True)
                 self.prefix_cache = outputs.past_key_values
 
         # ========== run optimization ========== #
@@ -151,9 +159,11 @@ class GCG(SingleBehaviorRedTeamingMethod):
             if self.use_prefix_cache:
                 input_embeds = torch.cat([optim_embeds, after_embeds, target_embeds], dim=1)
                 outputs = model(inputs_embeds=input_embeds, past_key_values=self.prefix_cache)
+                # outputs = model(inputs_embeds=input_embeds.half(), past_key_values=self.prefix_cache)
             else:
                 input_embeds = torch.cat([before_embeds, behavior_embeds, optim_embeds, after_embeds, target_embeds], dim=1)
                 outputs = model(inputs_embeds=input_embeds)
+                # outputs = model(inputs_embeds=input_embeds.half())
             
             logits = outputs.logits
 
@@ -172,18 +182,25 @@ class GCG(SingleBehaviorRedTeamingMethod):
             sampled_top_indices = sample_control(optim_ids.squeeze(0), token_grad.squeeze(0), search_width, topk=256, temp=1, not_allowed_tokens=not_allowed_tokens)
 
             # ========= Filter sampled_top_indices that aren't the same after detokenize->retokenize ========= #
+            # print(sampled_top_indices)
             sampled_top_indices_text = tokenizer.batch_decode(sampled_top_indices)
+            # print(sampled_top_indices_text)
             new_sampled_top_indices = []
             count = 0
             for j in range(len(sampled_top_indices_text)):
                 # tokenize again
                 tmp = tokenizer(sampled_top_indices_text[j], return_tensors="pt", add_special_tokens=False).to(device)['input_ids'][0]
+                # print(tmp)
+                # print(sampled_top_indices[j])
                 # if the tokenized text is different, then set the sampled_top_indices to padding_top_indices
+                # if j == 5:
+                #     exit()
                 if not torch.equal(tmp, sampled_top_indices[j]):
                     count += 1
                     continue
                 else:
                     new_sampled_top_indices.append(sampled_top_indices[j])
+
             
             if len(new_sampled_top_indices) == 0:
                 print('All removals; defaulting to keeping all')
@@ -212,6 +229,7 @@ class GCG(SingleBehaviorRedTeamingMethod):
             
             # Auto Find Batch Size for foward candidates (each time go OOM will decay search_batch_size // 2)
             loss = find_executable_batch_size(self.compute_candidates_loss, self.search_batch_size)(input_embeds, target_ids)
+            # loss = find_executable_batch_size(self.compute_candidates_loss, self.search_batch_size)(input_embeds.half(), target_ids)
 
             # ========== Update the optim_ids with the best candidate ========== #
             optim_ids = sampled_top_indices[loss.argmin()].unsqueeze(0)

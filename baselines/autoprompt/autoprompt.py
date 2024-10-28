@@ -129,7 +129,22 @@ class AutoPrompt(SingleBehaviorRedTeamingMethod):
         cache_input_ids += tokenizer([behavior, after_tc, target], padding=False, add_special_tokens=False)['input_ids']
         cache_input_ids = [torch.tensor(input_ids, device=device).unsqueeze(0) for input_ids in cache_input_ids] # make tensor separately because can't return_tensors='pt' in tokenizer
         before_ids, behavior_ids, after_ids, target_ids = cache_input_ids
-        before_embeds, behavior_embeds, after_embeds, target_embeds = [embed_layer(input_ids) for input_ids in cache_input_ids]
+        # print(f"Input IDs: {cache_input_ids}")
+        # print("before ids: ", before_ids)
+        # print("behavior ids: ", behavior_ids)
+        # print("after_ids: ", after_ids)
+        # print("target_ids: ", target_ids)
+        before_embeds = embed_layer(before_ids) if before_ids.numel() > 0 else torch.zeros(1, 0,
+                                                                                           embed_layer.embedding_dim,
+                                                                                           device=before_ids.device)
+        behavior_embeds = embed_layer(behavior_ids)
+        after_embeds = embed_layer(after_ids) if after_ids.numel() > 0 else torch.zeros(1, 0, embed_layer.embedding_dim,
+                                                                                        device=after_ids.device)
+        target_embeds = embed_layer(target_ids)
+        # print("before_embeds: ", before_embeds)
+        # print("behavior_embeds: ", behavior_embeds)
+        # print("after_embeds: ", after_embeds)
+        # print("target_embeds: ", target_embeds)
         
         if self.use_prefix_cache:
             # precompute KV cache for everything before the optimized tokens
@@ -153,7 +168,20 @@ class AutoPrompt(SingleBehaviorRedTeamingMethod):
                 input_embeds = torch.cat([optim_embeds, after_embeds, target_embeds], dim=1)
                 outputs = model(inputs_embeds=input_embeds, past_key_values=self.prefix_cache)
             else:
+                # print("before_embeds: ", before_embeds)
+                # print("behavior_embeds: ", behavior_embeds)
+                # print("optim_embeds: ", optim_embeds)
+                # print("after_embeds: ", after_embeds)
+                # print("target_embeds: ", target_embeds)
                 input_embeds = torch.cat([before_embeds, behavior_embeds, optim_embeds, after_embeds, target_embeds], dim=1)
+                # print(input_embeds)
+                # print(input_embeds.shape)
+                # print(input_embeds.dtype)
+                # input_embeds = input_embeds.half()
+                # print(input_embeds)
+                # print(input_embeds.shape)
+                # print(input_embeds.dtype)
+                # outputs = model(inputs_embeds=input_embeds.half())
                 outputs = model(inputs_embeds=input_embeds)
             
             logits = outputs.logits
@@ -212,6 +240,9 @@ class AutoPrompt(SingleBehaviorRedTeamingMethod):
                                         target_embeds.repeat(new_search_width, 1, 1)], dim=1)
             
             # Auto Find Batch Size for foward candidates (each time go OOM will decay search_batch_size // 2)
+            # print(input_embeds.dtype)
+            # print(target_embeds.dtype)
+            # loss = find_executable_batch_size(self.compute_candidates_loss, self.search_batch_size)(input_embeds.half(), target_ids)
             loss = find_executable_batch_size(self.compute_candidates_loss, self.search_batch_size)(input_embeds, target_ids)
 
             # ========== Update the optim_ids with the best candidate ========== #

@@ -84,3 +84,7 @@ llama2_7b:
     use_fast_tokenizer: False
     dtype: float16
     chat_template: llama-2
+
+pythia_14m:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False
