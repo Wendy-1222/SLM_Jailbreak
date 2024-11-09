@@ -208,11 +208,12 @@ class AutoPrompt(SingleBehaviorRedTeamingMethod):
                 # tokenize again
                 tmp = tokenizer(sampled_top_indices_text[j], return_tensors="pt", add_special_tokens=False).to(device)['input_ids'][0]
                 # if the tokenized text is different, then set the sampled_top_indices to padding_top_indices
-                if not torch.equal(tmp, sampled_top_indices[j]):
-                    count += 1
-                    continue
-                else:
-                    new_sampled_top_indices.append(sampled_top_indices[j])
+                # if not torch.equal(tmp, sampled_top_indices[j]):
+                #     count += 1
+                #     continue
+                # else:
+                #     new_sampled_top_indices.append(sampled_top_indices[j])
+                new_sampled_top_indices.append(sampled_top_indices[j])
             
             if len(new_sampled_top_indices) == 0:
                 print('All removals; defaulting to keeping all')

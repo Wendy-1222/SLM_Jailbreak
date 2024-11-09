@@ -464,7 +464,7 @@ qwen2_5_7b_instruct:
 pythia_14m:
   model:
     model_name_or_path: /data2/pythia_series/pythia-14m
-    use_fast_tokenizer: False
+    use_fast_tokenizer: True
     trust_remote_code: True
     dtype: float16
     eos_token: <|endoftext|>
@@ -715,6 +715,159 @@ cerebras_GPT_6_7B:
     chat_template: qwen2_5
   num_gpus: 1
   model_type: open_source
+
+
+# stable lm
+stablelm-2-zephyr-1_6b:
+  model:
+    model_name_or_path: /data2/stablelm_series/stablelm-2-zephyr-1_6b
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float16
+    pad_token: <|endoftext|>
+    eos_token: <|endoftext|>
+    chat_template: stablelm
+  num_gpus: 1
+  model_type: open_source
+
+stablelm-2-1_6b-chat:
+  model:
+    model_name_or_path: /data2/stablelm_series/stablelm-2-1_6b-chat
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: float32
+    pad_token: <|endoftext|>
+    eos_token: <|endoftext|>
+    chat_template: stablelm_chat
+  num_gpus: 1
+  model_type: open_source
+
+stablelm-zephyr-3b:
+  model:
+    model_name_or_path: /data2/stablelm_series/stablelm-zephyr-3b
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|endoftext|>
+    chat_template: stablelm
+  num_gpus: 1
+  model_type: open_source
+
+# TinyLlama
+tinyllama-1.1B-chat-v0.1:
+  model:
+    model_name_or_path: /data2/TinyLlama/TinyLlama-1.1B-Chat-v0.1
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: tinyllama_v0_1
+  num_gpus: 1
+  model_type: open_source
+
+tinyllama-1.1B-chat-v0.2:
+  model:
+    model_name_or_path: /data2/TinyLlama/TinyLlama-1.1B-Chat-v0.2
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: tinyllama_v0_2
+  num_gpus: 1
+  model_type: open_source
+
+tinyllama-1.1B-chat-v0.3:
+  model:
+    model_name_or_path: /data2/TinyLlama/TinyLlama-1.1B-Chat-v0.3
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: tinyllama_v0_2
+  num_gpus: 1
+  model_type: open_source
+
+tinyllama-1.1B-chat-v0.4:
+  model:
+    model_name_or_path: /data2/TinyLlama/TinyLlama-1.1B-Chat-v0.4
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: tinyllama_v0_2
+  num_gpus: 1
+  model_type: open_source
+
+tinyllama-1.1B-chat-v0.5:
+  model:
+    model_name_or_path: /data2/TinyLlama/TinyLlama-1.1B-Chat-v0.5
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: tinyllama_v0_2
+  num_gpus: 1
+  model_type: open_source
+
+tinyllama-1.1B-chat-v0.6:
+  model:
+    model_name_or_path: /data2/TinyLlama/TinyLlama-1.1B-Chat-v0.6
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: bfloat16
+    chat_template: tinyllama_v0_6
+  num_gpus: 1
+  model_type: open_source
+
+tinyllama-1.1B-chat-v1.0:
+  model:
+    model_name_or_path: /data2/TinyLlama/TinyLlama-1.1B-Chat-v1.0
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: bfloat16
+    chat_template: tinyllama_v0_6
+  num_gpus: 1
+  model_type: open_source
+
+
+# MobileLlama
+mobilellama-1.4B-chat:
+  model:
+    model_name_or_path: /data2/MobileLLaMA/MobileLLaMA-1.4B-Chat
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: mobilellama
+  num_gpus: 1
+  model_type: open_source
+
+mobilellama-2.7B-chat:
+  model:
+    model_name_or_path: /data2/MobileLLaMA/MobileLLaMA-2.7B-Chat
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: mobilellama
+  num_gpus: 1
+  model_type: open_source
+
+# MobiLlama
+mobillama-0.5B-chat:
+  model:
+    model_name_or_path: /data2/MobiLlama/MobiLlama-0.5B-Chat
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: mobillama
+  num_gpus: 1
+  model_type: open_source
+
+mobillama-1B-chat:
+  model:
+    model_name_or_path: /data2/MobiLlama/MobiLlama-1B-Chat
+    use_fast_tokenizer: False
+    trust_remote_code: True
+    dtype: float32
+    chat_template: mobillama
+  num_gpus: 1
+  model_type: open_source
+
 
 
 # ===================== Closed-Source Models ===================== #

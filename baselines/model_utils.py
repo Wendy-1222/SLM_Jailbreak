@@ -155,6 +155,42 @@ PHI3_SMALL_PROMPT = {
     "prompt": "<|endoftext|><|user|>\n{instruction}<|end|>\n<|assistant|>\n"
 }
 
+STABLELM_PROMPT = {
+    "description": "Template used by StableLM",
+    "prompt": "<|user|>\n{instruction}<|endoftext|>\n<|assistant|>\n"
+}
+
+STABLELM_Chat_PROMPT = {
+    "description": "Template used by StableLM",
+    "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
+}
+
+TinyLlama_v0_1_PROMPT = {
+    "description": "Template used by tinyllama-1.1B-chat-v0.1", # https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v0.1
+    "prompt": "### Human: {instruction}### Assistant:"
+}
+
+TinyLlama_v0_2_PROMPT = {
+    "description": "Template used by tinyllama-1.1B-chat-v0.2 ~ tinyllama-1.1B-chat-v0.5", # https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v0.2
+    "prompt": "<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
+}
+
+TinyLlama_v0_6_PROMPT = {
+    "description": "Template used by tinyllama-1.1B-chat-v0.6 and tinyllama-1.1B-chat-v1.0",
+    "prompt": "<|system|>\nYou are a friendly chatbot who always responds in the style of a pirate.</s>\n<|user|>\n{instruction}</s>\n<|assistant|>\n"
+}
+
+MobileLlama_PROMPT = {
+    "description": "Template used by MobileLlama", # https://github.com/Meituan-AutoML/MobileVLM?tab=readme-ov-file
+    "prompt": "Q: {instruction}\nA:"
+}
+
+MobiLlama_Prompt = {
+    "description": "Template used by MobiLlama", # https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v0.5，注：huggingface给的demo是fschat的one-shot版本，这里为了与其他模型一致，把那个birthday的例子删掉了
+    "prompt": "A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.\n### Human: {instruction}\n### Assistant:"
+}
+
+
 ########## CHAT TEMPLATE ###########
 
 def get_template(model_name_or_path=None, chat_template=None, fschat_template=None, system_message=None, return_fschat_conv=False, **kwargs):
@@ -212,8 +248,23 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = PHI3_MINI_PROMPT
     elif chat_template == "phi3_small":
         TEMPLATE = PHI3_SMALL_PROMPT
+    elif chat_template == "stablelm":
+        TEMPLATE = STABLELM_PROMPT
+    elif chat_template == "stablelm_chat":
+        TEMPLATE = STABLELM_Chat_PROMPT
+    elif chat_template == "tinyllama_v0_1":
+        TEMPLATE = TinyLlama_v0_1_PROMPT
+    elif chat_template == "tinyllama_v0_2":
+        TEMPLATE = TinyLlama_v0_2_PROMPT
+    elif chat_template == "tinyllama_v0_6":
+        TEMPLATE = TinyLlama_v0_6_PROMPT
+    elif chat_template == "mobilellama":
+        TEMPLATE = MobileLlama_PROMPT
+    elif chat_template == "mobillama":
+        TEMPLATE = MobiLlama_Prompt
     else:
         # ======== Else default to tokenizer.apply_chat_template =======
+        print("Unknown chat, use default template")
         try:
             tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, trust_remote_code=True)
             template = [{'role': 'system', 'content': system_message}, {'role': 'user', 'content': '{instruction}'}] if system_message else [{'role': 'user', 'content': '{instruction}'}]

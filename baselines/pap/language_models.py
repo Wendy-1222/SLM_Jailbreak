@@ -53,6 +53,9 @@ class VLLM(LanguageModel):
     def __init__(self, model_name_or_path, **model_kwargs):
         self.model_name = model_name_or_path
         self.model = load_vllm_model(model_name_or_path, **model_kwargs)
+        print("emo")
+        print(model_name_or_path)
+        print(model_kwargs)
         self.template = get_template(model_name_or_path, **model_kwargs)['prompt']
 
     def batched_generate(self, 

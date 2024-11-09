@@ -5,7 +5,7 @@ default_method_hyperparameters:
   num_steps: 500  
   lr: 0.2
   noise_scale: 0.2
-  targets_path: ./data/optimizer_targets/harmbench_targets_text.json
+  targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
 
 # ========== Specific experiment hyperparameters (overrides default_method_hyperparameters) ========== #
 # Experiment names can be used in the save path and to override default hyperparameters.

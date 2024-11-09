@@ -7,9 +7,9 @@ default_method_hyperparameters:
 
 top_5:
   attack_model:
-    model_name_or_path: mistralai/Mixtral-8x7B-Instruct-v0.1
-    use_vllm: True
-    num_gpus: 2
+    model_name_or_path: /data/hzq/models/vicuna1.5_13b
+    use_vllm: False
+    num_gpus: 1
     dtype: bfloat16
   top_k_persuasion_taxonomy: 5
 

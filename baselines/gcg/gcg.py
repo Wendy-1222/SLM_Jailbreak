@@ -176,6 +176,9 @@ class GCG(SingleBehaviorRedTeamingMethod):
             loss_fct = CrossEntropyLoss()
             loss = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
 
+            # print("emo")
+            # print("loss", loss.item())
+            # print(optim_ids_onehot)
             token_grad = torch.autograd.grad(outputs=[loss], inputs=[optim_ids_onehot])[0]
 
             # ========== Sample a batch of new tokens based on the coordinate gradient. ========== #
@@ -195,13 +198,13 @@ class GCG(SingleBehaviorRedTeamingMethod):
                 # if the tokenized text is different, then set the sampled_top_indices to padding_top_indices
                 # if j == 5:
                 #     exit()
-                if not torch.equal(tmp, sampled_top_indices[j]):
-                    count += 1
-                    continue
-                else:
-                    new_sampled_top_indices.append(sampled_top_indices[j])
+                # if not torch.equal(tmp, sampled_top_indices[j]):
+                #     count += 1
+                #     continue
+                # else:
+                #     new_sampled_top_indices.append(sampled_top_indices[j])
+                new_sampled_top_indices.append(sampled_top_indices[j])
 
-            
             if len(new_sampled_top_indices) == 0:
                 print('All removals; defaulting to keeping all')
                 count = 0

@@ -97,17 +97,21 @@ def process_log_file(method, model):
     }
 
 
-method_list = ['DirectRequest', 'PAIR', 'GCG', 'HumanJailbreaks']
+method_list = ['DirectRequest', 'PAIR', 'GCG', 'HumanJailbreaks', 'AutoPrompt', 'PEZ', 'GBDA', 'UAT']
 print(method_list)
 qwen_series = "qwen_1_8b_chat,qwen_7b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen1_5_4b_chat,qwen1_5_7b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_7b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct,qwen2_5_7b_instruct"
 pythia_series = "pythia_14m,pythia_31m,pythia_70m,pythia_160m,pythia_410m,pythia_1b,pythia_1_4b,pythia_2_8b,pythia_6_9b"
 phi_series = "phi_1_5,phi_2,phi_3_mini_4k_instruct,phi_3_mini_128k_instruct,phi_3_small_8k_instruct,phi_3_small_128k_instruct,phi_3_5_mini_instruct"
+stablelm_series = "stablelm-2-zephyr-1_6b,stablelm-2-1_6b-chat,stablelm-zephyr-3b"
+tiny_llama_series = "tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5,tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"
 # 转换成列表
 qwen_series = qwen_series.split(',')
 pythia_series = pythia_series.split(',')
 phi_series = phi_series.split(',')
+stablelm_series = stablelm_series.split(',')
+tiny_llama_series = tiny_llama_series.split(',')
 model_list = ['llama2_7b', 'vicuna_7b_v1_5']
-model_list += qwen_series + pythia_series + phi_series
+model_list += qwen_series + pythia_series + phi_series + stablelm_series + tiny_llama_series
 print(model_list)
 
 score_name_dict = {
@@ -151,6 +155,9 @@ for method in method_list:
 
         # 将统计结果存储到字典中
         total_cases = len(result_data)
+        if total_cases != 50:
+            print(f"Warning!!! Total cases of {method} {model} is not 50: {total_cases}")
+            continue
         if 'total_cases' not in results_summary[method][model]:
             results_summary[method][model]['total_cases'] = total_cases
         results_summary[method][model]['checked_jailbroken_num'] = checked_jailbroken_num
