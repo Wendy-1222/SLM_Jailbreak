@@ -1,7 +1,7 @@
 import os
 
-methods="AutoPrompt"
-models="mobilellama-1.4B-chat"
+methods="GCG"  # or "all" to use all methods
+models="OLMo-7B-SFT-hf"  # or "all" to use all models
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"

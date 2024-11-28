@@ -1,7 +1,8 @@
 import os
 
-methods="GBDA,PEZ"  # or "all" to use all methods
-models="tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5"  # or "all" to use all models
+methods="AutoPrompt"  # or "all" to use all methods
+models="dolly-v1-6b"  # or "all" to use all models
+# models="mobilellama-1.4B-chat"
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"

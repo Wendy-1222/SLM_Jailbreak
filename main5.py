@@ -1,7 +1,9 @@
 import os
 
+h2o_danube_series="h2o-danube-1.8b-sft,h2o-danube-1.8b-chat,h2o-danube2-1.8b-sft,h2o-danube2-1.8b-chat,h2o-danube3-500m-chat,h2o-danube3-4b-chat"
+
 methods="AutoPrompt"  # or "all" to use all methods
-models="mobillama-0.5B-chat,stablelm-2-1_6b-chat"  # or "all" to use all models
+models="OLMo-7B-Instruct-hf"  # or "all" to use all models
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"

@@ -19,6 +19,8 @@ def load_indiv_model(model_name_or_path, use_vllm=False, token=None, **model_kwa
         lm = Claude(model_name_or_path, token=token)
     elif 'gemini-' in model_name_or_path:
         lm = Gemini(model_name_or_path, token=token)
+    elif 'vicuna' in model_name_or_path:
+        lm = HuggingFace(model_name_or_path, **model_kwargs)
     else:
         # We use ray to manage opensource models here
         num_gpus = model_kwargs.get("num_gpus", 1)
@@ -84,6 +86,9 @@ class HuggingFace(LanguageModel):
         self.model_name = model_name_or_path
         self.model = model 
         self.tokenizer = tokenizer
+        # print("emo")
+        # print(model_name_or_path)
+        # print(model_kwargs)
         self.template = get_template(model_name_or_path, **model_kwargs)['prompt']
 
         self.eos_token_ids = [self.tokenizer.eos_token_id]

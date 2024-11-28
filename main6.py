@@ -1,7 +1,7 @@
 import os
 
-methods="GCG"  # or "all" to use all methods
-models="tinyllama-1.1B-chat-v0.5"  # or "all" to use all models
+methods="AutoPrompt"  # or "all" to use all methods
+models = "smollm2-135M-instruct"
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"

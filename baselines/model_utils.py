@@ -190,6 +190,60 @@ MobiLlama_Prompt = {
     "prompt": "A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.\n### Human: {instruction}\n### Assistant:"
 }
 
+GEMMA_PROMPT = {
+    "description": "Template used by Gemma", # https://huggingface.co/google/gemma-2b-it
+    "prompt": "<bos><start_of_turn>user\n{instruction}<end_of_turn>\n<start_of_turn>model"
+}
+
+MINICPM_PROMPT = {
+    "description": "Template used by MiniCPM, except MiniCPM-2B-128k and MiniCPM3-4B", # https://huggingface.co/openbmb/MiniCPM-1B-sft-bf16
+    "prompt": "<用户>{instruction}<AI>"
+}
+
+MINICPM_CHATML_PROMPT = {
+    "description": "Template used by MiniCPM-2B-128k and MiniCPM3-4B", # https://huggingface.co/openbmb/MiniCPM-2B-128k
+    "prompt": "<im_start>user\n{instruction}<im_end>\n<im_start>assistant\n"
+}
+
+OPENELM_PROMPT = {
+    "description": "Template used by OpenELM", 
+    "prompt": "{instruction}"
+}
+
+H2O_DANUBE_PROMPT = {
+    "description": "Template used by H2O Danube",  # https://huggingface.co/h2oai/h2o-danube-1.8b-sft
+    "prompt": "<|prompt|>{instruction}</s><|answer|>"
+}
+
+FOX_PROMPT = {
+    "description": "Template used by Fox",  # https://huggingface.co/tensoropera/Fox-1-1.6B-Instruct-v0.1
+    "prompt": "<|user|>\n{instruction}<eos>\n<|assistant|>\n"
+}
+
+SMOLLM_PROMPT = {
+    "description": "Template used by SmolLM",  # https://huggingface.co/HuggingFaceTB/SmolLM-135M-Instruct
+    "prompt": "<im_start>user\n{instruction}<im_end>\n<im_start>assistant\n"
+}
+
+SMOLM2_PROMPT = {
+    "description": "Template used by SmolLM2",  # https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct
+    "prompt": "<|im_start|>system\nYou are a helpful AI assistant named SmolLM, trained by Hugging Face<|im_end|>\n<im_start>user\n{instruction}<im_end>\n<im_start>assistant\n"
+}
+
+DCLM_PROMPT = {
+    "description": "Template used by DCLM",  # https://huggingface.co/TRI-ML/DCLM-1B-IT
+    "prompt": "Below is an instruction that describes a task.\n\nWrite a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:\n"
+}
+
+DOLLY_PROMPT = {
+    "description": "Template used by Dolly", # https://huggingface.co/databricks/dolly-v1-6b
+    "prompt": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:\n"
+}
+
+OLMO_PROMPT = {
+    "description": "Template used by OLMO",  # https://huggingface.co/allenai/OLMo-7B-SFT-hf
+    "prompt": "<|endoftext|><|user|>\n{instruction}\n<|assistant|>\n"
+}
 
 ########## CHAT TEMPLATE ###########
 
@@ -208,7 +262,7 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
     # ===== Check for some older chat model templates ====
     elif chat_template == "wizard":
         TEMPLATE = VICUNA_PROMPT
-    elif chat_template == "vicuna":
+    elif "vicuna" in model_name_or_path or chat_template == "vicuna":
         TEMPLATE = VICUNA_PROMPT
     elif chat_template == "oasst":
         TEMPLATE = OASST_PROMPT
@@ -262,6 +316,28 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = MobileLlama_PROMPT
     elif chat_template == "mobillama":
         TEMPLATE = MobiLlama_Prompt
+    elif chat_template == "gemma":
+        TEMPLATE = GEMMA_PROMPT
+    elif chat_template == "minicpm":
+        TEMPLATE = MINICPM_PROMPT
+    elif chat_template == "minicpm_chatml":
+        TEMPLATE = MINICPM_CHATML_PROMPT
+    elif chat_template == "openelm":
+        TEMPLATE = OPENELM_PROMPT
+    elif chat_template == "h2o_danube":
+        TEMPLATE = H2O_DANUBE_PROMPT
+    elif chat_template == "fox":
+        TEMPLATE = FOX_PROMPT
+    elif chat_template == "smollm":
+        TEMPLATE = SMOLLM_PROMPT
+    elif chat_template == "smolm2":
+        TEMPLATE = SMOLM2_PROMPT
+    elif chat_template == "dclm":
+        TEMPLATE = DCLM_PROMPT
+    elif chat_template == "dolly":
+        TEMPLATE = DOLLY_PROMPT
+    elif chat_template == "olmo":
+        TEMPLATE = OLMO_PROMPT
     else:
         # ======== Else default to tokenizer.apply_chat_template =======
         print("Unknown chat, use default template")

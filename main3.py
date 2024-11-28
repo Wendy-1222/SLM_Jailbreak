@@ -1,13 +1,15 @@
 import os
 
-mobile_llama_series="mobilellama-1.4B-chat,mobilellama-2.7B-chat"
-mobi_llama_series="mobillama-0.5B-chat,mobillama-1B-chat"
+smollm_series = "smollm-135M-instruct,smollm-360M-instruct,smollm-1.7B-instruct,smollm2-135M-instruct,smollm2-360M-instruct,smollm2-1.7B-instruct"
+dclm_series = "DCLM-1B-IT"
+dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 
-methods="GCG"
-models="mobilellama-1.4B-chat"
+methods="GCG"  # or "all" to use all methods
+models = "OLMo-7B-Instruct-hf"
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
+behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

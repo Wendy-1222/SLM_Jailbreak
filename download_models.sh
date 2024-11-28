@@ -60,16 +60,16 @@
 # )
 
 # TinyLlama series
-declare -A models=(
-  ["TinyLlama/TinyLlama_v1.1"]="/data2/TinyLlama/TinyLlama_v1.1"
-  ["TinyLlama/TinyLlama-1.1B-Chat-v0.1"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.1"
-  ["TinyLlama/TinyLlama-1.1B-Chat-v0.2"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.2"
-  ["TinyLlama/TinyLlama-1.1B-Chat-v0.3"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.3"
-  ["TinyLlama/TinyLlama-1.1B-Chat-v0.4"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.4"
-  ["TinyLlama/TinyLlama-1.1B-Chat-v0.5"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.5"
-  ["TinyLlama/TinyLlama-1.1B-Chat-v0.6"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.6"
-  ["TinyLlama/TinyLlama-1.1B-Chat-v1.0"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-)
+#declare -A models=(
+#  ["TinyLlama/TinyLlama_v1.1"]="/data2/TinyLlama/TinyLlama_v1.1"
+#  ["TinyLlama/TinyLlama-1.1B-Chat-v0.1"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.1"
+#  ["TinyLlama/TinyLlama-1.1B-Chat-v0.2"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.2"
+#  ["TinyLlama/TinyLlama-1.1B-Chat-v0.3"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.3"
+#  ["TinyLlama/TinyLlama-1.1B-Chat-v0.4"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.4"
+#  ["TinyLlama/TinyLlama-1.1B-Chat-v0.5"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.5"
+#  ["TinyLlama/TinyLlama-1.1B-Chat-v0.6"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.6"
+#  ["TinyLlama/TinyLlama-1.1B-Chat-v1.0"]="/data2/TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+#)
 
 # # MobileLLaMA series
 # declare -A models=(
@@ -160,6 +160,13 @@ declare -A models=(
 #   ["HuggingFaceTB/SmolLM-1.7B-Instruct"]="/data2/SmolLM_series/SmolLM-1.7B-Instruct"
 # )
 
+# SmolLM series
+declare -A models=(
+  ["HuggingFaceTB/SmolLM2-135M-Instruct"]="/data2/SLMs/SmolLM_series/SmolLM2-135M-Instruct"
+  ["HuggingFaceTB/SmolLM2-360M-Instruct"]="/data2/SLMs/SmolLM_series/SmolLM2-360M-Instruct"
+  ["HuggingFaceTB/SmolLM2-1.7B-Instruct"]="/data2/SLMs/SmolLM_series/SmolLM2-1.7B-Instruct"
+)
+
 # # DCLM series
 # declare -A models=(
 #   ["TRI-ML/DCLM-1B-IT"]="/data2/DCLM_series/DCLM-1B-IT"
@@ -184,6 +191,9 @@ declare -A models=(
 # declare -A models=(
 #   ["meta-llama/Llama-3.1-8B-Instruct"]="/data2/llama3.1/Llama-3.1-8B-Instruct"
 # )
+
+# declare -A models=(
+#   ["tensoropera/Fox-1-1.6B-Instruct-v0.1"]="/data2/SLMs/fox_series/Fox-1-1.6B-Instruct-v0.1"
 
 # 循环下载所有模型
 for model in "${!models[@]}"; do

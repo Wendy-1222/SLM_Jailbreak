@@ -94,9 +94,23 @@ class PAP(SingleBehaviorRedTeamingMethod):
         raw_outputs = get_generations(attack_model, _inputs, **attack_gen_config)
         persuasions = []
         for raw_output in raw_outputs:
-            persuasion = extract_content("#mutated_text_with_same_specific_harmful_or_unlawful_intention: ", raw_output)
-            if persuasion:
-                persuasions.append(persuasion)
+            raw_output = raw_output.replace('\_', '_')
+
+            # Try to extract content using different tags
+            for tag in [
+                "mutated_text_with_same_specific_harmful_or_unlawful_intention: ",
+                "Mutated_text_with_same_specific_harmful_or_unlawful_intention: ",
+                ":",
+                "#"
+            ]:
+                if tag == ":":
+                    persuasion = extract_after_second_colon(raw_output)
+                else:
+                    persuasion = extract_content(tag, raw_output)
+
+                if persuasion:
+                    persuasions.append(persuasion)
+                    break
             else:
                 print(f"Failed to extract persuasion from: {raw_output}")
                 persuasions.append(raw_output)
@@ -140,3 +154,14 @@ def extract_content(tag, text):
     content_after_tag = text[start_idx+len(tag):].strip()
     end_idx = text.find("#", start_idx + 1)
     return content_after_tag if end_idx == -1 else content_after_tag[:end_idx].strip()
+
+def extract_after_second_colon(text):
+    """
+    Extracts content after the second colon in the text.
+    Handles cases where the colon is followed by a newline or spaces.
+    """
+    parts = text.split(":", 2)  # Split into a maximum of 3 parts
+    if len(parts) > 2:
+        # Strip leading/trailing whitespace from the extracted content
+        return parts[2].strip()
+    return None

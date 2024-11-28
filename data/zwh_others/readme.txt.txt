@@ -1,0 +1,7 @@
+advbench_subset_translated是advbench_subset的翻译版本
+
+advbench_subset_updated_14_category是advbench_subset的50个问题投影到14类OpenAI category上的结果
+
+final_adjusted_advbench是包含70（14*5）的类别均衡越狱数据集
+final_adjusted_advbench_added_sorted是包含40个问题的数据集，且按类别进行了排序
+

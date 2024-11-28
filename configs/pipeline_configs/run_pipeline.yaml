@@ -84,12 +84,12 @@ GCG_custom_targets:
   base_num_gpus: 0
   allowed_target_model_types: [open_source]
 
-# HumanJailbreaks-all:  # Warning: expensive to run on closed-source models
-#   class_name: HumanJailbreaks
-#   experiment_name_template: default
-#   behavior_chunk_size: all_behaviors
-#   base_num_gpus: 0
-#   allowed_target_model_types: [open_source, closed_source]
+HumanJailbreaks-all:  # Warning: expensive to run on closed-source models
+  class_name: HumanJailbreaks
+  experiment_name_template: default
+  behavior_chunk_size: all_behaviors
+  base_num_gpus: 0
+  allowed_target_model_types: [open_source, closed_source]
 
 HumanJailbreaks:
   class_name: HumanJailbreaks
