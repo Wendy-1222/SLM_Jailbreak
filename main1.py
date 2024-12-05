@@ -15,10 +15,11 @@ fox_series = "fox-1-1.6B-Instruct-v0.1"
 smollm_series = "smollm2-1.7B-instruct,smollm-135M-instruct,smollm-360M-instruct,smollm-1.7B-instruct,smollm2-135M-instruct,smollm2-360M-instruct"
 dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
+dclm_series = "DCLM-1B-IT"
 
 # methods="HumanJailbreaks"  # or "all" to use all methods
 methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"  # or "all" to use all methods
-models = dolly_series + ',' + olmo_series
+models = dclm_series
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"

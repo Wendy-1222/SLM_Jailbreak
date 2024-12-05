@@ -21,12 +21,12 @@ dclm_series = "DCLM-1B-IT"
 dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 
-methods="AutoPrompt"  # or "all" to use all methods
-models = "gemma-1.1-7b-it,h2o-danube3-500m-chat"
+methods="DirectRequest"  # or "all" to use all methods
+models = "qwen_1_8b_chat"
 # models = "minicpm3-4B"
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
-step="2_and_3"  # or "1", "1.5", "2", "3", "2_and_3"
+step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

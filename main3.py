@@ -1,11 +1,13 @@
 import os
 
-smollm_series = "smollm-135M-instruct,smollm-360M-instruct,smollm-1.7B-instruct,smollm2-135M-instruct,smollm2-360M-instruct,smollm2-1.7B-instruct"
-dclm_series = "DCLM-1B-IT"
-dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
+other_series = "llama2_7b,vicuna_7b_v1_5"
+qwen_series = "qwen_1_8b_chat,qwen_7b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen1_5_4b_chat,qwen1_5_7b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_7b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct,qwen2_5_7b_instruct"
 
-methods="GCG"  # or "all" to use all methods
-models = "OLMo-7B-Instruct-hf"
+dclm_series = "DCLM-1B-IT"
+
+# methods="HumanJailbreaks"  # or "all" to use all methods
+methods="HumanJailbreaks"  # or "all" to use all methods
+models = "dolly-v1-6b"
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
