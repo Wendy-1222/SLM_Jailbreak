@@ -1,17 +1,16 @@
 import os
 
-other_series = "llama2_7b,vicuna_7b_v1_5"
-qwen_series = "qwen_1_8b_chat,qwen_7b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen1_5_4b_chat,qwen1_5_7b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_7b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct,qwen2_5_7b_instruct"
+phi_series = "phi_3_mini_4k_instruct,phi_3_mini_128k_instruct,phi_3_5_mini_instruct"
+stablelm_series = "stablelm-2-zephyr-1_6b,stablelm-2-1_6b-chat,stablelm-zephyr-3b"
+h2o_danube_series = "h2o-danube2-1.8b-chat,h2o-danube-1.8b-sft,h2o-danube-1.8b-chat,h2o-danube2-1.8b-sft,h2o-danube3-500m-chat"
+smollm_series = "smollm-135M-instruct,smollm-360M-instruct,smollm-1.7B-instruct,smollm2-135M-instruct,smollm2-360M-instruct,smollm2-1.7B-instruct"
 
-dclm_series = "DCLM-1B-IT"
+slms = phi_series + ',' + stablelm_series + ',' + h2o_danube_series + ',' + smollm_series
 
-# methods="HumanJailbreaks"  # or "all" to use all methods
-methods="HumanJailbreaks"  # or "all" to use all methods
-models = "dolly-v1-6b"
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
-# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
-step="all"  # or "1", "1.5", "2", "3", "2_and_3"
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"  # or "all" to use all methods
+models = slms
+behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+step="1"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
