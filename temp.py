@@ -75,19 +75,54 @@
 # text_output = tokenizer.batch_decode(outputs, skip_special_tokens=True)
 # print(text_output[0])
 
+# import os
+#
+# methods="AutoPrompt"  # or "all" to use all methods
+# models="stablelm-zephyr-3b" # or "all" to use all models
+# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+# # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
+# step="all"  # or "1", "1.5", "2", "3", "2_and_3"
+# mode="local"
+# # mode="slurm"
+# # partition="your_partition"
+# cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
+#
+# os.system(f"python ./scripts/run_pipeline.py --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+
 import os
+import shutil
+def delete_files_and_dirs_with_prefix(parent_dir, prefix="results"):
+    # 检查父目录是否存在
+    if not os.path.isdir(parent_dir):
+        print(f"指定的父目录 '{parent_dir}' 不存在或不是目录.")
+        return
 
-methods="AutoPrompt"  # or "all" to use all methods
-models="stablelm-zephyr-3b" # or "all" to use all models
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
-# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
-step="all"  # or "1", "1.5", "2", "3", "2_and_3"
-mode="local"
-# mode="slurm"
-# partition="your_partition"
-cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
+    # 使用 os.walk() 递归遍历所有子目录
+    for root, dirs, files in os.walk(parent_dir, topdown=False):  # topdown=False 确保从子目录开始删除
+        # 删除当前目录中的符合条件的文件
+        for file in files:
+            if file.startswith(prefix):
+                file_path = os.path.join(root, file)
+                try:
+                    os.remove(file_path)
+                    print(f"已删除文件: {file_path}")
+                except Exception as e:
+                    print(f"删除文件 {file_path} 时出错: {e}")
 
-os.system(f"python ./scripts/run_pipeline.py --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+        # 删除当前目录中的符合条件的子目录
+        for dir in dirs:
+            if dir.startswith(prefix):
+                dir_path = os.path.join(root, dir)
+                try:
+                    shutil.rmtree(dir_path)
+                    print(f"已删除目录: {dir_path}")
+                except Exception as e:
+                    print(f"删除目录 {dir_path} 时出错: {e}")
 
+
+if __name__ == "__main__":
+    parent_directory = "/data2/zwh/HarmBench/results"
+    delete_files_and_dirs_with_prefix(parent_directory)
+    print("done")
 
 

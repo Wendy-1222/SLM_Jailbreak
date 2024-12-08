@@ -141,6 +141,7 @@ score_name_dict = {
 }
 need_process_log = ['PAIR', 'TAP']
 base_path = '/data2/zwh/HarmBench/results/'
+question_num = 40
 results_summary = {}
 
 for method in method_list:
@@ -174,12 +175,14 @@ for method in method_list:
 
         checked_jailbroken_num = 0
         for key, entry in result_data.items():
-            checked_jailbroken_num = checked_jailbroken_num + entry[0]['label']
+            # checked_jailbroken_num = checked_jailbroken_num + entry[0]['label']
+            # 由于可能存在多个label（例如HumanJailbreaks、PEZ等方法），因此取所有label的最大值作为label
+            checked_jailbroken_num = checked_jailbroken_num + max([e['label'] for e in entry])
 
         # 将统计结果存储到字典中
         total_cases = len(result_data)
-        if total_cases != 50:
-            print(f"Warning!!! Total cases of {method} {model} is not 50: {total_cases}")
+        if total_cases != question_num:
+            print(f"Warning!!! Total cases of {method} {model} is not {question_num}: {total_cases}")
             continue
         if 'total_cases' not in results_summary[method][model]:
             results_summary[method][model]['total_cases'] = total_cases

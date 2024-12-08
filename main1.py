@@ -19,14 +19,15 @@ olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 dclm_series = "DCLM-1B-IT"
 
 # slms = "qwen_1_8b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen1_5_4b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct"
-slms = "minicpm-1B-sft-bf16,minicpm-S-1B-sft,minicpm-2B-sft-bf16,minicpm-2B-dpo-bf16,minicpm-2B-128k,minicpm3-4B,fox-1-1.6B-Instruct-v0.1"
-# methods="HumanJailbreaks"  # or "all" to use all methods
-methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"  # or "all" to use all methods
+# slms = "minicpm-1B-sft-bf16,minicpm-S-1B-sft,minicpm-2B-sft-bf16,minicpm-2B-dpo-bf16,minicpm-2B-128k,minicpm3-4B,fox-1-1.6B-Instruct-v0.1"
+slms="llama2_7b,vicuna_7b_v1_5,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,phi_3_small_8k_instruct,phi_3_small_128k_instruct,mobilellama-1.4B-chat,mobilellama-2.7B-chat,dolly-v1-6b,dolly-v2-3b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
+
+methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"
 models = slms
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="1.5"  # or "1", "1.5", "2", "3", "2_and_3"
+step="1"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

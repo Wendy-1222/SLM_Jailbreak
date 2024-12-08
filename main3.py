@@ -1,16 +1,13 @@
 import os
 
-phi_series = "phi_3_mini_4k_instruct,phi_3_mini_128k_instruct,phi_3_5_mini_instruct"
-stablelm_series = "stablelm-2-zephyr-1_6b,stablelm-2-1_6b-chat,stablelm-zephyr-3b"
-h2o_danube_series = "h2o-danube2-1.8b-chat,h2o-danube-1.8b-sft,h2o-danube-1.8b-chat,h2o-danube2-1.8b-sft,h2o-danube3-500m-chat"
-smollm_series = "smollm-135M-instruct,smollm-360M-instruct,smollm-1.7B-instruct,smollm2-135M-instruct,smollm2-360M-instruct,smollm2-1.7B-instruct"
+gemma_series = "gemma-2b-it,gemma-7b-it,gemma-1.1-2b-it,gemma-1.1-7b-it,gemma-2-2b-it,recurrentgemma-2b-it"
 
-slms = phi_series + ',' + stablelm_series + ',' + h2o_danube_series + ',' + smollm_series
+slms = "phi_1_5,phi_2" + ',' + gemma_series
 
-methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"  # or "all" to use all methods
+methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"
 models = slms
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="1"  # or "1", "1.5", "2", "3", "2_and_3"
+step="1.5"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
