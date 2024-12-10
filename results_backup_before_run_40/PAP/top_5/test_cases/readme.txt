@@ -1,1 +1,0 @@
-test_cases_original.json是vicuna-13b原本创建的，存在一些提取错误。test_cases.json是改正后的，把提取错误的改好了。

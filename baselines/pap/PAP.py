@@ -93,6 +93,7 @@ class PAP(SingleBehaviorRedTeamingMethod):
         # ==== Generate persuasions with attack models==== #
         raw_outputs = get_generations(attack_model, _inputs, **attack_gen_config)
         persuasions = []
+
         for raw_output in raw_outputs:
             raw_output = raw_output.replace('\_', '_')
 
@@ -122,7 +123,19 @@ class PAP(SingleBehaviorRedTeamingMethod):
                 persuasion = f"{context_str}\n\n---\n\n{persuasion}"
             test_cases.append(persuasion)
 
-        return test_cases, {}
+        logs = []  # 主要是为了通过baseline.py line 153的 isinstance(batch_test_cases, list) and (len(batch_test_cases) == len(batch_logs))判断，防止PAP只有一个test_case的情况
+        for technique, raw_input, raw_output, prompt in zip(
+            in_context_persuasion_template.keys(), _inputs, raw_outputs, persuasions
+        ):
+            log = {
+                'technique': technique,
+                'raw_input': raw_input,
+                'raw_output': raw_output,
+                'prompt': prompt
+            }
+            logs.append(log)
+
+        return test_cases, logs
 
 # ==== Helper Functions ====
 # Helper function to check if the model is a ray actor

@@ -95,7 +95,6 @@ def main():
             new_test_cases_data[behavior_id] = _test_cases
             new_returned_data[behavior_id] = []  # If not all completions are present, we will regenerate all completions
         test_cases_data = new_test_cases_data
-
     # ==== Flatten dict to array ======
     test_cases = []
     for behavior_id, _test_cases in test_cases_data.items():

@@ -1,11 +1,15 @@
 import os
 
-slms="llama2_7b,vicuna_7b_v1_5,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,phi_3_small_8k_instruct,phi_3_small_128k_instruct,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
+qwen_series = "qwen_1_8b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen1_5_4b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct"
+tiny_llama_series = "tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5,tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"
+mobi_llama_series = "mobillama-0.5B-chat,mobillama-1B-chat"
 
-methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"
-models = "mobilellama-2.7B-chat"
+slms = qwen_series + ',' + tiny_llama_series + ',' + mobi_llama_series
+
+methods="PAP-top5"
+models = slms
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="1.5"  # or "1", "1.5", "2", "3", "2_and_3"
+step="1"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
