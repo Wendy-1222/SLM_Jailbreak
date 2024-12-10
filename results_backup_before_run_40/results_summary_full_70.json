@@ -1,13 +1,25 @@
 {
     "DirectRequest": {
-        "llama2_7b": {},
-        "vicuna_7b_v1_5": {},
+        "llama2_7b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 4,
+            "checked_success_rate": 0.057
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 15,
+            "checked_success_rate": 0.214
+        },
         "qwen_1_8b_chat": {
             "total_cases": 70,
             "checked_jailbroken_num": 10,
             "checked_success_rate": 0.143
         },
-        "qwen_7b_chat": {},
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 6,
+            "checked_success_rate": 0.086
+        },
         "qwen1_5_0_5b_chat": {
             "total_cases": 70,
             "checked_jailbroken_num": 8,
@@ -23,7 +35,11 @@
             "checked_jailbroken_num": 8,
             "checked_success_rate": 0.114
         },
-        "qwen1_5_7b_chat": {},
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 13,
+            "checked_success_rate": 0.186
+        },
         "qwen2_0_5b_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 7,
@@ -34,7 +50,11 @@
             "checked_jailbroken_num": 7,
             "checked_success_rate": 0.1
         },
-        "qwen2_7b_instruct": {},
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 15,
+            "checked_success_rate": 0.214
+        },
         "qwen2_5_0_5b_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 9,
@@ -50,7 +70,11 @@
             "checked_jailbroken_num": 10,
             "checked_success_rate": 0.143
         },
-        "qwen2_5_7b_instruct": {},
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 18,
+            "checked_success_rate": 0.257
+        },
         "pythia_14m": {},
         "pythia_31m": {},
         "pythia_70m": {},
@@ -60,8 +84,16 @@
         "pythia_1_4b": {},
         "pythia_2_8b": {},
         "pythia_6_9b": {},
-        "phi_1_5": {},
-        "phi_2": {},
+        "phi_1_5": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 15,
+            "checked_success_rate": 0.214
+        },
+        "phi_2": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 40,
+            "checked_success_rate": 0.571
+        },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 13,
@@ -72,8 +104,16 @@
             "checked_jailbroken_num": 9,
             "checked_success_rate": 0.129
         },
-        "phi_3_small_8k_instruct": {},
-        "phi_3_small_128k_instruct": {},
+        "phi_3_small_8k_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 4,
+            "checked_success_rate": 0.057
+        },
+        "phi_3_small_128k_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 8,
+            "checked_success_rate": 0.114
+        },
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 14,
@@ -129,7 +169,11 @@
             "checked_jailbroken_num": 45,
             "checked_success_rate": 0.643
         },
-        "mobilellama-1.4B-chat": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 54,
+            "checked_success_rate": 0.771
+        },
         "mobilellama-2.7B-chat": {},
         "mobillama-0.5B-chat": {
             "total_cases": 70,
@@ -141,12 +185,36 @@
             "checked_jailbroken_num": 45,
             "checked_success_rate": 0.643
         },
-        "gemma-2b-it": {},
-        "gemma-7b-it": {},
-        "gemma-1.1-2b-it": {},
-        "gemma-1.1-7b-it": {},
-        "gemma-2-2b-it": {},
-        "recurrentgemma-2b-it": {},
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 10,
+            "checked_success_rate": 0.143
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 19,
+            "checked_success_rate": 0.271
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 17,
+            "checked_success_rate": 0.243
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 15,
+            "checked_success_rate": 0.214
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 8,
+            "checked_success_rate": 0.114
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 13,
+            "checked_success_rate": 0.186
+        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "checked_jailbroken_num": 16,
@@ -240,21 +308,53 @@
             "checked_success_rate": 0.4
         },
         "DCLM-1B-IT": {},
-        "dolly-v1-6b": {},
-        "dolly-v2-3b": {},
-        "dolly-v2-7b": {},
-        "OLMo-7B-SFT-hf": {},
-        "OLMo-7B-Instruct-hf": {}
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 40,
+            "checked_success_rate": 0.571
+        },
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 53,
+            "checked_success_rate": 0.757
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 47,
+            "checked_success_rate": 0.671
+        },
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 23,
+            "checked_success_rate": 0.329
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 32,
+            "checked_success_rate": 0.457
+        }
     },
     "HumanJailbreaks": {
-        "llama2_7b": {},
-        "vicuna_7b_v1_5": {},
+        "llama2_7b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 5,
+            "checked_success_rate": 0.071
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 62,
+            "checked_success_rate": 0.886
+        },
         "qwen_1_8b_chat": {
             "total_cases": 70,
             "checked_jailbroken_num": 42,
             "checked_success_rate": 0.6
         },
-        "qwen_7b_chat": {},
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 56,
+            "checked_success_rate": 0.8
+        },
         "qwen1_5_0_5b_chat": {
             "total_cases": 70,
             "checked_jailbroken_num": 41,
@@ -270,7 +370,11 @@
             "checked_jailbroken_num": 52,
             "checked_success_rate": 0.743
         },
-        "qwen1_5_7b_chat": {},
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 68,
+            "checked_success_rate": 0.971
+        },
         "qwen2_0_5b_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 32,
@@ -281,7 +385,11 @@
             "checked_jailbroken_num": 28,
             "checked_success_rate": 0.4
         },
-        "qwen2_7b_instruct": {},
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 46,
+            "checked_success_rate": 0.657
+        },
         "qwen2_5_0_5b_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 31,
@@ -297,7 +405,11 @@
             "checked_jailbroken_num": 54,
             "checked_success_rate": 0.771
         },
-        "qwen2_5_7b_instruct": {},
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 62,
+            "checked_success_rate": 0.886
+        },
         "pythia_14m": {},
         "pythia_31m": {},
         "pythia_70m": {},
@@ -307,8 +419,16 @@
         "pythia_1_4b": {},
         "pythia_2_8b": {},
         "pythia_6_9b": {},
-        "phi_1_5": {},
-        "phi_2": {},
+        "phi_1_5": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 49,
+            "checked_success_rate": 0.7
+        },
+        "phi_2": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 53,
+            "checked_success_rate": 0.757
+        },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 37,
@@ -319,8 +439,16 @@
             "checked_jailbroken_num": 50,
             "checked_success_rate": 0.714
         },
-        "phi_3_small_8k_instruct": {},
-        "phi_3_small_128k_instruct": {},
+        "phi_3_small_8k_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 29,
+            "checked_success_rate": 0.414
+        },
+        "phi_3_small_128k_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 29,
+            "checked_success_rate": 0.414
+        },
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 42,
@@ -376,7 +504,11 @@
             "checked_jailbroken_num": 65,
             "checked_success_rate": 0.929
         },
-        "mobilellama-1.4B-chat": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 57,
+            "checked_success_rate": 0.814
+        },
         "mobilellama-2.7B-chat": {},
         "mobillama-0.5B-chat": {
             "total_cases": 70,
@@ -388,12 +520,36 @@
             "checked_jailbroken_num": 21,
             "checked_success_rate": 0.3
         },
-        "gemma-2b-it": {},
-        "gemma-7b-it": {},
-        "gemma-1.1-2b-it": {},
-        "gemma-1.1-7b-it": {},
-        "gemma-2-2b-it": {},
-        "recurrentgemma-2b-it": {},
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 3,
+            "checked_success_rate": 0.043
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 35,
+            "checked_success_rate": 0.5
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 8,
+            "checked_success_rate": 0.114
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 38,
+            "checked_success_rate": 0.543
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 60,
+            "checked_success_rate": 0.857
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 5,
+            "checked_success_rate": 0.071
+        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "checked_jailbroken_num": 54,
@@ -484,10 +640,26 @@
         },
         "DCLM-1B-IT": {},
         "dolly-v1-6b": {},
-        "dolly-v2-3b": {},
-        "dolly-v2-7b": {},
-        "OLMo-7B-SFT-hf": {},
-        "OLMo-7B-Instruct-hf": {}
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 55,
+            "checked_success_rate": 0.786
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 67,
+            "checked_success_rate": 0.957
+        },
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 48,
+            "checked_success_rate": 0.686
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 67,
+            "checked_success_rate": 0.957
+        }
     },
     "PAP": {
         "llama2_7b": {},
@@ -822,14 +994,26 @@
         "OLMo-7B-Instruct-hf": {}
     },
     "PEZ": {
-        "llama2_7b": {},
-        "vicuna_7b_v1_5": {},
+        "llama2_7b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 2,
+            "checked_success_rate": 0.029
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 18,
+            "checked_success_rate": 0.257
+        },
         "qwen_1_8b_chat": {
             "total_cases": 70,
             "checked_jailbroken_num": 46,
             "checked_success_rate": 0.657
         },
-        "qwen_7b_chat": {},
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 33,
+            "checked_success_rate": 0.471
+        },
         "qwen1_5_0_5b_chat": {
             "total_cases": 70,
             "checked_jailbroken_num": 58,
@@ -845,7 +1029,11 @@
             "checked_jailbroken_num": 31,
             "checked_success_rate": 0.443
         },
-        "qwen1_5_7b_chat": {},
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 40,
+            "checked_success_rate": 0.571
+        },
         "qwen2_0_5b_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 47,
@@ -856,7 +1044,11 @@
             "checked_jailbroken_num": 21,
             "checked_success_rate": 0.3
         },
-        "qwen2_7b_instruct": {},
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 21,
+            "checked_success_rate": 0.3
+        },
         "qwen2_5_0_5b_instruct": {
             "total_cases": 70,
             "checked_jailbroken_num": 50,
@@ -872,7 +1064,11 @@
             "checked_jailbroken_num": 22,
             "checked_success_rate": 0.314
         },
-        "qwen2_5_7b_instruct": {},
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 34,
+            "checked_success_rate": 0.486
+        },
         "pythia_14m": {},
         "pythia_31m": {},
         "pythia_70m": {},
@@ -951,7 +1147,11 @@
             "checked_jailbroken_num": 63,
             "checked_success_rate": 0.9
         },
-        "mobilellama-1.4B-chat": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 61,
+            "checked_success_rate": 0.871
+        },
         "mobilellama-2.7B-chat": {},
         "mobillama-0.5B-chat": {
             "total_cases": 70,
@@ -963,12 +1163,36 @@
             "checked_jailbroken_num": 55,
             "checked_success_rate": 0.786
         },
-        "gemma-2b-it": {},
-        "gemma-7b-it": {},
-        "gemma-1.1-2b-it": {},
-        "gemma-1.1-7b-it": {},
-        "gemma-2-2b-it": {},
-        "recurrentgemma-2b-it": {},
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 50,
+            "checked_success_rate": 0.714
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 32,
+            "checked_success_rate": 0.457
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 54,
+            "checked_success_rate": 0.771
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 41,
+            "checked_success_rate": 0.586
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 19,
+            "checked_success_rate": 0.271
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 10,
+            "checked_success_rate": 0.143
+        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "checked_jailbroken_num": 48,
@@ -1062,9 +1286,21 @@
             "checked_success_rate": 0.586
         },
         "DCLM-1B-IT": {},
-        "dolly-v1-6b": {},
-        "dolly-v2-3b": {},
-        "dolly-v2-7b": {},
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 58,
+            "checked_success_rate": 0.829
+        },
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 66,
+            "checked_success_rate": 0.943
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 66,
+            "checked_success_rate": 0.943
+        },
         "OLMo-7B-SFT-hf": {},
         "OLMo-7B-Instruct-hf": {}
     },
@@ -1210,12 +1446,36 @@
             "checked_jailbroken_num": 54,
             "checked_success_rate": 0.771
         },
-        "gemma-2b-it": {},
-        "gemma-7b-it": {},
-        "gemma-1.1-2b-it": {},
-        "gemma-1.1-7b-it": {},
-        "gemma-2-2b-it": {},
-        "recurrentgemma-2b-it": {},
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 50,
+            "checked_success_rate": 0.714
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 39,
+            "checked_success_rate": 0.557
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 53,
+            "checked_success_rate": 0.757
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 45,
+            "checked_success_rate": 0.643
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 24,
+            "checked_success_rate": 0.343
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 17,
+            "checked_success_rate": 0.243
+        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "checked_jailbroken_num": 46,
@@ -1433,9 +1693,17 @@
             "checked_jailbroken_num": 40,
             "checked_success_rate": 0.571
         },
-        "gemma-2b-it": {},
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 34,
+            "checked_success_rate": 0.486
+        },
         "gemma-7b-it": {},
-        "gemma-1.1-2b-it": {},
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "checked_jailbroken_num": 31,
+            "checked_success_rate": 0.443
+        },
         "gemma-1.1-7b-it": {},
         "gemma-2-2b-it": {},
         "recurrentgemma-2b-it": {},

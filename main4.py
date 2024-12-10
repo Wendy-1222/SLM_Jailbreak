@@ -14,17 +14,16 @@ import os
 #
 # slms = minicpm_series + ',' + phi_series + ',' + stablelm_series + ',' + h2o_danube_series + ',' + smollm_series
 
-# slms="llama2_7b,vicuna_7b_v1_5,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,phi_3_small_8k_instruct,phi_3_small_128k_instruct,mobilellama-1.4B-chat,mobilellama-2.7B-chat,dolly-v1-6b,dolly-v2-3b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
+slms="llama2_7b,vicuna_7b_v1_5,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,phi_3_small_8k_instruct,phi_3_small_128k_instruct,mobilellama-1.4B-chat,mobilellama-2.7B-chat,dolly-v1-6b,dolly-v2-3b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 
-gemma_series = "gemma-2b-it,gemma-7b-it,gemma-1.1-2b-it,gemma-1.1-7b-it,gemma-2-2b-it,recurrentgemma-2b-it"
-slms = "phi_1_5,phi_2" + ',' + gemma_series
+# gemma_series = "gemma-2b-it,gemma-7b-it,gemma-1.1-2b-it,gemma-1.1-7b-it,gemma-2-2b-it,recurrentgemma-2b-it"
+# slms = "phi_1_5,phi_2" + ',' + gemma_series
 
-methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"  # or "all" to use all methods
-# methods = "DirectRequest,HumanJailbreaks,PEZ"
-# methods = "UAT,GBDA"
-models = slms
+# methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"  # or "all" to use all methods
+methods = "GBDA"
+models = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="2_and_3"  # or "1", "1.5", "2", "3", "2_and_3"
+step="2"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

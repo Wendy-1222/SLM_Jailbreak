@@ -188,6 +188,10 @@ for method in method_list:
 
             with open(checked_result_path_added, 'r') as result_file_added:
                 result_data_added = json.load(result_file_added)
+                if(method == 'GBDA'):
+                    print(len(result_data_added))
+                    print(checked_result_path_added)
+                    exit()
                 result_data.update(result_data_added)
 
             # 如果不是70个问题，报错

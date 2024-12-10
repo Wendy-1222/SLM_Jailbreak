@@ -839,7 +839,7 @@ mobilellama-1.4B-chat:
 
 mobilellama-2.7B-chat:
   model:
-    model_name_or_path: /data2/MobileLLaMA/MobileLLaMA-2.7B-Chat
+    model_name_or_path: /data2/SLMs/MobileLLaMA/MobileLLaMA-2.7B-Chat
     use_fast_tokenizer: False
     trust_remote_code: True
     dtype: float32

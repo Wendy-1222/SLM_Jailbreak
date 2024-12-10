@@ -91,7 +91,7 @@
 
 import os
 import shutil
-def delete_files_and_dirs_with_prefix(parent_dir, prefix="results"):
+def delete_files_and_dirs_with_prefix(parent_dir, prefix="results"):    
     # 检查父目录是否存在
     if not os.path.isdir(parent_dir):
         print(f"指定的父目录 '{parent_dir}' 不存在或不是目录.")

@@ -23,11 +23,9 @@ dclm_series = "DCLM-1B-IT"
 slms="llama2_7b,vicuna_7b_v1_5,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,phi_3_small_8k_instruct,phi_3_small_128k_instruct,mobilellama-1.4B-chat,mobilellama-2.7B-chat,dolly-v1-6b,dolly-v2-3b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 
 methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"
-models = slms
-# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
-# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
+models = "h2o-danube3-4b-chat"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="1"  # or "1", "1.5", "2", "3", "2_and_3"
+step="1.5"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

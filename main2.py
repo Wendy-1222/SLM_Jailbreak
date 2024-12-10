@@ -23,10 +23,10 @@ dclm_series = "DCLM-1B-IT"
 
 # methods="HumanJailbreaks"  # or "all" to use all methods
 methods="PAP-top5"  # or "all" to use all methods
-models = dclm_series
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+models = "qwen1_5_0_5b_chat"
+behaviors_path="./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
-step="2_and_3"  # or "1", "1.5", "2", "3", "2_and_3"
+step="2"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

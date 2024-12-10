@@ -1,7 +1,7 @@
 import os
 
 methods="AutoPrompt"  # or "all" to use all methods
-models="OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"  # or "all" to use all models
+models="OLMo-7B-Instruct-hf"  # or "all" to use all models
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
