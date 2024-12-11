@@ -20,10 +20,12 @@ slms="llama2_7b,vicuna_7b_v1_5,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qw
 # slms = "phi_1_5,phi_2" + ',' + gemma_series
 
 # methods="DirectRequest,HumanJailbreaks,PEZ,UAT,GBDA"  # or "all" to use all methods
-methods = "PAP-top5"
-models = slms
+# methods = "PAP-top5"
+# methods = "DirectRequest,HumanJailbreaks"
+methods = "PEZ"
+models = "mobilellama-2.7B-chat"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="1"  # or "1", "1.5", "2", "3", "2_and_3"
+step="2_and_3"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

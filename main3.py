@@ -6,10 +6,10 @@ mobi_llama_series = "mobillama-0.5B-chat,mobillama-1B-chat"
 
 slms = qwen_series + ',' + tiny_llama_series + ',' + mobi_llama_series
 
-methods="PAP-top5"
-models = slms
+methods="UAT"
+models = "gemma-7b-it,gemma-1.1-7b-it"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="1"  # or "1", "1.5", "2", "3", "2_and_3"
+step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

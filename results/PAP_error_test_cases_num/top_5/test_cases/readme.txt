@@ -1,1 +1,4 @@
-test_cases_original.json是vicuna-13b原本创建的，存在一些提取错误。test_cases.json是改正后的，把提取错误的改好了。
+
+riginal是没有经过人工审查的_case
+
+人工审查主要包括格式、道德提醒等。搜索mutat、\n、note、sorry等词

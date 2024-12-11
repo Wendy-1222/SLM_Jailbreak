@@ -19,13 +19,13 @@ dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 dclm_series = "DCLM-1B-IT"
 
-all_slms = other_series + ',' + qwen_series + ',' + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
+all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 
 methods="PAP-top5"  # or "all" to use all methods
 # methods="PEZ"  # or "all" to use all methods
-models = "qwen1_5_0_5b_chat"
+models = all_slms
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
+# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 step="2_and_3"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"

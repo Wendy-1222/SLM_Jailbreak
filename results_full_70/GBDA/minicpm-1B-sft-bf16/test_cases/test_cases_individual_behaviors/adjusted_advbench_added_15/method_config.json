@@ -1,0 +1,22 @@
+{
+    "num_test_cases_per_behavior": 5,
+    "test_cases_batch_size": 5,
+    "num_optim_tokens": 20,
+    "num_steps": 500,
+    "lr": 0.2,
+    "noise_scale": 0.2,
+    "targets_path": "./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json",
+    "target_model": {
+        "model_name_or_path": "/data2/SLMs/MiniCPM_series/MiniCPM-1B-sft-bf16",
+        "use_fast_tokenizer": false,
+        "trust_remote_code": true,
+        "dtype": "bfloat16",
+        "chat_template": "minicpm"
+    },
+    "dependencies": {
+        "transformers": "4.45.2",
+        "vllm": "dev",
+        "ray": "2.37.0",
+        "fastchat": "0.2.36"
+    }
+}
