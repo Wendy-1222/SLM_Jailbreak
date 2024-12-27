@@ -19,9 +19,10 @@ dclm_series = "DCLM-1B-IT"
 dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 
-methods="DirectRequest"  # or "all" to use all methods
-models = "qwen_1_8b_chat"
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+methods="DirectRequest,HumanJailbreaks,PAP-top5,PEZ,UAT,GBDA"  # or "all" to use all methods
+models = "llama3_2_3b_instruct"
+behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"

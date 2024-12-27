@@ -141,8 +141,6 @@ def process_results(method, model, parent_path, classifier_name='default'):
     else:
         results_path = os.path.join(parent_path, f'results_{classifier_name}', f'{model}.json')
     results_path_added = results_path.replace(base_path, base_path_added)
-    results = {}
-    results_added = {}
 
     if not os.path.exists(results_path):
         print(f"Results file {results_path} not found, skipping...")
@@ -173,6 +171,9 @@ if __name__ == '__main__':
     parser.add_argument('--classifier_name', type=str, default='default', help='Classifier name')
     args = parser.parse_args()
 
+    # method_list = ["GCG,AutoPrompt"]
+    method_list = ["PEZ"]
+    model_list = ["OLMo-7B-SFT-hf","OLMo-7B-Instruct-hf"]
     for method in method_list:
         for model in model_list:
             parent_path = os.path.join(base_path, method, model)

@@ -1,13 +1,11 @@
 import os
 
-qwen_series = "qwen_1_8b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen1_5_4b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct"
-tiny_llama_series = "tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5,tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"
-mobi_llama_series = "mobillama-0.5B-chat,mobillama-1B-chat"
+models_7b_1 = "llama2_7b,vicuna_7b_v1_5,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct"
+qwen_1 = "qwen1_5_4b_chat,qwen_1_8b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct"
+phi_series = "phi_3_mini_4k_instruct,phi_3_mini_128k_instruct,phi_3_5_mini_instruct"
 
-slms = qwen_series + ',' + tiny_llama_series + ',' + mobi_llama_series
-
-methods="UAT"
-models = "gemma-7b-it,gemma-1.1-7b-it"
+methods="GCG"
+models = qwen_1
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"

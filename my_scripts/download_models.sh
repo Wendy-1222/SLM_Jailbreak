@@ -196,9 +196,19 @@
 #   ["tensoropera/Fox-1-1.6B-Instruct-v0.1"]="/data2/SLMs/fox_series/Fox-1-1.6B-Instruct-v0.1"
 #)
 
+#declare -A models=(
+#    ["meta-llama/Llama-Guard-3-8B"]="/data2/llama3.1/Llama-Guard-3-8B"
+#)
+
+#declare -A models=(
+#    ["meta-llama/Llama-3.2-1B-Instruct"]="/data2/llama3.2/Llama-3.2-1B-Instruct"
+#    ["meta-llama/Llama-3.2-3B-Instruct"]="/data2/llama3.2/Llama-3.2-3B-Instruct"
+#)
+
 declare -A models=(
-    ["meta-llama/Llama-Guard-3-8B"]="/data2/llama3.1/Llama-Guard-3-8B"
+    ["google/gemma-scope-2b-pt-res"]="/data2/hzq/huggingface/"
 )
+
 
 # 循环下载所有模型
 for model in "${!models[@]}"; do

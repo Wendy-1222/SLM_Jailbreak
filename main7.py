@@ -1,13 +1,9 @@
 import os
 
-h2o_danube_series="h2o-danube-1.8b-sft,h2o-danube-1.8b-chat,h2o-danube2-1.8b-sft,h2o-danube2-1.8b-chat,h2o-danube3-500m-chat,h2o-danube3-4b-chat"
-
-# methods="AutoPrompt"  # or "all" to use all methods
-methods="AutoPrompt"
-models="dolly-v2-3b"
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
-# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
-step="all"  # or "1", "1.5", "2", "3", "2_and_3"
+methods="PEZ"
+models = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
+behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+step="2_and_3"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
