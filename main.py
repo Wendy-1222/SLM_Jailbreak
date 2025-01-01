@@ -18,6 +18,7 @@ smollm_series = "smollm-135M-instruct,smollm-360M-instruct,smollm-1.7B-instruct,
 dclm_series = "DCLM-1B-IT"
 dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
+llama_3_2_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
 
 methods="DirectRequest,HumanJailbreaks,PAP-top5,PEZ,UAT,GBDA"  # or "all" to use all methods
 models = "llama3_2_3b_instruct"

@@ -149,9 +149,6 @@ if __name__ == '__main__':
     }
     need_process_log = ['PAIR', 'TAP']
 
-    # 存储每个模型、每个方法、每个问题的越狱情况
-    model_method_question_results = {}
-
     # 加载 ID 映射表
     with open(args.id_map_file_path, 'r') as id_map_file:
         id_map = json.load(id_map_file)
@@ -161,12 +158,18 @@ if __name__ == '__main__':
     id_to_category = category_df['category'].to_dict()
 
     # 第一步：构建模型-方法-问题嵌套字典
+    model_question_method_results = {}
+
     for model in model_list:
         print(f"Processing model: {model}")
-        model_method_question_results[model] = {}
+        model_question_method_results[model] = {}
 
         for method in method_list:
             print(f"  Processing method: {method}")
+
+            # # 处理log_file
+            # if method in need_process_log:
+            #     process_log_file(method, model)
 
             # 构建结果文件路径
             if method == 'DirectRequest':
@@ -189,59 +192,29 @@ if __name__ == '__main__':
             with open(checked_result_path, 'r') as result_file:
                 result_data = json.load(result_file)
 
-            result_data = {id_map[key]: value for key, value in result_data.items()}
+            result_data = {id_map[key]: value for key, value in result_data.items() if key in id_map}
 
-            # 初始化当前方法的统计字典
-            if method not in model_method_question_results[model]:
-                model_method_question_results[model][method] = {}
-
-            # 遍历问题并记录越狱情况
+            # 记录越狱情况
             for question_id, results in result_data.items():
-                if question_id not in id_to_category:
-                    print(f"    Warning: Question ID {question_id} has no category mapping.")
-                    continue
-
-                # 记录越狱结果（True 或 False）
-                is_jailbroken = any(e['label'] == 1 for e in results)
-                model_method_question_results[model][method][question_id] = is_jailbroken
-
-    # 保存中间结果到 JSON 文件
-    intermediate_file = os.path.join(base_path, 'model_method_question_results.json')
-    with open(intermediate_file, 'w') as json_file:
-        json.dump(model_method_question_results, json_file, indent=4)
-
-    print(f"Intermediate results saved to {intermediate_file}.")
-
-    # 第二步：汇总到模型-问题-方法层次
-    model_question_method_results = {}
-
-    for model, methods in model_method_question_results.items():
-        print(f"Summarizing results for model: {model}")
-        model_question_method_results[model] = {}
-
-        for method, questions in methods.items():
-            for question_id, success in questions.items():
                 if question_id not in model_question_method_results[model]:
                     model_question_method_results[model][question_id] = {}
+                model_question_method_results[model][question_id][method] = any(e['label'] == 1 for e in results)
 
-                # 记录当前方法的结果
-                model_question_method_results[model][question_id][method] = success
-
-    # 保存第二步中间结果到 JSON 文件
-    intermediate_file_2 = os.path.join(base_path, 'model_question_method_results.json')
-    with open(intermediate_file_2, 'w') as json_file:
+    # 保存第一步中间结果到 JSON 文件
+    intermediate_file_1 = os.path.join(base_path, 'model_question_method_results_full_70.json')
+    with open(intermediate_file_1, 'w') as json_file:
         json.dump(model_question_method_results, json_file, indent=4)
 
-    print(f"Intermediate results (Step 2) saved to {intermediate_file_2}.")
+    print(f"Intermediate results (Step 1) saved to {intermediate_file_1}.")
 
-    # 第三步：按类别统计越狱情况
+    # 第二步：按类别统计越狱情况
     results_summary = {}
 
     for model, questions in model_question_method_results.items():
         print(f"Calculating category statistics for model: {model}")
         results_summary[model] = {}
 
-        # 按类别组织问题结果
+        # 按类别统计越狱成功情况
         category_success_map = {}
         for question_id, methods in questions.items():
             category = id_to_category.get(question_id)
@@ -251,11 +224,10 @@ if __name__ == '__main__':
             if category not in category_success_map:
                 category_success_map[category] = []
 
-            # 汇总所有方法结果，若任何方法成功则视为成功
             success = any(methods.values())
             category_success_map[category].append(success)
 
-        # 统计每个类别的结果
+        # 统计每个类别的成功率
         for category, successes in category_success_map.items():
             total_questions = len(successes)
             successful_jailbreaks = sum(successes)
@@ -266,7 +238,6 @@ if __name__ == '__main__':
                 "asr": round(successful_jailbreaks / total_questions, 3) if total_questions > 0 else 0
             }
 
-            # 检查是否有问题总数不匹配的情况
             if total_questions != question_num_per_category:
                 print(f"Warning!!! Total cases in category {category} is not {question_num_per_category}: {total_questions}")
 
@@ -276,6 +247,7 @@ if __name__ == '__main__':
         json.dump(results_summary, json_file, indent=4)
 
     print(f"Final jailbreak summary by category saved to {output_file}.")
+
 
 
 

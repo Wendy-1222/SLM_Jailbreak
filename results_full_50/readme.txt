@@ -1,0 +1,3 @@
+results_summary.json存储了每个方法每个模型的asr
+model_question_method_results.json是一个中间文件，存储了每个模型每个问题每个方法是否越狱成功
+model_jailbreak_summary.json存储了每个模型的asr（就是说一个问题，只要有一个方法成功了，就认为这个问题越狱成功了）

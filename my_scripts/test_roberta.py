@@ -201,7 +201,7 @@ args = parser.parse_args()
 results_summary = {}
 
 if args.classifier_name == 'roberta':
-    roberta_model = RoBERTaPredictor('/data/zwh/models/RoBerta(GPTFuzz)', device='cuda:0')
+    roberta_model = RoBERTaPredictor('/data2/zwh/models/RoBerta', device='cuda:0')
 elif args.classifier_name == 'llama3_2_8b':
     llama3_2_8b_model = Llama3_8b_Predictor('/data2/llama3.1/Llama-3.1-8B-Instruct', device='cuda:0')
 elif args.classifier_name == 'llama3_guard':

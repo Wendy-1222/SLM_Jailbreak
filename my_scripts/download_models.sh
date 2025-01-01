@@ -206,7 +206,9 @@
 #)
 
 declare -A models=(
-    ["google/gemma-scope-2b-pt-res"]="/data2/hzq/huggingface/"
+    ["hubert233/GPTFuzz"]="/data2/zwh/models/RoBERTa"
+    ["sentence-transformers/all-MiniLM-L6-v2"]="/data2/zwh/models/all-MiniLM-L6-v2"
+    ["openai-community/gpt2"]="/data2/zwh/models/gpt2"
 )
 
 
