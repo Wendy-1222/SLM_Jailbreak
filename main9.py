@@ -1,7 +1,7 @@
 import os
 
 methods="AutoPrompt"
-models = "llama3_2_3b_instruct"
+models = "fox-1-1.6B-Instruct-v0.1"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"

@@ -7,7 +7,7 @@ stablelm_series = "stablelm-2-zephyr-1_6b,stablelm-2-1_6b-chat,stablelm-zephyr-3
 gemma_series = "gemma-2b-it,gemma-7b-it,gemma-1.1-2b-it,gemma-1.1-7b-it,gemma-2-2b-it,recurrentgemma-2b-it"
 
 methods="AutoPrompt"
-models = gemma_series
+models = "minicpm3-4B,h2o-danube3-4b-chat"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"

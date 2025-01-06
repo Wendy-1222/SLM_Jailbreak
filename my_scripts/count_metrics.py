@@ -11,8 +11,9 @@ parser.add_argument('--question_num', type=int, default=50, help='Number of ques
 
 args = parser.parse_args()
 
-metric_list = ['repetition_rate', 'distinct_2', 'entropy_2', 'average_sentence_length', 'lexical_diversity', 'readability_score', 'coherence_score', 'word_nums']
-               # 'perplexity', 'readability_score', 'coherence_score', 'word_nums']
+metric_list = ['repetition_rate', 'distinct_2', 'entropy_2', 'average_sentence_length', 'lexical_diversity',
+               'word_nums', 'sentence_nums', 'self_bleu', 'perplexity', 'readability_score', 'coherence_score']
+
 
 if __name__ == '__main__':
     base_path = args.base_path
@@ -59,7 +60,7 @@ if __name__ == '__main__':
                     # 首先对run_data包含多个test_case的情况计算平均值
                     if len(run_data) > 1:
                         single_run_scores = [item[metric] for item in run_data if item[metric] != -1]
-                        average_score_single_run = sum(single_run_scores) / len(single_run_scores) if single_run_scores else 0
+                        average_score_single_run = sum(single_run_scores) / len(single_run_scores) if single_run_scores else -1
                     else:
                         average_score_single_run = run_data[0][metric]
                     if average_score_single_run == -1:

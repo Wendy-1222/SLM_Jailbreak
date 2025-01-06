@@ -4,8 +4,8 @@ h2o_danube_series="h2o-danube-1.8b-sft,h2o-danube-1.8b-chat,h2o-danube2-1.8b-sft
 
 # methods="AutoPrompt"  # or "all" to use all methods
 methods="GCG"
-models="smollm-360M-instruct"
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+models="fox-1-1.6B-Instruct-v0.1"
+behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/temp.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"

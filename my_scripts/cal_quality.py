@@ -9,11 +9,13 @@ import numpy as np
 import textstat
 from collections import Counter
 from math import log2
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+import numpy as np
 
 from model_and_method_list import model_list, method_list
 
 # 指标计算函数
-def calculate_repetition_rate(text, n=2):
+def calculate_repetition_rate(text, n=3):
     """
     计算文本的重复率（Repetition Rate）。此处统计一个文本中重复出现的 n-gram（如2-gram或3-gram）占总 n-gram 的比例。
     参数:
@@ -171,8 +173,39 @@ def calculate_coherence_score(text, sentence_model):
     # 返回上三角部分的平均值
     return float(upper_triangle_values.mean())
 
+def calculate_self_bleu(response_list, n=4):
+    """
+    Calculate the Self-BLEU score for a list of responses.
 
-# 处理每个模型的生成结果
+    Parameters:
+        response_list (list of str): The list of responses to evaluate.
+        n (int): The maximum n-gram length for BLEU computation (default is 4).
+
+    Returns:
+        float: The average Self-BLEU score for the response list.
+    """
+    if len(response_list) < 2:
+        raise ValueError("The response list must contain at least two responses to calculate Self-BLEU.")
+
+    smoothing_function = SmoothingFunction().method1
+    self_bleu_scores = []
+
+    for i, candidate in enumerate(response_list):
+        # Use all other responses as references
+        references = [response_list[j].split() for j in range(len(response_list)) if j != i]
+        candidate_tokens = candidate.split()
+
+        # Compute BLEU score for the candidate against the references
+        bleu_score = sentence_bleu(references, candidate_tokens,
+                                   weights=tuple([1 / n] * n),
+                                   smoothing_function=smoothing_function)
+        self_bleu_scores.append(bleu_score)
+
+    # Return the average Self-BLEU score
+    # return np.mean(self_bleu_scores)
+    return self_bleu_scores
+
+# 处理每个模型的生成结果（除了self_bleu指标）
 def process_completions(completions_path, metric_name, metric_function):
     with open(completions_path, 'r') as f:
         completions_data = json.load(f)
@@ -213,12 +246,52 @@ def process_completions(completions_path, metric_name, metric_function):
 
     return metrics_results, empty_run_count
 
+# 处理每个模型的self_bleu指标生成结果
+def process_completions_self_blue(completions_path):
+    with open(completions_path, 'r') as f:
+        completions_data = json.load(f)
+
+    # 记录所有 response 全为空的 run_id 数量
+    empty_run_count = 0
+
+    response_list_unique_run = {}  # 保存每个 run_id 对应的唯一 response
+
+    # 遍历每个 run_id 和对应的生成
+    for run_id, run_data in completions_data.items():
+        # 从 run_data 的所有 response 中选一个不为空的
+        selected_case = next((case for case in run_data if case["generation"].strip()), None)
+
+        if selected_case:
+            # 保存完整的 case 信息
+            response_list_unique_run[run_id] = selected_case.copy()
+        else:
+            # 如果所有 response 都为空，统计为空的 run_id
+            empty_run_count += 1
+            continue  # 跳过处理这个 run_id 的逻辑
+
+    # 提取所有唯一的 responses
+    unique_responses = [case["generation"] for case in response_list_unique_run.values()]
+    self_bleu_scores = calculate_self_bleu(unique_responses)
+
+    # 初始化指标结果字典
+    metrics_results = {}
+
+    # 为每个 generation 添加 Self-BLEU 计算结果
+    for run_id, (case, self_bleu_score) in zip(response_list_unique_run.keys(),
+                                               zip(response_list_unique_run.values(), self_bleu_scores)):
+        # 更新每个 case 的 Self-BLEU 分数
+        case["self_bleu"] = self_bleu_score
+        metrics_results[run_id] = [case]  # 保存完整的 case 信息
+
+    return metrics_results, empty_run_count
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_50/')
 parser.add_argument('--metric', type=str, required=True, choices=[
     'repetition_rate', 'distinct_2', 'entropy_2', 'average_sentence_length',
-    'lexical_diversity', 'perplexity', 'readability_score', 'coherence_score',
-    'word_nums', 'sentence_nums'
+    'lexical_diversity', 'word_nums', 'sentence_nums', 'self_bleu',
+    'perplexity', 'readability_score', 'coherence_score',
 ])
 args = parser.parse_args()
 
@@ -229,7 +302,7 @@ sentence_model = SentenceTransformer("/data2/zwh/models/all-MiniLM-L6-v2")
 print("Models loaded")
 
 metric_functions = {
-    "repetition_rate": lambda text: calculate_repetition_rate(text, n=2),
+    "repetition_rate": lambda text: calculate_repetition_rate(text, n=3),
     "distinct_2": lambda text: calculate_distinct_n(text, n=2),
     "entropy_2": lambda text: calculate_entropy_n(text, n=2),
     "average_sentence_length": calculate_average_sentence_length,
@@ -238,13 +311,14 @@ metric_functions = {
     "readability_score": calculate_readability_score,
     "coherence_score": lambda text: calculate_coherence_score(text, sentence_model),
     "word_nums": lambda text: calculate_word_nums(text),
-    "sentence_nums": lambda text: calculate_sentence_nums(text)
+    "sentence_nums": lambda text: calculate_sentence_nums(text),
+    "self_bleu": lambda response_list: calculate_self_bleu(response_list, n=4)
 }
 args.metric_function = metric_functions[args.metric]
 
 empty_run_count_dict = {}
 
-# 遍历越狱方法和模型
+# 遍历越狱方法和模型（考虑所有回复，不考虑越狱是否成功）
 for method in method_list:
     print(f"Processing method: {method}")
     empty_run_count_dict[method] = {}
@@ -276,8 +350,11 @@ for method in method_list:
             # 创建父目录（如果不存在）
             os.makedirs(parent_directory, exist_ok=True)
             print(f"Created directory {parent_directory}")
-
-        metric_results, empty_run_count = process_completions(completions_path, args.metric, args.metric_function)
+        
+        if args.metric == 'self_bleu':
+            metric_results, empty_run_count = process_completions_self_blue(completions_path)
+        else:
+            metric_results, empty_run_count = process_completions(completions_path, args.metric, args.metric_function)
 
         empty_run_count_dict[method][model] = empty_run_count
 
@@ -290,3 +367,5 @@ for method in method_list:
             json.dump(empty_run_count_dict, f, indent=4)
 
         print(f"Processed results saved to {result_path}")
+
+
