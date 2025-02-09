@@ -5,11 +5,12 @@ qwen_1 = "qwen1_5_4b_chat,qwen_1_8b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwe
 phi_series = "phi_3_mini_4k_instruct,phi_3_mini_128k_instruct,phi_3_5_mini_instruct"
 stablelm_series = "stablelm-2-zephyr-1_6b,stablelm-2-1_6b-chat,stablelm-zephyr-3b"
 gemma_series = "gemma-2b-it,gemma-7b-it,gemma-1.1-2b-it,gemma-1.1-7b-it,gemma-2-2b-it,recurrentgemma-2b-it"
+tiny_llama_series = "tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5,tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"
 
 methods="AutoPrompt"
-models = "minicpm3-4B,h2o-danube3-4b-chat"
+models = tiny_llama_series
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="all"  # or "1", "1.5", "2", "3", "2_and_3"
+step="all"    # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"

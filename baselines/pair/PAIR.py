@@ -109,6 +109,8 @@ class PAIR(SingleBehaviorRedTeamingMethod):
             completions = targetLM.get_response(adv_prompt_list)
             
             # ======== Get judge (GPT) scores ========
+            print(adv_prompt_list)
+            print(completions)
             judge_scores = judgeLM.score(adv_prompt_list, completions, behavior, context_str)
 
             # ======== Handling outputs and scores ========

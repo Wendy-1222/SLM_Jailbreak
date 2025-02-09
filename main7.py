@@ -4,7 +4,7 @@ tiny_llama_series = "tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama
 h2o_danube_series = "h2o-danube-1.8b-sft,h2o-danube-1.8b-chat,h2o-danube2-1.8b-sft,h2o-danube2-1.8b-chat,h2o-danube3-500m-chat"
 
 methods="GCG"
-models = h2o_danube_series
+models = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"

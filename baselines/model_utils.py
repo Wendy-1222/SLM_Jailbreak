@@ -49,6 +49,12 @@ LLAMA3_2_CHAT_PROMPT = {
     "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n" + LLAMA2_DEFAULT_SYSTEM_PROMPT + "<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"
 }
 
+LLAMA3_1_CHAT_PROMPT = {
+    "description": "Template used by llama3_1_8b_instruct",
+    # "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n" + LLAMA2_DEFAULT_SYSTEM_PROMPT + "<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"
+    "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n" + LLAMA2_DEFAULT_SYSTEM_PROMPT + "<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"
+}
+
 INTERNLM_PROMPT = { # https://github.com/InternLM/InternLM/blob/main/tools/alpaca_tokenizer.py
     "description": "Template used by INTERNLM-chat",
     "prompt": "<|User|>:{instruction}<eoh><|Bot|>:"
@@ -275,6 +281,8 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = OASST_PROMPT_v1_1
     elif chat_template == "llama-2":
         TEMPLATE = LLAMA2_CHAT_PROMPT
+    elif chat_template == "llama-3_1":
+        TEMPLATE = LLAMA3_1_CHAT_PROMPT
     elif chat_template == "llama-3_2":
         TEMPLATE = LLAMA3_2_CHAT_PROMPT
     elif chat_template == "falcon_instruct": #falcon 7b / 40b instruct
@@ -313,12 +321,14 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = STABLELM_PROMPT
     elif chat_template == "stablelm_chat":
         TEMPLATE = STABLELM_Chat_PROMPT
-    elif chat_template == "tinyllama_v0_1":
-        TEMPLATE = TinyLlama_v0_1_PROMPT
-    elif chat_template == "tinyllama_v0_2":
-        TEMPLATE = TinyLlama_v0_2_PROMPT
-    elif chat_template == "tinyllama_v0_6":
-        TEMPLATE = TinyLlama_v0_6_PROMPT
+    # elif chat_template == "tinyllama_v0_1":
+    #     TEMPLATE = TinyLlama_v0_1_PROMPT
+    # elif chat_template == "tinyllama_v0_2":
+    #     TEMPLATE = TinyLlama_v0_2_PROMPT
+    # elif chat_template == "tinyllama_v0_6":
+    #     TEMPLATE = TinyLlama_v0_6_PROMPT
+    elif chat_template == "tinyllama":
+        TEMPLATE = LLAMA2_CHAT_PROMPT
     elif chat_template == "mobilellama":
         TEMPLATE = MobileLlama_PROMPT
     elif chat_template == "mobillama":

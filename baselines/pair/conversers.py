@@ -99,9 +99,13 @@ class AttackLM():
             init_message = """{\"improvement\": \"""" 
 
         full_prompts = []
+        # print("damn"*10)
+        # print(convs_list)
+        # print(prompts_list)
         # Add prompts and initial seeding messages to conversations (only once)
         for conv, prompt in zip(convs_list, prompts_list):
             conv.append_message(conv.roles[0], prompt)
+            # print(conv)
             # Get prompts
             if "gpt" in self.model_name_or_path:
                 full_prompts.append(conv.to_openai_api_messages())

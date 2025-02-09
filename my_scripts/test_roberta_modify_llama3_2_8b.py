@@ -16,6 +16,7 @@ from judge_prompt import get_evaluator_system_prompt_for_judge, get_evaluator_pr
     process_output_judge_score, extract_label_and_category
 from model_and_method_list import model_list, method_list
 
+# method_list = ['GCG','AutoPrompt']
 
 class Predictor:
     def __init__(self, path):
@@ -245,8 +246,8 @@ def process_project_modify_llama3_2_8B(result_path):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_50/')
-parser.add_argument('--question_num', type=int, default=50)
+parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results/')
+parser.add_argument('--question_num', type=int, default=40)
 parser.add_argument('--classifier_name', type=str, default='llama3_2_8b',
                     choices=['roberta', 'llama3_2_8b', 'llama3_guard'])
 args = parser.parse_args()
@@ -254,7 +255,7 @@ args = parser.parse_args()
 results_summary = {}
 
 if args.classifier_name == 'roberta':
-    roberta_model = RoBERTaPredictor('/data2/zwh/models/RoBerta', device='cuda:0')
+    roberta_model = RoBERTaPredictor('/data2/zwh/models/RoBERTa', device='cuda:0')
 elif args.classifier_name == 'llama3_2_8b':
     llama3_2_8b_model = Llama3_8b_Predictor('/data2/llama3.1/Llama-3.1-8B-Instruct', device='cuda:0')
 elif args.classifier_name == 'llama3_guard':

@@ -34,7 +34,7 @@ def parse_args():
                         help="The path to the behaviors file")
     parser.add_argument("--step", type=str, default="1",
                         help="The step of the pipeline to run",
-                        choices=["1", "1.5", "2", "3", "1_and_2", "2_and_3", "all"])
+                        choices=["1", "1.5", "2", "3", "1_and_2", "2_and_3", "all", "4", "5", "4_and_5"])
     parser.add_argument("--mode", type=str, default="slurm",
                         help="Whether to run the pipeline in 'local', 'slurm', or 'local_parallel' mode",
                         choices=["local", "slurm", "local_parallel"])
@@ -55,6 +55,8 @@ def parse_args():
     # Arguments for step 3
     parser.add_argument("--cls_path", type=str, default="cais/HarmBench-Llama-2-13b-cls",
                         help="The path to the classifier used for evaluating completions (only used in step 3 of the pipeline)")
+    # Arguments for step 4
+    parser.add_argument("--defender", type=str, default='PPL')
     args = parser.parse_args()
     return args
 
@@ -247,6 +249,36 @@ def run_step3_single_job(mode, partition, job_name, output_log, cls_path, behavi
             future = run_subprocess_ray.options(resources={"visible_gpus": 1}).remote(command)
             return future
 
+def run_step4_single_job(mode, partition, job_name, num_gpus, output_log, model_name, behaviors_path, test_cases_path, save_path, defender,
+                         max_new_tokens, incremental_update, dependency_job_ids=None):
+    if mode == "slurm":
+        incremental_update_str = "True" if incremental_update else "False"
+        # Construct the sbatch command with all parameters and script arguments
+        command = f"sbatch --partition={partition} --job-name={job_name} --nodes=1 --gpus-per-node={num_gpus} --time=5:00:00 --output={output_log}"
+        if dependency_job_ids:
+            command += f" --dependency=afterok:{':'.join(dependency_job_ids)}"
+        command += f" scripts/generate_defense_completions.sh {model_name} {behaviors_path} {test_cases_path} {save_path} {max_new_tokens} {incremental_update_str} {defender}"
+        # Run the sbatch command and get the job ID
+        job_id = run_subprocess_slurm(command)
+        return job_id
+    
+    elif mode in ["local", "local_parallel"]:
+        # Construct the local command with all parameters and script arguments (with -u in case the output is piped to another file)
+        incremental_update_str = "--incremental_update" if incremental_update else ""
+        command = f"python -u generate_defense_completions.py --model_name={model_name} --behaviors_path={behaviors_path} --test_cases_path={test_cases_path} \
+            --save_path={save_path} --max_new_tokens={max_new_tokens} --defender={defender} {incremental_update_str}"
+        # Execute the local command
+        if mode == 'local':
+            print(command)
+            # subprocess.run(command, shell=True, capture_output=True, text=True)  # 屏蔽输出
+            # process_result = subprocess.run(command, shell=True, capture_output=True, text=True)   # 查看是否有报错
+            # print("Return code:", process_result.returncode)
+            # print("STDOUT:", process_result.stdout)
+            # print("STDERR:", process_result.stderr)
+            result = subprocess.run(command, shell=True, stdout=sys.stdout, stderr=sys.stderr, text=True)  # 直接看输出
+        else:
+            future = run_subprocess_ray.options(resources={"visible_gpus": num_gpus}).remote(command)
+            return future
 
 def run_step1(args, expanded_pipeline_configs):
     # Compute num_behaviors to get end_idx
@@ -444,6 +476,103 @@ def run_step3(args, expanded_pipeline_configs, dependency_job_ids=None):
         futures = [job_id for method in job_ids.values() for experiment in method.values() for job_id in experiment]
         ray.get(futures)
 
+def run_step4(args, expanded_pipeline_configs, model_configs, dependency_job_ids=None):
+    job_ids = {}
+    num_job_ids = 0
+
+    for expanded_pipeline_config in expanded_pipeline_configs.values():
+        method_name = expanded_pipeline_config['class_name']
+        if method_name not in job_ids:
+            job_ids[method_name] = {}
+
+        for experiment in expanded_pipeline_config['experiments']:
+            experiment_name = experiment['experiment_name']
+            if experiment_name not in job_ids[method_name]:
+                job_ids[method_name][experiment_name] = []
+
+            for model_name in experiment['expected_target_models']:
+                num_gpus = model_configs[model_name].get('num_gpus', 0)
+                test_cases_path = os.path.join(args.base_save_dir, method_name, experiment_name, 'test_cases', 'test_cases.json')
+                if args.max_new_tokens != 512:
+                    save_path = os.path.join(args.base_save_dir, method_name, experiment_name, 'defense_completions', args.defender,
+                                             f'{args.max_new_tokens}_tokens', f'{model_name}.json')
+                else:
+                    save_path = os.path.join(args.base_save_dir, method_name, experiment_name, 'defense_completions', args.defender,
+                                             f'{model_name}.json')
+
+                job_name=f"generate_defense_completions_{method_name}_{experiment_name}_{model_name}_{args.defender}"
+                output_log = os.path.join(args.base_log_dir, 'generate_defense_completions', method_name, experiment_name, args.defender,
+                                          f'{model_name}.log')
+
+                if dependency_job_ids and method_name in dependency_job_ids and experiment_name in dependency_job_ids[method_name]:
+                    current_dep_job_ids = dependency_job_ids[method_name][experiment_name]
+                else:
+                    current_dep_job_ids = None
+                job_id = run_step4_single_job(args.mode, args.partition, job_name, num_gpus, output_log, model_name, args.behaviors_path,
+                                              test_cases_path, save_path, args.defender, args.max_new_tokens, args.incremental_update,
+                                              dependency_job_ids=current_dep_job_ids)
+                if job_id:
+                    job_ids[method_name][experiment_name].append(job_id)
+                    num_job_ids += 1
+    
+    if num_job_ids == 0:
+        job_ids = None
+
+    if args.mode == "local_parallel":
+        # flatten all jobs
+        futures = [job_id for method in job_ids.values() for experiment in method.values() for job_id in experiment]
+        ray.get(futures)
+        return None
+    
+    return job_ids
+
+
+def run_step5(args, expanded_pipeline_configs, dependency_job_ids=None):
+    job_ids = {}
+    num_job_ids = 0
+
+    for expanded_pipeline_config in expanded_pipeline_configs.values():
+        method_name = expanded_pipeline_config['class_name']
+        if method_name not in job_ids:
+            job_ids[method_name] = {}
+
+        for experiment in expanded_pipeline_config['experiments']:
+            experiment_name = experiment['experiment_name']
+            if experiment_name not in job_ids[method_name]:
+                job_ids[method_name][experiment_name] = []
+
+            for model_name in experiment['expected_target_models']:
+                if args.max_new_tokens != 512:
+                    completions_path = os.path.join(args.base_save_dir, method_name, experiment_name, 'defense_completions', args.defender,
+                                                    f'{args.max_new_tokens}_tokens', f'{model_name}.json')
+                    save_path = os.path.join(args.base_save_dir, method_name, experiment_name, 'defense_results', args.defender,
+                                             f'{args.max_new_tokens}_tokens', f'{model_name}.json')
+                else:
+                    completions_path = os.path.join(args.base_save_dir, method_name, experiment_name, 'defense_completions', args.defender,
+                                                    f'{model_name}.json')
+                    save_path = os.path.join(args.base_save_dir, method_name, experiment_name, 'defense_results', args.defender,
+                                             f'{model_name}.json')
+
+                job_name = f"evaluate_completions_{method_name}_{experiment_name}_{model_name}_{args.defender}"
+                output_log = os.path.join(args.base_log_dir, 'evaluate_completions', method_name, experiment_name, args.defender,
+                                          f'{model_name}.log')
+
+                if dependency_job_ids and method_name in dependency_job_ids and experiment_name in dependency_job_ids[
+                    method_name]:
+                    current_dep_job_ids = dependency_job_ids[method_name][experiment_name]
+                else:
+                    current_dep_job_ids = None
+                job_id = run_step3_single_job(args.mode, args.partition, job_name, output_log, args.cls_path,
+                                              args.behaviors_path,
+                                              completions_path, save_path, dependency_job_ids=current_dep_job_ids)
+                job_ids[method_name][experiment_name].append(job_id)
+
+    if args.mode == "local_parallel":
+        # flatten all jobs
+        futures = [job_id for method in job_ids.values() for experiment in method.values() for job_id in experiment]
+        ray.get(futures)
+
+
 def main():
     args = parse_args()
 
@@ -493,6 +622,13 @@ def main():
     elif args.step == "2_and_3":
         dependency_job_ids = run_step2(args, expanded_pipeline_configs, model_configs)
         run_step3(args, expanded_pipeline_configs, dependency_job_ids)
+    elif args.step == "4":
+        run_step4(args, expanded_pipeline_configs, model_configs)
+    elif args.step == "5":
+        run_step5(args, expanded_pipeline_configs)
+    elif args.step == "4_and_5":
+        dependency_job_ids = run_step4(args, expanded_pipeline_configs, model_configs)
+        run_step5(args, expanded_pipeline_configs, dependency_job_ids)
     elif args.step == "all":
         print("ssssssssssssssssssssssssssssssssssssssssssssssssss")
         dependency_job_ids = run_step1(args, expanded_pipeline_configs)

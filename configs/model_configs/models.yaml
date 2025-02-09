@@ -78,6 +78,16 @@ llama3_2_3b_instruct:
   num_gpus: 1
   model_type: open_source
 
+llama3_1_8b_instruct:
+  model:
+    model_name_or_path: /data2/llama3.1/Llama-3.1-8B-Instruct
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    pad_token: <|end_of_text|>
+    chat_template: llama-3_1
+  num_gpus: 1
+  model_type: open_source
+
 
 # Vicuna
 vicuna_7b_v1_5:
@@ -782,7 +792,8 @@ tinyllama-1.1B-chat-v0.1:
     use_fast_tokenizer: False
     trust_remote_code: True
     dtype: float32
-    chat_template: tinyllama_v0_1
+    # chat_template: tinyllama_v0_1
+    chat_template: tinyllama
   num_gpus: 1
   model_type: open_source
 
@@ -792,7 +803,8 @@ tinyllama-1.1B-chat-v0.2:
     use_fast_tokenizer: False
     trust_remote_code: True
     dtype: float32
-    chat_template: tinyllama_v0_2
+    # chat_template: tinyllama_v0_2
+    chat_template: tinyllama
   num_gpus: 1
   model_type: open_source
 
@@ -802,7 +814,8 @@ tinyllama-1.1B-chat-v0.3:
     use_fast_tokenizer: False
     trust_remote_code: True
     dtype: float32
-    chat_template: tinyllama_v0_2
+    # chat_template: tinyllama_v0_2
+    chat_template: tinyllama
   num_gpus: 1
   model_type: open_source
 
@@ -812,7 +825,8 @@ tinyllama-1.1B-chat-v0.4:
     use_fast_tokenizer: False
     trust_remote_code: True
     dtype: float32
-    chat_template: tinyllama_v0_2
+    # chat_template: tinyllama_v0_2
+    chat_template: tinyllama
   num_gpus: 1
   model_type: open_source
 
@@ -822,7 +836,8 @@ tinyllama-1.1B-chat-v0.5:
     use_fast_tokenizer: False
     trust_remote_code: True
     dtype: float32
-    chat_template: tinyllama_v0_2
+    # chat_template: tinyllama_v0_2
+    chat_template: tinyllama
   num_gpus: 1
   model_type: open_source
 
@@ -832,7 +847,8 @@ tinyllama-1.1B-chat-v0.6:
     use_fast_tokenizer: False
     trust_remote_code: True
     dtype: bfloat16
-    chat_template: tinyllama_v0_6
+    # chat_template: tinyllama_v0_6
+    chat_template: tinyllama
   num_gpus: 1
   model_type: open_source
 
@@ -842,7 +858,8 @@ tinyllama-1.1B-chat-v1.0:
     use_fast_tokenizer: False
     trust_remote_code: True
     dtype: bfloat16
-    chat_template: tinyllama_v0_6
+    # chat_template: tinyllama_v0_6
+    chat_template: tinyllama
   num_gpus: 1
   model_type: open_source
 

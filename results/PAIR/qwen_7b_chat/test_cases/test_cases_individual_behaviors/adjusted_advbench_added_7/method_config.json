@@ -1,0 +1,35 @@
+{
+    "targets_path": "./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json",
+    "n_streams": 20,
+    "steps": 3,
+    "keep_last_n": 3,
+    "max_retries": 20,
+    "attack_max_n_tokens": 500,
+    "target_max_n_tokens": 150,
+    "judge_max_n_tokens": 100,
+    "attack_temp": 1.0,
+    "attack_model": {
+        "model_name_or_path": "/data/hzq/models/vicuna1.5_13b",
+        "use_vllm": true,
+        "num_gpus": 1,
+        "dtype": "bfloat16"
+    },
+    "judge_model": {
+        "model_name_or_path": "/data2/llama3.1/Llama-3.1-8B-Instruct"
+    },
+    "cutoff_score": 8,
+    "target_model": {
+        "model_name_or_path": "/data/hzq/models/qwen-7b-chat",
+        "use_fast_tokenizer": false,
+        "use_vllm": true,
+        "trust_remote_code": true,
+        "dtype": "bfloat16",
+        "fschat_template": "qwen-7b-chat"
+    },
+    "dependencies": {
+        "transformers": "4.45.2",
+        "vllm": "dev",
+        "ray": "2.37.0",
+        "fastchat": "0.2.36"
+    }
+}

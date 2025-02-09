@@ -7,7 +7,7 @@ mobi_llama_series = "mobillama-0.5B-chat,mobillama-1B-chat"
 minicpm_series = "minicpm-1B-sft-bf16,minicpm-S-1B-sft,minicpm-2B-sft-bf16,minicpm-2B-dpo-bf16"
 
 methods="GCG"
-models = minicpm_series
+models = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"

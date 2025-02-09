@@ -39,6 +39,8 @@ class HuggingFace(LanguageModel):
         self.model_name = model_name_or_path
         self.model = model 
         self.tokenizer = tokenizer
+        if not self.tokenizer.pad_token:
+            self.tokenizer.pad_token = self.tokenizer.eos_token  # 主要是为了llama 3.1 8B
         self.eos_token_ids = [self.tokenizer.eos_token_id]
         self.generation_batch_size = 32
 
@@ -321,6 +323,11 @@ class VLLM:
             model.llm_engine.tokenizer.tokenizer.pad_token = pad_token
         if eos_token:
             model.llm_engine.tokenizer.tokenizer.eos_token = eos_token
+
+        # print("Now loading VLLM model", '***'*10)
+        # print(model_name_or_path)
+        # print(pad_token)
+        # print(eos_token)
 
         return model 
 
