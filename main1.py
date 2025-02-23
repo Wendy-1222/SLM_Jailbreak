@@ -26,12 +26,14 @@ all_slms_no_tiny_llama = other_series + ',' + qwen_series + ',' + phi_series + '
 methods="DirectRequest,HumanJailbreaks,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
 models = all_slms_no_tiny_llama
 defender = "retokenization"
-behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+# behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="4_and_5"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
 cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
 
-os.system(f"python ./scripts/run_pipeline.py --defender {defender} --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+# 注意defender和incremental_update
+os.system(f"python ./scripts/run_pipeline.py --defender {defender} --base_save_dir ./results_full_50 --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
 

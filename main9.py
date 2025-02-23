@@ -1,12 +1,14 @@
 import os
 
-methods="AutoPrompt"
-models = "fox-1-1.6B-Instruct-v0.1"
-behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+methods = "GCG"  # or "all" to use all methods
+models = "tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4"
+# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 step="all"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
 cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
 
-os.system(f"python ./scripts/run_pipeline.py --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+# 注意defender和incremental_update
+os.system(f"python ./scripts/run_pipeline.py --base_save_dir ./results_full_50 --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")

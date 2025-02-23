@@ -19,13 +19,13 @@ echo "defender=$defender"
 
 # Construct the base command
 cmd="python -u generate_defense_completions.py \
+    --defender $defender \
     --model_name $model_name \
     --behaviors_path $behaviors_path \
     --test_cases_path $test_cases_path \
     --save_path $save_path \
     --max_new_tokens $max_new_tokens \
-    --generate_with_vllm
-    --defender $defender"
+    --generate_with_vllm"
 
 # Check if incremental_update is provided and equals "True"
 if [[ ! -z "$incremental_update" && "$incremental_update" == "True" ]]; then

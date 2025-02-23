@@ -1,5 +1,7 @@
 method_list = ['DirectRequest', 'HumanJailbreaks', 'PAP', 'PAIR', 'GCG', 'AutoPrompt', 'PEZ', 'GBDA', 'UAT']
 
+llama_32_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
+deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B,DeepSeek-R1-Distill-Qwen-7B,DeepSeek-R1-Distill-Llama-8B"
 qwen_series = "qwen_1_8b_chat,qwen_7b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen1_5_4b_chat,qwen1_5_7b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_7b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct,qwen2_5_7b_instruct"
 pythia_series = "pythia_14m,pythia_31m,pythia_70m,pythia_160m,pythia_410m,pythia_1b,pythia_1_4b,pythia_2_8b,pythia_6_9b"
 phi_series = "phi_1_5,phi_2,phi_3_mini_4k_instruct,phi_3_mini_128k_instruct,phi_3_small_8k_instruct,phi_3_small_128k_instruct,phi_3_5_mini_instruct"
@@ -17,6 +19,8 @@ dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 
 # 转换成列表
+llama_32_series = llama_32_series.split(',')
+deepseek_r1_series = deepseek_r1_series.split(',')
 qwen_series = qwen_series.split(',')
 # pythia_series = pythia_series.split(',')
 phi_series = phi_series.split(',')
@@ -33,4 +37,4 @@ dclm_series = dclm_series.split(',')
 dolly_series = dolly_series.split(',')
 olmo_series = olmo_series.split(',')
 model_list = ['llama2_7b', 'vicuna_7b_v1_5']
-model_list += qwen_series + pythia_series + phi_series + stablelm_series + tiny_llama_series + mobile_llama_series + mobi_llama_series + gemma_series + minicpm_series + h2o_danube_series + fox_series + smollm_series + dclm_series + dolly_series + olmo_series
+model_list += llama_32_series + deepseek_r1_series + qwen_series + pythia_series + phi_series + stablelm_series + tiny_llama_series + mobile_llama_series + mobi_llama_series + gemma_series + minicpm_series + h2o_danube_series + fox_series + smollm_series + dclm_series + dolly_series + olmo_series

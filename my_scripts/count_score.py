@@ -1,6 +1,7 @@
 import os
 import json
 import argparse
+import numpy as np
 
 from model_and_method_list import method_list, model_list
 
@@ -104,8 +105,8 @@ def process_log_file(method, model):
 
 parser = argparse.ArgumentParser(description='Count scores for each method and model.')
 
-parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results', help='Base path of the results directory.')
-parser.add_argument('--question_num', type=int, default=40, help='Number of questions in the test set.')
+parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_70', help='Base path of the results directory.')
+parser.add_argument('--question_num', type=int, default=70, help='Number of questions in the test set.')
 
 args = parser.parse_args()
 
@@ -150,11 +151,32 @@ if __name__ == '__main__':
                 print(f"Error: Result file not found: {checked_result_path}")
                 continue
 
-            checked_jailbroken_num = 0
+            # checked_jailbroken_num = 0
+            # for key, entry in result_data.items():
+            #     # checked_jailbroken_num = checked_jailbroken_num + entry[0]['label']
+            #     # 由于可能存在多个label（例如HumanJailbreaks、PEZ等方法），因此取所有label的最大值作为label
+            #     checked_jailbroken_num = checked_jailbroken_num + max([e['label'] for e in entry])
+            #
+            # # 将统计结果存储到字典中
+            # total_cases = len(result_data)
+            # if total_cases != question_num:
+            #     print(f"Warning!!! Total cases of {method} {model} is not {question_num}: {total_cases}")
+            #     continue
+            # if 'total_cases' not in results_summary[method][model]:
+            #     results_summary[method][model]['total_cases'] = total_cases
+            # results_summary[method][model]['checked_jailbroken_num'] = checked_jailbroken_num
+            # results_summary[method][model]['checked_success_rate'] = checked_jailbroken_num / total_cases if total_cases > 0 else 0
+
+        # output_file = os.path.join(base_path, 'results_summary.json')
+        # with open(output_file, 'w') as json_file:
+        #     json.dump(results_summary, json_file, indent=4)
+        #
+        # print(f"Results summary saved to {output_file}.")
+
+            success_rates = []
             for key, entry in result_data.items():
-                # checked_jailbroken_num = checked_jailbroken_num + entry[0]['label']
-                # 由于可能存在多个label（例如HumanJailbreaks、PEZ等方法），因此取所有label的最大值作为label
-                checked_jailbroken_num = checked_jailbroken_num + max([e['label'] for e in entry])
+                success_mean = np.mean([e['label'] == 1 for e in entry])
+                success_rates.append(success_mean)
 
             # 将统计结果存储到字典中
             total_cases = len(result_data)
@@ -163,10 +185,9 @@ if __name__ == '__main__':
                 continue
             if 'total_cases' not in results_summary[method][model]:
                 results_summary[method][model]['total_cases'] = total_cases
-            results_summary[method][model]['checked_jailbroken_num'] = checked_jailbroken_num
-            results_summary[method][model]['checked_success_rate'] = checked_jailbroken_num / total_cases if total_cases > 0 else 0
-    
-    output_file = os.path.join(base_path, 'results_summary.json')
+            results_summary[method][model]['Average ASR'] = round(np.mean(success_rates),3)
+
+    output_file = os.path.join(base_path, 'results_summary_full_70_v2.json')
     with open(output_file, 'w') as json_file:
         json.dump(results_summary, json_file, indent=4)
 

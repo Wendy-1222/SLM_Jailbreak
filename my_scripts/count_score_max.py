@@ -1,3 +1,4 @@
+"""所有方法上取any"""
 import os
 import json
 import argparse
@@ -104,8 +105,8 @@ def process_log_file(method, model):
 
 parser = argparse.ArgumentParser(description='Count scores for each method and model.')
 
-parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_50', help='Base path of the results directory.')
-parser.add_argument('--question_num', type=int, default=50, help='Number of questions in the test set.')
+parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_70', help='Base path of the results directory.')
+parser.add_argument('--question_num', type=int, default=70, help='Number of questions in the test set.')
 
 args = parser.parse_args()
 
@@ -170,7 +171,7 @@ if __name__ == '__main__':
             intermediate_results[model] = model_question_method_results[model]
 
     # 保存中间结果到 JSON 文件
-    intermediate_file = os.path.join(base_path, 'model_question_method_results.json')
+    intermediate_file = os.path.join(base_path, 'model_question_method_results_full_70.json')
     with open(intermediate_file, 'w') as json_file:
         json.dump(intermediate_results, json_file, indent=4)
 
@@ -195,7 +196,7 @@ if __name__ == '__main__':
             print(f"Warning!!! Total cases for model {model} is not {question_num}: {total_questions}")
 
     # 保存最终结果到 JSON 文件
-    output_file = os.path.join(base_path, 'model_jailbreak_summary.json')
+    output_file = os.path.join(base_path, 'model_jailbreak_summary_full_70.json')
     with open(output_file, 'w') as json_file:
         json.dump(results_summary, json_file, indent=4)
 

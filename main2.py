@@ -23,16 +23,17 @@ llama_3_2_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
 # all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 all_slms_no_tiny_llama = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 
-methods = "GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
+methods="DirectRequest,HumanJailbreaks,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
 models = all_slms_no_tiny_llama
-defender = 'ppl'
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+defender = 'self-reminder'
+# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 step="4_and_5"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
 cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
 
-os.system(f"python ./scripts/run_pipeline.py --defender {defender} --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+# 注意defender和incremental_update
+os.system(f"python ./scripts/run_pipeline.py --defender {defender} --base_save_dir ./results_full_50 --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
 

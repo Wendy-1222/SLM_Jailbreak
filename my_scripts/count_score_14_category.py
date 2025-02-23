@@ -2,6 +2,7 @@ import os
 import json
 import pandas as pd
 import argparse
+import numpy as np
 from model_and_method_list import method_list, model_list
 
 def count_scores_pair(data, score_name='score'):
@@ -198,9 +199,47 @@ if __name__ == '__main__':
                 print(f"Error: Result file not found: {checked_result_path}")
                 continue
 
+            # # 统计每个类别的结果
+            # category_counts = {category: 0 for category in set(id_to_category.values())}
+            # checked_jailbroken_counts = {category: 0 for category in set(id_to_category.values())}
+            #
+            # # 为每个类别单独进行统计
+            # for key, entry in result_data.items():
+            #     # 获取当前id的类别，通过id_to_category映射
+            #     category = id_to_category.get(key, None)
+            #     if not category:
+            #         print(f"Warning: ID {key} does not have a category in the CSV.")
+            #         continue
+            #
+            #     if category not in results_summary[method][model]:
+            #         results_summary[method][model][category] = {}
+            #
+            #     # 计算已检查的jailbroken数量
+            #     checked_jailbroken_num = max([e['label'] for e in entry])
+            #
+            #     # 增加当前类别的统计数据
+            #     category_counts[category] += 1
+            #     checked_jailbroken_counts[category] += checked_jailbroken_num
+            #
+            # # 更新结果字典
+            # for category in category_counts:
+            #     # 计算每个类别的统计
+            #     total_cases = category_counts[category]
+            #     if total_cases != question_num_per_category:
+            #         print(f"Warning!!! Total cases in category {category} is not {question_num_per_category}: {total_cases}")
+            #         continue
+            #
+            #     checked_jailbroken_num = checked_jailbroken_counts[category]
+            #
+            #     if 'total_cases' not in results_summary[method][model][category]:
+            #         results_summary[method][model][category]['total_cases'] = total_cases
+            #
+            #     results_summary[method][model][category]['checked_jailbroken_num'] = checked_jailbroken_num
+            #     results_summary[method][model][category]['checked_success_rate'] = round(
+            #         checked_jailbroken_num / total_cases, 3) if total_cases > 0 else 0
             # 统计每个类别的结果
             category_counts = {category: 0 for category in set(id_to_category.values())}
-            checked_jailbroken_counts = {category: 0 for category in set(id_to_category.values())}
+            category_success_rates = {category: [] for category in set(id_to_category.values())}
 
             # 为每个类别单独进行统计
             for key, entry in result_data.items():
@@ -213,12 +252,12 @@ if __name__ == '__main__':
                 if category not in results_summary[method][model]:
                     results_summary[method][model][category] = {}
 
-                # 计算已检查的jailbroken数量
-                checked_jailbroken_num = max([e['label'] for e in entry])
+                # 计算这个entry的几个test_case的平均值
+                success_mean = np.mean([e['label'] == 1 for e in entry])
 
                 # 增加当前类别的统计数据
                 category_counts[category] += 1
-                checked_jailbroken_counts[category] += checked_jailbroken_num
+                category_success_rates[category].append(success_mean)
 
             # 更新结果字典
             for category in category_counts:
@@ -228,17 +267,14 @@ if __name__ == '__main__':
                     print(f"Warning!!! Total cases in category {category} is not {question_num_per_category}: {total_cases}")
                     continue
 
-                checked_jailbroken_num = checked_jailbroken_counts[category]
-
                 if 'total_cases' not in results_summary[method][model][category]:
                     results_summary[method][model][category]['total_cases'] = total_cases
 
-                results_summary[method][model][category]['checked_jailbroken_num'] = checked_jailbroken_num
-                results_summary[method][model][category]['checked_success_rate'] = round(
-                    checked_jailbroken_num / total_cases, 3) if total_cases > 0 else 0
+                results_summary[method][model][category]['Average ASR'] = round(
+                    np.mean(category_success_rates[category]), 3)
 
     # 保存最终结果
-    output_file = os.path.join(base_path, 'results_summary_full_70_by_category.json')
+    output_file = os.path.join(base_path, 'results_summary_full_70_by_category_v2.json')
     with open(output_file, 'w') as json_file:
         json.dump(results_summary, json_file, indent=4)
 

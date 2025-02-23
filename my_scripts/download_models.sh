@@ -206,9 +206,9 @@
 #)
 
 declare -A models=(
-    ["hubert233/GPTFuzz"]="/data2/zwh/models/RoBERTa"
-    ["sentence-transformers/all-MiniLM-L6-v2"]="/data2/zwh/models/all-MiniLM-L6-v2"
-    ["openai-community/gpt2"]="/data2/zwh/models/gpt2"
+    ["deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Qwen-1.5B"
+    ["deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Qwen-7B"
+    ["deepseek-ai/DeepSeek-R1-Distill-Llama-8B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Llama-8B"
 )
 
 

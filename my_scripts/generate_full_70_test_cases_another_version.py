@@ -1,3 +1,6 @@
+"""
+没有用
+"""
 import os
 import json
 from mothod_and_method_list import method_list, model_list
