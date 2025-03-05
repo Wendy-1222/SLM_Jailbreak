@@ -1,0 +1,1738 @@
+{
+    "DirectRequest": {
+        "llama2_7b": {
+            "total_cases": 70,
+            "Average ASR": 0.057
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "Average ASR": 0.229
+        },
+        "llama3_2_1b_instruct": {},
+        "llama3_2_3b_instruct": {},
+        "DeepSeek-R1-Distill-Qwen-1.5B": {},
+        "DeepSeek-R1-Distill-Qwen-7B": {},
+        "DeepSeek-R1-Distill-Llama-8B": {},
+        "qwen_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.129
+        },
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.086
+        },
+        "qwen1_5_0_5b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.129
+        },
+        "qwen1_5_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.571
+        },
+        "qwen1_5_4b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.114
+        },
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.2
+        },
+        "qwen2_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.114
+        },
+        "qwen2_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.086
+        },
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.214
+        },
+        "qwen2_5_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.114
+        },
+        "qwen2_5_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.071
+        },
+        "qwen2_5_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.129
+        },
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.214
+        },
+        "phi_3_mini_4k_instruct": {},
+        "phi_3_mini_128k_instruct": {},
+        "phi_3_small_8k_instruct": {},
+        "phi_3_small_128k_instruct": {},
+        "phi_3_5_mini_instruct": {},
+        "stablelm-2-zephyr-1_6b": {
+            "total_cases": 70,
+            "Average ASR": 0.6
+        },
+        "stablelm-2-1_6b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.743
+        },
+        "stablelm-zephyr-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.271
+        },
+        "tinyllama-1.1B-chat-v0.1": {},
+        "tinyllama-1.1B-chat-v0.2": {},
+        "tinyllama-1.1B-chat-v0.3": {},
+        "tinyllama-1.1B-chat-v0.4": {},
+        "tinyllama-1.1B-chat-v0.5": {},
+        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v1.0": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.743
+        },
+        "mobilellama-2.7B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.671
+        },
+        "mobillama-0.5B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.486
+        },
+        "mobillama-1B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.557
+        },
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.157
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.286
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.243
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.229
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.143
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.157
+        },
+        "minicpm-1B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.2
+        },
+        "minicpm-S-1B-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.186
+        },
+        "minicpm-2B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.157
+        },
+        "minicpm-2B-dpo-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.429
+        },
+        "minicpm3-4B": {
+            "total_cases": 70,
+            "Average ASR": 0.314
+        },
+        "h2o-danube-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.614
+        },
+        "h2o-danube-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.6
+        },
+        "h2o-danube2-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.371
+        },
+        "h2o-danube2-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.514
+        },
+        "h2o-danube3-500m-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.6
+        },
+        "h2o-danube3-4b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.471
+        },
+        "fox-1-1.6B-Instruct-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.243
+        },
+        "smollm-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.257
+        },
+        "smollm-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.557
+        },
+        "smollm-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.771
+        },
+        "smollm2-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.471
+        },
+        "smollm2-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.514
+        },
+        "smollm2-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.329
+        },
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "Average ASR": 0.557
+        },
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.757
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "Average ASR": 0.657
+        },
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.314
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.443
+        }
+    },
+    "HumanJailbreaks": {
+        "llama2_7b": {
+            "total_cases": 70,
+            "Average ASR": 0.017
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "Average ASR": 0.434
+        },
+        "llama3_2_1b_instruct": {},
+        "llama3_2_3b_instruct": {},
+        "DeepSeek-R1-Distill-Qwen-1.5B": {},
+        "DeepSeek-R1-Distill-Qwen-7B": {},
+        "DeepSeek-R1-Distill-Llama-8B": {},
+        "qwen_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.183
+        },
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.294
+        },
+        "qwen1_5_0_5b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.237
+        },
+        "qwen1_5_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.42
+        },
+        "qwen1_5_4b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.28
+        },
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.549
+        },
+        "qwen2_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.186
+        },
+        "qwen2_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.177
+        },
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.277
+        },
+        "qwen2_5_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.131
+        },
+        "qwen2_5_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.174
+        },
+        "qwen2_5_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.311
+        },
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.394
+        },
+        "phi_3_mini_4k_instruct": {},
+        "phi_3_mini_128k_instruct": {},
+        "phi_3_small_8k_instruct": {},
+        "phi_3_small_128k_instruct": {},
+        "phi_3_5_mini_instruct": {},
+        "stablelm-2-zephyr-1_6b": {
+            "total_cases": 70,
+            "Average ASR": 0.526
+        },
+        "stablelm-2-1_6b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.58
+        },
+        "stablelm-zephyr-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.534
+        },
+        "tinyllama-1.1B-chat-v0.1": {},
+        "tinyllama-1.1B-chat-v0.2": {},
+        "tinyllama-1.1B-chat-v0.3": {},
+        "tinyllama-1.1B-chat-v0.4": {},
+        "tinyllama-1.1B-chat-v0.5": {},
+        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v1.0": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.397
+        },
+        "mobilellama-2.7B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.517
+        },
+        "mobillama-0.5B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.026
+        },
+        "mobillama-1B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.089
+        },
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.011
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.163
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.046
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.18
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.371
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.02
+        },
+        "minicpm-1B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.366
+        },
+        "minicpm-S-1B-sft": {},
+        "minicpm-2B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.363
+        },
+        "minicpm-2B-dpo-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.563
+        },
+        "minicpm3-4B": {
+            "total_cases": 70,
+            "Average ASR": 0.266
+        },
+        "h2o-danube-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.4
+        },
+        "h2o-danube-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.534
+        },
+        "h2o-danube2-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.383
+        },
+        "h2o-danube2-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.551
+        },
+        "h2o-danube3-500m-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.351
+        },
+        "h2o-danube3-4b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.366
+        },
+        "fox-1-1.6B-Instruct-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.1
+        },
+        "smollm-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.231
+        },
+        "smollm-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.6
+        },
+        "smollm-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.686
+        },
+        "smollm2-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.28
+        },
+        "smollm2-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.36
+        },
+        "smollm2-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.403
+        },
+        "dolly-v1-6b": {},
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.38
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "Average ASR": 0.489
+        },
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.254
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.574
+        }
+    },
+    "PAP": {
+        "llama2_7b": {
+            "total_cases": 70,
+            "Average ASR": 0.049
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "Average ASR": 0.357
+        },
+        "llama3_2_1b_instruct": {},
+        "llama3_2_3b_instruct": {},
+        "DeepSeek-R1-Distill-Qwen-1.5B": {},
+        "DeepSeek-R1-Distill-Qwen-7B": {},
+        "DeepSeek-R1-Distill-Llama-8B": {},
+        "qwen_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.394
+        },
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.217
+        },
+        "qwen1_5_0_5b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.369
+        },
+        "qwen1_5_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.511
+        },
+        "qwen1_5_4b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.409
+        },
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.423
+        },
+        "qwen2_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.343
+        },
+        "qwen2_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.371
+        },
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.429
+        },
+        "qwen2_5_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.366
+        },
+        "qwen2_5_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.343
+        },
+        "qwen2_5_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.443
+        },
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.431
+        },
+        "phi_3_mini_4k_instruct": {},
+        "phi_3_mini_128k_instruct": {},
+        "phi_3_small_8k_instruct": {},
+        "phi_3_small_128k_instruct": {},
+        "phi_3_5_mini_instruct": {},
+        "stablelm-2-zephyr-1_6b": {
+            "total_cases": 70,
+            "Average ASR": 0.463
+        },
+        "stablelm-2-1_6b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.497
+        },
+        "stablelm-zephyr-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.394
+        },
+        "tinyllama-1.1B-chat-v0.1": {},
+        "tinyllama-1.1B-chat-v0.2": {},
+        "tinyllama-1.1B-chat-v0.3": {},
+        "tinyllama-1.1B-chat-v0.4": {},
+        "tinyllama-1.1B-chat-v0.5": {},
+        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v1.0": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.389
+        },
+        "mobilellama-2.7B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.403
+        },
+        "mobillama-0.5B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.126
+        },
+        "mobillama-1B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.326
+        },
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.377
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.4
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.371
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.303
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.263
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.329
+        },
+        "minicpm-1B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.429
+        },
+        "minicpm-S-1B-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.38
+        },
+        "minicpm-2B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.377
+        },
+        "minicpm-2B-dpo-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.474
+        },
+        "minicpm3-4B": {
+            "total_cases": 70,
+            "Average ASR": 0.337
+        },
+        "h2o-danube-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.394
+        },
+        "h2o-danube-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.491
+        },
+        "h2o-danube2-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.434
+        },
+        "h2o-danube2-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.46
+        },
+        "h2o-danube3-500m-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.457
+        },
+        "h2o-danube3-4b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.511
+        },
+        "fox-1-1.6B-Instruct-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.386
+        },
+        "smollm-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.26
+        },
+        "smollm-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.409
+        },
+        "smollm-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.489
+        },
+        "smollm2-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.303
+        },
+        "smollm2-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.403
+        },
+        "smollm2-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.429
+        },
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "Average ASR": 0.357
+        },
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.377
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "Average ASR": 0.46
+        },
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.409
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.489
+        }
+    },
+    "GCG": {
+        "llama2_7b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "llama3_2_1b_instruct": {},
+        "llama3_2_3b_instruct": {},
+        "DeepSeek-R1-Distill-Qwen-1.5B": {},
+        "DeepSeek-R1-Distill-Qwen-7B": {},
+        "DeepSeek-R1-Distill-Llama-8B": {},
+        "qwen_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen1_5_0_5b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen1_5_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen1_5_4b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.043
+        },
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.043
+        },
+        "qwen2_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "qwen2_5_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen2_5_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen2_5_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "phi_3_mini_4k_instruct": {},
+        "phi_3_mini_128k_instruct": {},
+        "phi_3_small_8k_instruct": {},
+        "phi_3_small_128k_instruct": {},
+        "phi_3_5_mini_instruct": {},
+        "stablelm-2-zephyr-1_6b": {
+            "total_cases": 70,
+            "Average ASR": 0.043
+        },
+        "stablelm-2-1_6b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "stablelm-zephyr-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "tinyllama-1.1B-chat-v0.1": {},
+        "tinyllama-1.1B-chat-v0.2": {},
+        "tinyllama-1.1B-chat-v0.3": {},
+        "tinyllama-1.1B-chat-v0.4": {},
+        "tinyllama-1.1B-chat-v0.5": {},
+        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v1.0": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobilellama-2.7B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobillama-0.5B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobillama-1B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-2-2b-it": {},
+        "recurrentgemma-2b-it": {},
+        "minicpm-1B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "minicpm-S-1B-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "minicpm-2B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.1
+        },
+        "minicpm-2B-dpo-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.271
+        },
+        "minicpm3-4B": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube2-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube2-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-500m-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-4b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "fox-1-1.6B-Instruct-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "smollm-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.057
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.171
+        }
+    },
+    "AutoPrompt": {
+        "llama2_7b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "llama3_2_1b_instruct": {},
+        "llama3_2_3b_instruct": {},
+        "DeepSeek-R1-Distill-Qwen-1.5B": {},
+        "DeepSeek-R1-Distill-Qwen-7B": {},
+        "DeepSeek-R1-Distill-Llama-8B": {},
+        "qwen_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen1_5_0_5b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen1_5_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen1_5_4b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "qwen2_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_5_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_5_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen2_5_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.043
+        },
+        "phi_3_mini_4k_instruct": {},
+        "phi_3_mini_128k_instruct": {},
+        "phi_3_small_8k_instruct": {},
+        "phi_3_small_128k_instruct": {},
+        "phi_3_5_mini_instruct": {},
+        "stablelm-2-zephyr-1_6b": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "stablelm-2-1_6b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "stablelm-zephyr-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "tinyllama-1.1B-chat-v0.1": {},
+        "tinyllama-1.1B-chat-v0.2": {},
+        "tinyllama-1.1B-chat-v0.3": {},
+        "tinyllama-1.1B-chat-v0.4": {},
+        "tinyllama-1.1B-chat-v0.5": {},
+        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v1.0": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobilellama-2.7B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobillama-0.5B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobillama-1B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-2-2b-it": {},
+        "recurrentgemma-2b-it": {},
+        "minicpm-1B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "minicpm-S-1B-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "minicpm-2B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "minicpm-2B-dpo-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "minicpm3-4B": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube2-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube2-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-500m-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-4b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "fox-1-1.6B-Instruct-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "smollm-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "OLMo-7B-SFT-hf": {},
+        "OLMo-7B-Instruct-hf": {}
+    },
+    "PEZ": {
+        "llama2_7b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "llama3_2_1b_instruct": {},
+        "llama3_2_3b_instruct": {},
+        "DeepSeek-R1-Distill-Qwen-1.5B": {},
+        "DeepSeek-R1-Distill-Qwen-7B": {},
+        "DeepSeek-R1-Distill-Llama-8B": {},
+        "qwen_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "qwen1_5_0_5b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.011
+        },
+        "qwen1_5_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.126
+        },
+        "qwen1_5_4b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.026
+        },
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.011
+        },
+        "qwen2_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "qwen2_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen2_5_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen2_5_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_5_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.011
+        },
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.009
+        },
+        "phi_3_mini_4k_instruct": {},
+        "phi_3_mini_128k_instruct": {},
+        "phi_3_small_8k_instruct": {},
+        "phi_3_small_128k_instruct": {},
+        "phi_3_5_mini_instruct": {},
+        "stablelm-2-zephyr-1_6b": {
+            "total_cases": 70,
+            "Average ASR": 0.529
+        },
+        "stablelm-2-1_6b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.02
+        },
+        "stablelm-zephyr-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "tinyllama-1.1B-chat-v0.1": {},
+        "tinyllama-1.1B-chat-v0.2": {},
+        "tinyllama-1.1B-chat-v0.3": {},
+        "tinyllama-1.1B-chat-v0.4": {},
+        "tinyllama-1.1B-chat-v0.5": {},
+        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v1.0": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobilellama-2.7B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobillama-0.5B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobillama-1B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "minicpm-1B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.146
+        },
+        "minicpm-S-1B-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.117
+        },
+        "minicpm-2B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.177
+        },
+        "minicpm-2B-dpo-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.426
+        },
+        "minicpm3-4B": {
+            "total_cases": 70,
+            "Average ASR": 0.034
+        },
+        "h2o-danube-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.009
+        },
+        "h2o-danube-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.011
+        },
+        "h2o-danube2-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube2-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-500m-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-4b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "fox-1-1.6B-Instruct-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "smollm-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "smollm-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "dolly-v2-7b": {},
+        "OLMo-7B-SFT-hf": {},
+        "OLMo-7B-Instruct-hf": {}
+    },
+    "GBDA": {
+        "llama2_7b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "llama3_2_1b_instruct": {},
+        "llama3_2_3b_instruct": {},
+        "DeepSeek-R1-Distill-Qwen-1.5B": {},
+        "DeepSeek-R1-Distill-Qwen-7B": {},
+        "DeepSeek-R1-Distill-Llama-8B": {},
+        "qwen_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.034
+        },
+        "qwen1_5_0_5b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.046
+        },
+        "qwen1_5_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.04
+        },
+        "qwen1_5_4b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.04
+        },
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen2_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.026
+        },
+        "qwen2_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.023
+        },
+        "qwen2_5_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.011
+        },
+        "qwen2_5_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.02
+        },
+        "qwen2_5_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.026
+        },
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.023
+        },
+        "phi_3_mini_4k_instruct": {},
+        "phi_3_mini_128k_instruct": {},
+        "phi_3_small_8k_instruct": {},
+        "phi_3_small_128k_instruct": {},
+        "phi_3_5_mini_instruct": {},
+        "stablelm-2-zephyr-1_6b": {
+            "total_cases": 70,
+            "Average ASR": 0.009
+        },
+        "stablelm-2-1_6b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "stablelm-zephyr-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.083
+        },
+        "tinyllama-1.1B-chat-v0.1": {},
+        "tinyllama-1.1B-chat-v0.2": {},
+        "tinyllama-1.1B-chat-v0.3": {},
+        "tinyllama-1.1B-chat-v0.4": {},
+        "tinyllama-1.1B-chat-v0.5": {},
+        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v1.0": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobilellama-2.7B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobillama-0.5B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "mobillama-1B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "recurrentgemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "minicpm-1B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.131
+        },
+        "minicpm-S-1B-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.02
+        },
+        "minicpm-2B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.163
+        },
+        "minicpm-2B-dpo-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.38
+        },
+        "minicpm3-4B": {
+            "total_cases": 70,
+            "Average ASR": 0.086
+        },
+        "h2o-danube-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        },
+        "h2o-danube-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.011
+        },
+        "h2o-danube2-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube2-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-500m-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-4b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "fox-1-1.6B-Instruct-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.04
+        },
+        "smollm-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "smollm2-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.043
+        },
+        "smollm2-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.009
+        },
+        "smollm2-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.02
+        },
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.006
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "Average ASR": 0.009
+        },
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.011
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.003
+        }
+    },
+    "UAT": {
+        "llama2_7b": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "vicuna_7b_v1_5": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "llama3_2_1b_instruct": {},
+        "llama3_2_3b_instruct": {},
+        "DeepSeek-R1-Distill-Qwen-1.5B": {},
+        "DeepSeek-R1-Distill-Qwen-7B": {},
+        "DeepSeek-R1-Distill-Llama-8B": {},
+        "qwen_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.086
+        },
+        "qwen_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen1_5_0_5b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.129
+        },
+        "qwen1_5_1_8b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen1_5_4b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen1_5_7b_chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "qwen2_5_0_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_5_1_5b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_5_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "qwen2_5_7b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "phi_3_mini_4k_instruct": {},
+        "phi_3_mini_128k_instruct": {},
+        "phi_3_small_8k_instruct": {},
+        "phi_3_small_128k_instruct": {},
+        "phi_3_5_mini_instruct": {},
+        "stablelm-2-zephyr-1_6b": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "stablelm-2-1_6b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "stablelm-zephyr-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "tinyllama-1.1B-chat-v0.1": {},
+        "tinyllama-1.1B-chat-v0.2": {},
+        "tinyllama-1.1B-chat-v0.3": {},
+        "tinyllama-1.1B-chat-v0.4": {},
+        "tinyllama-1.1B-chat-v0.5": {},
+        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v1.0": {},
+        "mobilellama-1.4B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "mobilellama-2.7B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.114
+        },
+        "mobillama-0.5B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "mobillama-1B-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "gemma-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "gemma-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "gemma-1.1-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "gemma-1.1-7b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.086
+        },
+        "gemma-2-2b-it": {},
+        "recurrentgemma-2b-it": {},
+        "minicpm-1B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.129
+        },
+        "minicpm-S-1B-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "minicpm-2B-sft-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "minicpm-2B-dpo-bf16": {
+            "total_cases": 70,
+            "Average ASR": 0.086
+        },
+        "minicpm3-4B": {
+            "total_cases": 70,
+            "Average ASR": 0.043
+        },
+        "h2o-danube-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.057
+        },
+        "h2o-danube-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube2-1.8b-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.057
+        },
+        "h2o-danube2-1.8b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.057
+        },
+        "h2o-danube3-500m-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "h2o-danube3-4b-chat": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "fox-1-1.6B-Instruct-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "smollm-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "smollm2-135M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "smollm2-360M-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.029
+        },
+        "smollm2-1.7B-instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.0
+        },
+        "dolly-v1-6b": {},
+        "dolly-v2-3b": {
+            "total_cases": 70,
+            "Average ASR": 0.014
+        },
+        "dolly-v2-7b": {
+            "total_cases": 70,
+            "Average ASR": 0.043
+        },
+        "OLMo-7B-SFT-hf": {},
+        "OLMo-7B-Instruct-hf": {}
+    }
+}

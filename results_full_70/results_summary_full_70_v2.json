@@ -8,6 +8,22 @@
             "total_cases": 70,
             "Average ASR": 0.214
         },
+        "llama3_2_1b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.214
+        },
+        "llama3_2_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.271
+        },
+        "DeepSeek-R1-Distill-Qwen-1.5B": {
+            "total_cases": 70,
+            "Average ASR": 0.271
+        },
+        "DeepSeek-R1-Distill-Qwen-7B": {
+            "total_cases": 70,
+            "Average ASR": 0.514
+        },
         "qwen_1_8b_chat": {
             "total_cases": 70,
             "Average ASR": 0.143
@@ -62,19 +78,11 @@
         },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.186
+            "Average ASR": 0.143
         },
         "phi_3_mini_128k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.129
-        },
-        "phi_3_small_8k_instruct": {
-            "total_cases": 70,
-            "Average ASR": 0.057
-        },
-        "phi_3_small_128k_instruct": {
-            "total_cases": 70,
-            "Average ASR": 0.114
+            "Average ASR": 0.171
         },
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
@@ -114,11 +122,11 @@
         },
         "tinyllama-1.1B-chat-v0.6": {
             "total_cases": 70,
-            "Average ASR": 0.614
+            "Average ASR": 0.671
         },
         "tinyllama-1.1B-chat-v1.0": {
             "total_cases": 70,
-            "Average ASR": 0.643
+            "Average ASR": 0.714
         },
         "mobilellama-1.4B-chat": {
             "total_cases": 70,
@@ -178,7 +186,7 @@
         },
         "minicpm3-4B": {
             "total_cases": 70,
-            "Average ASR": 0.329
+            "Average ASR": 0.157
         },
         "h2o-danube-1.8b-sft": {
             "total_cases": 70,
@@ -210,15 +218,15 @@
         },
         "smollm-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.243
+            "Average ASR": 0.486
         },
         "smollm-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.586
+            "Average ASR": 0.686
         },
         "smollm-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.771
+            "Average ASR": 0.714
         },
         "smollm2-135M-instruct": {
             "total_cases": 70,
@@ -226,11 +234,11 @@
         },
         "smollm2-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.514
+            "Average ASR": 0.529
         },
         "smollm2-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.4
+            "Average ASR": 0.443
         },
         "dolly-v1-6b": {
             "total_cases": 70,
@@ -261,6 +269,22 @@
         "vicuna_7b_v1_5": {
             "total_cases": 70,
             "Average ASR": 0.437
+        },
+        "llama3_2_1b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.074
+        },
+        "llama3_2_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.169
+        },
+        "DeepSeek-R1-Distill-Qwen-1.5B": {
+            "total_cases": 70,
+            "Average ASR": 0.289
+        },
+        "DeepSeek-R1-Distill-Qwen-7B": {
+            "total_cases": 70,
+            "Average ASR": 0.36
         },
         "qwen_1_8b_chat": {
             "total_cases": 70,
@@ -316,23 +340,15 @@
         },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.191
+            "Average ASR": 0.157
         },
         "phi_3_mini_128k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.331
-        },
-        "phi_3_small_8k_instruct": {
-            "total_cases": 70,
-            "Average ASR": 0.137
-        },
-        "phi_3_small_128k_instruct": {
-            "total_cases": 70,
-            "Average ASR": 0.137
+            "Average ASR": 0.291
         },
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.26
+            "Average ASR": 0.28
         },
         "stablelm-2-zephyr-1_6b": {
             "total_cases": 70,
@@ -368,11 +384,11 @@
         },
         "tinyllama-1.1B-chat-v0.6": {
             "total_cases": 70,
-            "Average ASR": 0.454
+            "Average ASR": 0.486
         },
         "tinyllama-1.1B-chat-v1.0": {
             "total_cases": 70,
-            "Average ASR": 0.526
+            "Average ASR": 0.597
         },
         "mobilellama-1.4B-chat": {
             "total_cases": 70,
@@ -429,7 +445,7 @@
         },
         "minicpm3-4B": {
             "total_cases": 70,
-            "Average ASR": 0.274
+            "Average ASR": 0.36
         },
         "h2o-danube-1.8b-sft": {
             "total_cases": 70,
@@ -461,27 +477,27 @@
         },
         "smollm-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.237
+            "Average ASR": 0.406
         },
         "smollm-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.606
+            "Average ASR": 0.649
         },
         "smollm-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.686
+            "Average ASR": 0.717
         },
         "smollm2-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.291
+            "Average ASR": 0.274
         },
         "smollm2-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.357
+            "Average ASR": 0.311
         },
         "smollm2-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.426
+            "Average ASR": 0.42
         },
         "dolly-v1-6b": {},
         "dolly-v2-3b": {
@@ -509,6 +525,22 @@
         "vicuna_7b_v1_5": {
             "total_cases": 70,
             "Average ASR": 0.366
+        },
+        "llama3_2_1b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.36
+        },
+        "llama3_2_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.44
+        },
+        "DeepSeek-R1-Distill-Qwen-1.5B": {
+            "total_cases": 70,
+            "Average ASR": 0.203
+        },
+        "DeepSeek-R1-Distill-Qwen-7B": {
+            "total_cases": 70,
+            "Average ASR": 0.291
         },
         "qwen_1_8b_chat": {
             "total_cases": 70,
@@ -564,23 +596,15 @@
         },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.283
+            "Average ASR": 0.291
         },
         "phi_3_mini_128k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.266
-        },
-        "phi_3_small_8k_instruct": {
-            "total_cases": 70,
-            "Average ASR": 0.26
-        },
-        "phi_3_small_128k_instruct": {
-            "total_cases": 70,
-            "Average ASR": 0.271
+            "Average ASR": 0.303
         },
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.346
+            "Average ASR": 0.326
         },
         "stablelm-2-zephyr-1_6b": {
             "total_cases": 70,
@@ -616,11 +640,11 @@
         },
         "tinyllama-1.1B-chat-v0.6": {
             "total_cases": 70,
-            "Average ASR": 0.46
+            "Average ASR": 0.474
         },
         "tinyllama-1.1B-chat-v1.0": {
             "total_cases": 70,
-            "Average ASR": 0.483
+            "Average ASR": 0.477
         },
         "mobilellama-1.4B-chat": {
             "total_cases": 70,
@@ -680,7 +704,7 @@
         },
         "minicpm3-4B": {
             "total_cases": 70,
-            "Average ASR": 0.343
+            "Average ASR": 0.329
         },
         "h2o-danube-1.8b-sft": {
             "total_cases": 70,
@@ -712,27 +736,27 @@
         },
         "smollm-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.271
+            "Average ASR": 0.26
         },
         "smollm-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.409
+            "Average ASR": 0.411
         },
         "smollm-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.497
+            "Average ASR": 0.503
         },
         "smollm2-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.309
+            "Average ASR": 0.306
         },
         "smollm2-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.406
+            "Average ASR": 0.389
         },
         "smollm2-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.431
+            "Average ASR": 0.426
         },
         "dolly-v1-6b": {
             "total_cases": 70,
@@ -763,6 +787,22 @@
         "vicuna_7b_v1_5": {
             "total_cases": 70,
             "Average ASR": 0.657
+        },
+        "llama3_2_1b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.429
+        },
+        "llama3_2_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.6
+        },
+        "DeepSeek-R1-Distill-Qwen-1.5B": {
+            "total_cases": 70,
+            "Average ASR": 0.314
+        },
+        "DeepSeek-R1-Distill-Qwen-7B": {
+            "total_cases": 70,
+            "Average ASR": 0.571
         },
         "qwen_1_8b_chat": {
             "total_cases": 70,
@@ -818,17 +858,15 @@
         },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.543
+            "Average ASR": 0.471
         },
         "phi_3_mini_128k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.5
+            "Average ASR": 0.443
         },
-        "phi_3_small_8k_instruct": {},
-        "phi_3_small_128k_instruct": {},
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.343
+            "Average ASR": 0.457
         },
         "stablelm-2-zephyr-1_6b": {
             "total_cases": 70,
@@ -842,13 +880,34 @@
             "total_cases": 70,
             "Average ASR": 0.6
         },
-        "tinyllama-1.1B-chat-v0.1": {},
-        "tinyllama-1.1B-chat-v0.2": {},
-        "tinyllama-1.1B-chat-v0.3": {},
-        "tinyllama-1.1B-chat-v0.4": {},
-        "tinyllama-1.1B-chat-v0.5": {},
-        "tinyllama-1.1B-chat-v0.6": {},
-        "tinyllama-1.1B-chat-v1.0": {},
+        "tinyllama-1.1B-chat-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.457
+        },
+        "tinyllama-1.1B-chat-v0.2": {
+            "total_cases": 70,
+            "Average ASR": 0.286
+        },
+        "tinyllama-1.1B-chat-v0.3": {
+            "total_cases": 70,
+            "Average ASR": 0.486
+        },
+        "tinyllama-1.1B-chat-v0.4": {
+            "total_cases": 70,
+            "Average ASR": 0.6
+        },
+        "tinyllama-1.1B-chat-v0.5": {
+            "total_cases": 70,
+            "Average ASR": 0.471
+        },
+        "tinyllama-1.1B-chat-v0.6": {
+            "total_cases": 70,
+            "Average ASR": 0.686
+        },
+        "tinyllama-1.1B-chat-v1.0": {
+            "total_cases": 70,
+            "Average ASR": 0.586
+        },
         "mobilellama-1.4B-chat": {
             "total_cases": 70,
             "Average ASR": 0.6
@@ -901,7 +960,7 @@
         },
         "minicpm3-4B": {
             "total_cases": 70,
-            "Average ASR": 0.114
+            "Average ASR": 0.086
         },
         "h2o-danube-1.8b-sft": {
             "total_cases": 70,
@@ -933,27 +992,27 @@
         },
         "smollm-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.5
+            "Average ASR": 0.4
         },
         "smollm-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.6
+            "Average ASR": 0.629
         },
         "smollm-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.671
+            "Average ASR": 0.686
         },
         "smollm2-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.386
+            "Average ASR": 0.314
         },
         "smollm2-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.514
+            "Average ASR": 0.586
         },
         "smollm2-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.657
+            "Average ASR": 0.729
         },
         "dolly-v1-6b": {
             "total_cases": 70,
@@ -984,6 +1043,22 @@
         "vicuna_7b_v1_5": {
             "total_cases": 70,
             "Average ASR": 0.629
+        },
+        "llama3_2_1b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.186
+        },
+        "llama3_2_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.357
+        },
+        "DeepSeek-R1-Distill-Qwen-1.5B": {
+            "total_cases": 70,
+            "Average ASR": 0.286
+        },
+        "DeepSeek-R1-Distill-Qwen-7B": {
+            "total_cases": 70,
+            "Average ASR": 0.371
         },
         "qwen_1_8b_chat": {
             "total_cases": 70,
@@ -1039,17 +1114,15 @@
         },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.157
+            "Average ASR": 0.186
         },
         "phi_3_mini_128k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.214
+            "Average ASR": 0.243
         },
-        "phi_3_small_8k_instruct": {},
-        "phi_3_small_128k_instruct": {},
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.343
+            "Average ASR": 0.271
         },
         "stablelm-2-zephyr-1_6b": {
             "total_cases": 70,
@@ -1063,13 +1136,34 @@
             "total_cases": 70,
             "Average ASR": 0.6
         },
-        "tinyllama-1.1B-chat-v0.1": {},
-        "tinyllama-1.1B-chat-v0.2": {},
-        "tinyllama-1.1B-chat-v0.3": {},
-        "tinyllama-1.1B-chat-v0.4": {},
-        "tinyllama-1.1B-chat-v0.5": {},
-        "tinyllama-1.1B-chat-v0.6": {},
-        "tinyllama-1.1B-chat-v1.0": {},
+        "tinyllama-1.1B-chat-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.543
+        },
+        "tinyllama-1.1B-chat-v0.2": {
+            "total_cases": 70,
+            "Average ASR": 0.286
+        },
+        "tinyllama-1.1B-chat-v0.3": {
+            "total_cases": 70,
+            "Average ASR": 0.443
+        },
+        "tinyllama-1.1B-chat-v0.4": {
+            "total_cases": 70,
+            "Average ASR": 0.543
+        },
+        "tinyllama-1.1B-chat-v0.5": {
+            "total_cases": 70,
+            "Average ASR": 0.371
+        },
+        "tinyllama-1.1B-chat-v0.6": {
+            "total_cases": 70,
+            "Average ASR": 0.586
+        },
+        "tinyllama-1.1B-chat-v1.0": {
+            "total_cases": 70,
+            "Average ASR": 0.743
+        },
         "mobilellama-1.4B-chat": {
             "total_cases": 70,
             "Average ASR": 0.514
@@ -1122,7 +1216,7 @@
         },
         "minicpm3-4B": {
             "total_cases": 70,
-            "Average ASR": 0.1
+            "Average ASR": 0.114
         },
         "h2o-danube-1.8b-sft": {
             "total_cases": 70,
@@ -1154,27 +1248,27 @@
         },
         "smollm-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.386
+            "Average ASR": 0.414
         },
         "smollm-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.471
+            "Average ASR": 0.629
         },
         "smollm-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.586
+            "Average ASR": 0.657
         },
         "smollm2-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.414
+            "Average ASR": 0.429
         },
         "smollm2-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.543
+            "Average ASR": 0.571
         },
         "smollm2-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.543
+            "Average ASR": 0.686
         },
         "dolly-v1-6b": {
             "total_cases": 70,
@@ -1199,6 +1293,22 @@
         "vicuna_7b_v1_5": {
             "total_cases": 70,
             "Average ASR": 0.117
+        },
+        "llama3_2_1b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.086
+        },
+        "llama3_2_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.2
+        },
+        "DeepSeek-R1-Distill-Qwen-1.5B": {
+            "total_cases": 70,
+            "Average ASR": 0.169
+        },
+        "DeepSeek-R1-Distill-Qwen-7B": {
+            "total_cases": 70,
+            "Average ASR": 0.363
         },
         "qwen_1_8b_chat": {
             "total_cases": 70,
@@ -1254,17 +1364,15 @@
         },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.169
+            "Average ASR": 0.177
         },
         "phi_3_mini_128k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.146
+            "Average ASR": 0.163
         },
-        "phi_3_small_8k_instruct": {},
-        "phi_3_small_128k_instruct": {},
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.194
+            "Average ASR": 0.217
         },
         "stablelm-2-zephyr-1_6b": {
             "total_cases": 70,
@@ -1300,11 +1408,11 @@
         },
         "tinyllama-1.1B-chat-v0.6": {
             "total_cases": 70,
-            "Average ASR": 0.609
+            "Average ASR": 0.674
         },
         "tinyllama-1.1B-chat-v1.0": {
             "total_cases": 70,
-            "Average ASR": 0.663
+            "Average ASR": 0.706
         },
         "mobilellama-1.4B-chat": {
             "total_cases": 70,
@@ -1364,7 +1472,7 @@
         },
         "minicpm3-4B": {
             "total_cases": 70,
-            "Average ASR": 0.143
+            "Average ASR": 0.129
         },
         "h2o-danube-1.8b-sft": {
             "total_cases": 70,
@@ -1396,27 +1504,27 @@
         },
         "smollm-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.466
+            "Average ASR": 0.4
         },
         "smollm-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.537
+            "Average ASR": 0.663
         },
         "smollm-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.609
+            "Average ASR": 0.711
         },
         "smollm2-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.389
+            "Average ASR": 0.38
         },
         "smollm2-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.463
+            "Average ASR": 0.506
         },
         "smollm2-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.274
+            "Average ASR": 0.326
         },
         "dolly-v1-6b": {
             "total_cases": 70,
@@ -1447,6 +1555,22 @@
         "vicuna_7b_v1_5": {
             "total_cases": 70,
             "Average ASR": 0.134
+        },
+        "llama3_2_1b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.131
+        },
+        "llama3_2_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.189
+        },
+        "DeepSeek-R1-Distill-Qwen-1.5B": {
+            "total_cases": 70,
+            "Average ASR": 0.277
+        },
+        "DeepSeek-R1-Distill-Qwen-7B": {
+            "total_cases": 70,
+            "Average ASR": 0.389
         },
         "qwen_1_8b_chat": {
             "total_cases": 70,
@@ -1502,17 +1626,15 @@
         },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.206
+            "Average ASR": 0.203
         },
         "phi_3_mini_128k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.166
+            "Average ASR": 0.189
         },
-        "phi_3_small_8k_instruct": {},
-        "phi_3_small_128k_instruct": {},
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.24
+            "Average ASR": 0.243
         },
         "stablelm-2-zephyr-1_6b": {
             "total_cases": 70,
@@ -1548,11 +1670,11 @@
         },
         "tinyllama-1.1B-chat-v0.6": {
             "total_cases": 70,
-            "Average ASR": 0.643
+            "Average ASR": 0.683
         },
         "tinyllama-1.1B-chat-v1.0": {
             "total_cases": 70,
-            "Average ASR": 0.657
+            "Average ASR": 0.74
         },
         "mobilellama-1.4B-chat": {
             "total_cases": 70,
@@ -1612,7 +1734,7 @@
         },
         "minicpm3-4B": {
             "total_cases": 70,
-            "Average ASR": 0.274
+            "Average ASR": 0.091
         },
         "h2o-danube-1.8b-sft": {
             "total_cases": 70,
@@ -1644,27 +1766,27 @@
         },
         "smollm-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.426
+            "Average ASR": 0.431
         },
         "smollm-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.523
+            "Average ASR": 0.494
         },
         "smollm-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.614
+            "Average ASR": 0.677
         },
         "smollm2-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.443
+            "Average ASR": 0.351
         },
         "smollm2-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.563
+            "Average ASR": 0.646
         },
         "smollm2-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.6
+            "Average ASR": 0.614
         },
         "dolly-v1-6b": {
             "total_cases": 70,
@@ -1695,6 +1817,22 @@
         "vicuna_7b_v1_5": {
             "total_cases": 70,
             "Average ASR": 0.443
+        },
+        "llama3_2_1b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.114
+        },
+        "llama3_2_3b_instruct": {
+            "total_cases": 70,
+            "Average ASR": 0.286
+        },
+        "DeepSeek-R1-Distill-Qwen-1.5B": {
+            "total_cases": 70,
+            "Average ASR": 0.329
+        },
+        "DeepSeek-R1-Distill-Qwen-7B": {
+            "total_cases": 70,
+            "Average ASR": 0.386
         },
         "qwen_1_8b_chat": {
             "total_cases": 70,
@@ -1750,17 +1888,15 @@
         },
         "phi_3_mini_4k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.186
+            "Average ASR": 0.171
         },
         "phi_3_mini_128k_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.171
+            "Average ASR": 0.2
         },
-        "phi_3_small_8k_instruct": {},
-        "phi_3_small_128k_instruct": {},
         "phi_3_5_mini_instruct": {
             "total_cases": 70,
-            "Average ASR": 0.257
+            "Average ASR": 0.2
         },
         "stablelm-2-zephyr-1_6b": {
             "total_cases": 70,
@@ -1782,7 +1918,7 @@
         "tinyllama-1.1B-chat-v0.6": {},
         "tinyllama-1.1B-chat-v1.0": {
             "total_cases": 70,
-            "Average ASR": 0.671
+            "Average ASR": 0.7
         },
         "mobilellama-1.4B-chat": {
             "total_cases": 70,
@@ -1836,7 +1972,7 @@
         },
         "minicpm3-4B": {
             "total_cases": 70,
-            "Average ASR": 0.2
+            "Average ASR": 0.157
         },
         "h2o-danube-1.8b-sft": {
             "total_cases": 70,
@@ -1868,27 +2004,27 @@
         },
         "smollm-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.414
+            "Average ASR": 0.386
         },
         "smollm-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.457
+            "Average ASR": 0.629
         },
         "smollm-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.557
+            "Average ASR": 0.7
         },
         "smollm2-135M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.457
+            "Average ASR": 0.414
         },
         "smollm2-360M-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.529
+            "Average ASR": 0.6
         },
         "smollm2-1.7B-instruct": {
             "total_cases": 70,
-            "Average ASR": 0.471
+            "Average ASR": 0.543
         },
         "dolly-v1-6b": {},
         "dolly-v2-3b": {

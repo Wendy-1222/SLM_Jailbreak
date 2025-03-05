@@ -420,14 +420,14 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = STABLELM_PROMPT
     elif chat_template == "stablelm_chat":
         TEMPLATE = STABLELM_Chat_PROMPT
-    # elif chat_template == "tinyllama_v0_1":
-    #     TEMPLATE = TinyLlama_v0_1_PROMPT
-    # elif chat_template == "tinyllama_v0_2":
-    #     TEMPLATE = TinyLlama_v0_2_PROMPT
-    # elif chat_template == "tinyllama_v0_6":
-    #     TEMPLATE = TinyLlama_v0_6_PROMPT
-    elif chat_template == "tinyllama":
-        TEMPLATE = LLAMA2_CHAT_PROMPT
+    elif chat_template == "tinyllama_v0_1":
+        TEMPLATE = TinyLlama_v0_1_PROMPT
+    elif chat_template == "tinyllama_v0_2":
+        TEMPLATE = TinyLlama_v0_2_PROMPT
+    elif chat_template == "tinyllama_v0_6":
+        TEMPLATE = TinyLlama_v0_6_PROMPT
+    # elif chat_template == "tinyllama":
+    #     TEMPLATE = LLAMA2_CHAT_PROMPT
     elif chat_template == "mobilellama":
         TEMPLATE = MobileLlama_PROMPT
     elif chat_template == "mobillama":

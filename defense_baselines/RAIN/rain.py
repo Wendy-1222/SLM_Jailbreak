@@ -38,12 +38,12 @@ class RAINDefender:
         # 初始化模型资源，需要修改
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model_name = model_name
-        self.model = model
+        self.model = model.to(self.device)  # 确保模型在GPU上
         self.tokenizer = tokenizer
         self.chat_template = chat_template
         self.template_eos_id_num = len(self._find_all_indices(self.chat_template['prompt'], self.tokenizer.eos_token))  # 获得初始template里面eos_id的出现次数
         print(f"{self.model_name}: eos token: {self.tokenizer.eos_token}; eos token num: {self.template_eos_id_num}")
-        self.encoder = SentenceTransformer(encoder_path).to(self.device)
+        self.encoder = SentenceTransformer(encoder_path).to(self.device)  # 确保encoder在GPU上
         
         # 初始化缓存系统
         self.dic = {}    # 安全评分缓存
@@ -103,7 +103,7 @@ class RAINDefender:
         elif any(x in model_name for x in ['qwen', 'minicpm3', 'smollm']) or ('stablelm' in model_name and 'chat' in model_name):
             user_id = 'user'
             assistant_id = 'assistant'
-        elif any(x in model_name for x in ['phi_3', 'tinyllama 0.6', 'fox', 'olmo']) or ('stablelm' in model_name and 'zephyr' in model_name):
+        elif any(x in model_name for x in ['phi-3', 'tinyllama 0.6', 'fox', 'olmo']) or ('stablelm' in model_name and 'zephyr' in model_name):
             user_id, assistant_id = '<|user|>', '<|assistant|>'
         elif 'mobilellama' in model_name:
             user_id, assistant_id = 'Q:', 'A:'
@@ -448,6 +448,10 @@ class RAINDefender:
     @torch.no_grad()
     def get_rain_response(self, prompt, test_case_id):
         """生成安全回复的主入口方法"""
+        # 清空缓存，防止出现gpu的UTL为0的情况
+        self.dic = {}
+        self.dicp = {}
+
         # 构建完整提示
         # full_prompt = f"{self.fschat}USER: {prompt} ASSISTANT:"
         full_prompt = self.chat_template['prompt'].format(instruction=prompt)
@@ -457,7 +461,7 @@ class RAINDefender:
         root = node(root=None, parent=None, prior_p=0, step=0)  # 以越狱提示为根节点
 
         initi = 0
-        self.max_len = len(state)+self.max_new_tokens   # RAIN使用的是固定的maxlen为2048（也就是包含prompt长度），这里改为prompt长度+max_new_tokens（默认为1024）
+        self.max_len = len(state) + self.max_new_tokens  # RAIN使用的是固定的maxlen为2048（也就是包含prompt长度），这里改为prompt长度+max_new_tokens（默认为1024）
         while 1:
             for i in range(initi, max(self.maxT, initi + 15)):  # 循环执行 search，不断扩展生成的文本状态
                 self._search(root, state, maxlen=self.max_len)
@@ -480,6 +484,7 @@ class RAINDefender:
 
                 # self._save_dict(rootd, '{}_dicv/res_root_{}.json'.format(self.outdir))
                 # 把dir/{model_name}.json转换为dir/{model_name}_immediate_results/test_case_{index}.json
+                # 注意：不是每个test_case都会有Immediate result.json，因为只有rootd存在的时候才会保存，如果第一个root就成功了，就break出去了
                 immediate_results_save_path = self._convert_result_path(self.outdir, test_case_id)
                 immediate_results_save_dir = os.path.dirname(immediate_results_save_path)
                 os.makedirs(immediate_results_save_dir, exist_ok=True)
@@ -534,6 +539,10 @@ class RAINDefender:
         rain_response = parts[-1].strip() if len(parts) > 1 else response
         print('='*500)
         print(rain_response)
+
+        # 在生成结束后强制释放显存，防止出现gpu的UTL为0的情况
+        torch.cuda.empty_cache()
+
         return rain_response
 
 # # 使用示例

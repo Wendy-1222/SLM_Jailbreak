@@ -6,11 +6,11 @@
     "num_optim_tokens": 20,
     "targets_path": "./data/optimizer_targets/extra_targets/advbench_subset_targets.json",
     "target_model": {
-        "model_name_or_path": "/data2/SLMs/TinyLlama/TinyLlama-1.1B-Chat-v0.2",
+        "model_name_or_path": "/data2/TinyLlama/TinyLlama-1.1B-Chat-v0.2",
         "use_fast_tokenizer": false,
         "trust_remote_code": true,
         "dtype": "float32",
-        "chat_template": "tinyllama"
+        "chat_template": "tinyllama_v0_2"
     },
     "dependencies": {
         "transformers": "4.45.2",

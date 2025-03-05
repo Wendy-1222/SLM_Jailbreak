@@ -19,21 +19,26 @@ dclm_series = "DCLM-1B-IT"
 dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 llama_3_2_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
+deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B,DeepSeek-R1-Distill-Qwen-7B"
+# deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B"
 
 # all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 all_slms_no_tiny_llama = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 
-methods="DirectRequest,HumanJailbreaks,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
-models = all_slms_no_tiny_llama
-defender = "retokenization"
+# 忽略了目前template有点问题的模型
+parts_slms = qwen_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + h2o_danube_series + ',' + fox_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
+
+methods="PEZ"  # or "all" to use all methods
+models = llama_3_2_series + ',' + deepseek_r1_series + ',' + 'tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5'
+defender = "ppl"
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
-step="4_and_5"  # or "1", "1.5", "2", "3", "2_and_3"
+step="5"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
 cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
 
-# 注意defender和incremental_update
-os.system(f"python ./scripts/run_pipeline.py --defender {defender} --base_save_dir ./results_full_50 --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+# 注意defender和incremental_update，还有save_dir
+os.system(f"python ./scripts/run_pipeline.py --base_save_dir ./results_full_50 --defender {defender} --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
 

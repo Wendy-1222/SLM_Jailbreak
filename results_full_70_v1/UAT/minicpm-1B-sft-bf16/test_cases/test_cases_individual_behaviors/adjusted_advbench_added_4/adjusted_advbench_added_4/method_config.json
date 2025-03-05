@@ -1,0 +1,22 @@
+{
+    "num_test_cases_per_behavior": 1,
+    "num_steps": 100,
+    "adv_string_init": "! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !",
+    "use_prefix_cache": true,
+    "num_candidates": 3,
+    "targets_path": "./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json",
+    "eval_steps": 2,
+    "target_model": {
+        "model_name_or_path": "/data2/SLMs/MiniCPM_series/MiniCPM-1B-sft-bf16",
+        "use_fast_tokenizer": false,
+        "trust_remote_code": true,
+        "dtype": "bfloat16",
+        "chat_template": "minicpm"
+    },
+    "dependencies": {
+        "transformers": "4.45.2",
+        "vllm": "dev",
+        "ray": "2.37.0",
+        "fastchat": "0.2.36"
+    }
+}

@@ -6,7 +6,7 @@
     "num_optim_tokens": 20,
     "targets_path": "./data/optimizer_targets/extra_targets/advbench_subset_targets.json",
     "target_model": {
-        "model_name_or_path": "/data2/phi_series/Phi-3-mini-128k-instruct",
+        "model_name_or_path": "/data2/SLMs/phi_series/Phi-3-mini-128k-instruct",
         "use_fast_tokenizer": false,
         "trust_remote_code": true,
         "dtype": "bfloat16",

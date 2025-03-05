@@ -1,0 +1,22 @@
+{
+    "attack_gen_config": {
+        "max_new_tokens": 2048,
+        "temperature": 1.0,
+        "stop_tokens": [
+            "|"
+        ]
+    },
+    "attack_model": {
+        "model_name_or_path": "/data/hzq/models/vicuna1.5_13b",
+        "use_vllm": false,
+        "num_gpus": 1,
+        "dtype": "bfloat16"
+    },
+    "top_k_persuasion_taxonomy": 5,
+    "dependencies": {
+        "transformers": "4.45.2",
+        "vllm": "dev",
+        "ray": "2.37.0",
+        "fastchat": "0.2.36"
+    }
+}

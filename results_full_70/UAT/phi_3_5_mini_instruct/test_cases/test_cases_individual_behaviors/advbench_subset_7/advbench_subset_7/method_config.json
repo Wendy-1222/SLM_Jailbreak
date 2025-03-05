@@ -7,7 +7,7 @@
     "targets_path": "./data/optimizer_targets/extra_targets/advbench_subset_targets.json",
     "eval_steps": 2,
     "target_model": {
-        "model_name_or_path": "/data2/phi_series/Phi-3.5-mini-instruct",
+        "model_name_or_path": "/data2/SLMs/phi_series/Phi-3.5-mini-instruct",
         "use_fast_tokenizer": false,
         "trust_remote_code": true,
         "dtype": "bfloat16",

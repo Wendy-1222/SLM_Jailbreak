@@ -35,7 +35,10 @@ def process_test_cases(method, model, parent_path):
         # added 里面所有的子目录都复制到target_path的对应目录下
         for subdir in os.listdir(test_cases_individual_behaviors_path_added):
             subdir_path = os.path.join(test_cases_individual_behaviors_path_added, subdir)
-            target_subdir_path = os.path.join(test_cases_individual_behaviors_path_full_70, subdir)
+            target_subdir_path = test_cases_individual_behaviors_path_full_70 # 不需要subdir
+            # print("subdir:", subdir)
+            # print("subdir_path:", subdir_path)
+            # print("target_subdir_path:", target_subdir_path)
             os.system(f"cp -r {subdir_path} {target_subdir_path}")
     else:
         print(f"{method} {model} test cases individual behaviors directory not found, skipping...")
@@ -85,9 +88,13 @@ def process_test_cases(method, model, parent_path):
     # print(f"Done processing {method} {model} test cases")
 
 
-def process_completions(method, model, parent_path):
+def process_completions(method, model, parent_path, defender_name='default'):
     # 处理completions.json文件
-    completions_path = os.path.join(parent_path, 'completions', f'{model}.json')
+    if defender_name == 'default':
+        completions_path = os.path.join(parent_path, 'completions', f'{model}.json')
+    else:
+        completions_path = os.path.join(parent_path, 'defense_completions', defender_name, f'{model}.json')
+
     completions_path_added = completions_path.replace(base_path, base_path_added)
     completions = {}
     completions_added = {}
@@ -110,18 +117,25 @@ def process_completions(method, model, parent_path):
     # 保存到target_path
     target_completions_path = completions_path.replace(base_path, target_path)
     os.makedirs(os.path.dirname(target_completions_path), exist_ok=True)
+    # print("="*500)
+    # print(target_completions_path)
     with open(target_completions_path, 'w', encoding='utf-8') as f:
         json.dump(full_completions, f, indent=4)
 
     # print(f"Done processing {method} {model} completions")
         
 
-def process_results(method, model, parent_path, classifier_name='default'):
+def process_results(method, model, parent_path, defender_name='default', classifier_name='default'):
     # 处理results.json文件
-    if classifier_name == 'default':
+    if defender_name == 'default' and classifier_name == 'default':
         results_path = os.path.join(parent_path, f'results', f'{model}.json')
-    else:
+    elif defender_name == 'default' and classifier_name != 'default':
         results_path = os.path.join(parent_path, f'results_{classifier_name}', f'{model}.json')
+    elif defender_name != 'default' and classifier_name == 'default':
+        results_path = os.path.join(parent_path, f'defense_results', defender_name, f'{model}.json')
+    else:
+        results_path = os.path.join(parent_path, f'defense_results_{classifier_name}', defender_name, f'{model}.json')
+
     results_path_added = results_path.replace(base_path, base_path_added)
 
     if not os.path.exists(results_path):
@@ -146,15 +160,19 @@ def process_results(method, model, parent_path, classifier_name='default'):
         json.dump(full_results, f, indent=4)
 
     # print(f"Done processing {method} {model} results")
+        
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--classifier_name', type=str, default='default', help='Classifier name')
+    parser.add_argument('--defender_name', type=str, default='default', help='Defender name')
     args = parser.parse_args()
 
-    tiny_llama_series = "tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5,tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"
-    model_list = tiny_llama_series.split(',')
+    # tiny_llama_series = "tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5,tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"
+    # model_list = tiny_llama_series.split(',')
+    # model_list = ["llama3_2_1b_instruct", "llama3_2_3b_instruct", "DeepSeek-R1-Distill-Qwen-1.5B", "DeepSeek-R1-Distill-Qwen-7B"]
+    # model_list = ["tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"]
 
     for method in method_list:
         for model in model_list:
@@ -168,8 +186,8 @@ if __name__ == '__main__':
 
             # 依次处理test_cases、completions和results
             process_test_cases(method, model, parent_path)
-            process_completions(method, model, parent_path)
-            process_results(method, model, parent_path, classifier_name=args.classifier_name)
+            process_completions(method, model, parent_path, defender_name=args.defender_name)
+            process_results(method, model, parent_path, defender_name=args.defender_name, classifier_name=args.classifier_name)
 
             print("Done processing {} {}".format(method, model))
 

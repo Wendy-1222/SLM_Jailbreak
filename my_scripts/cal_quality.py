@@ -31,7 +31,7 @@ def calculate_repetition_rate(text, n=3):
     total_ngrams = len(ngrams)
     return repeated_ngrams / total_ngrams if total_ngrams > 0 else 0.0
 
-def calculate_distinct_n(text, n=2):
+def calculate_distinct_n(text, n=3):
     """
     计算文本的 Distinct-n 指标，即生成文本中独特 n-gram 的比例，以衡量生成文本的多样性
     参数:
@@ -46,7 +46,7 @@ def calculate_distinct_n(text, n=2):
     total_ngrams = len(ngrams)
     return len(unique_ngrams) / total_ngrams if total_ngrams > 0 else 0.0
 
-def calculate_entropy_n(text, n=2):
+def calculate_entropy_n(text, n=3):
     """
     计算文本的 Entropy-n, 即文本中 n-gram 的信息熵，用于衡量生成文本的词汇多样性和随机性。
     参数:
@@ -173,7 +173,7 @@ def calculate_coherence_score(text, sentence_model):
     # 返回上三角部分的平均值
     return float(upper_triangle_values.mean())
 
-def calculate_self_bleu(response_list, n=4):
+def calculate_self_bleu(response_list, n=3):
     """
     Calculate the Self-BLEU score for a list of responses.
 
@@ -287,9 +287,10 @@ def process_completions_self_blue(completions_path):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_50/')
+parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_70/')
+parser.add_argument('--question_num', type=int, default=70, help='Number of questions in the test set.')
 parser.add_argument('--metric', type=str, required=True, choices=[
-    'repetition_rate', 'distinct_2', 'entropy_2', 'average_sentence_length',
+    'repetition_rate', 'distinct_3', 'entropy_3', 'average_sentence_length',
     'lexical_diversity', 'word_nums', 'sentence_nums', 'self_bleu',
     'perplexity', 'readability_score', 'coherence_score',
 ])
@@ -303,8 +304,8 @@ print("Models loaded")
 
 metric_functions = {
     "repetition_rate": lambda text: calculate_repetition_rate(text, n=3),
-    "distinct_2": lambda text: calculate_distinct_n(text, n=2),
-    "entropy_2": lambda text: calculate_entropy_n(text, n=2),
+    "distinct_3": lambda text: calculate_distinct_n(text, n=3),
+    "entropy_3": lambda text: calculate_entropy_n(text, n=3),
     "average_sentence_length": calculate_average_sentence_length,
     "lexical_diversity": calculate_lexical_diversity,
     "perplexity": lambda text: calculate_perplexity(text, gpt2_model, gpt2_tokenizer),
@@ -312,7 +313,7 @@ metric_functions = {
     "coherence_score": lambda text: calculate_coherence_score(text, sentence_model),
     "word_nums": lambda text: calculate_word_nums(text),
     "sentence_nums": lambda text: calculate_sentence_nums(text),
-    "self_bleu": lambda response_list: calculate_self_bleu(response_list, n=4)
+    "self_bleu": lambda response_list: calculate_self_bleu(response_list, n=3)
 }
 args.metric_function = metric_functions[args.metric]
 
@@ -337,6 +338,13 @@ for method in method_list:
         if not os.path.exists(completions_path):
             print(f"File {completions_path} not found, skipping...")
             continue
+        else:
+            with open(completions_path, 'r') as f:
+                temp_completions_data = json.load(f)
+                completions_num = len(temp_completions_data)
+                if completions_num != args.question_num:
+                    print(f"Warning!!! Total cases of {method} {model} is not {args.question_num}: {completions_num}")
+                    continue
 
         result_path = completions_path.replace("/completions/", f"/metrics/{args.metric}/")
         # 获取父目录路径

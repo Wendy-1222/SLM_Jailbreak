@@ -12,7 +12,7 @@
     "eval_with_check_refusal": true,
     "check_refusal_min_loss": 0.05,
     "target_model": {
-        "model_name_or_path": "/data2/phi_series/Phi-3-mini-4k-instruct",
+        "model_name_or_path": "/data2/SLMs/phi_series/Phi-3-mini-4k-instruct",
         "use_fast_tokenizer": false,
         "trust_remote_code": true,
         "dtype": "bfloat16",
