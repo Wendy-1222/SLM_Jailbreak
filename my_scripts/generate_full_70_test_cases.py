@@ -173,6 +173,8 @@ if __name__ == '__main__':
     # model_list = tiny_llama_series.split(',')
     # model_list = ["llama3_2_1b_instruct", "llama3_2_3b_instruct", "DeepSeek-R1-Distill-Qwen-1.5B", "DeepSeek-R1-Distill-Qwen-7B"]
     # model_list = ["tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"]
+    # method_list = ["AutoPrompt"]
+    # model_list = ["OLMo-7B-SFT-hf","OLMo-7B-Instruct-hf"]
 
     for method in method_list:
         for model in model_list:

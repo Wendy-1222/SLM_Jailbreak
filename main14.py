@@ -22,15 +22,16 @@ llama_3_2_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
 deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B,DeepSeek-R1-Distill-Qwen-7B"
 # deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B"
 
-# all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
-all_slms_no_tiny_llama = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + llama_3_2_series + ',' + deepseek_r1_series
+all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + llama_3_2_series + ',' + deepseek_r1_series
+all_slms_no_tiny_llama = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 
 # 忽略了目前template有点问题的模型
 parts_slms = qwen_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + h2o_danube_series + ',' + fox_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 
-methods="DirectRequest,PAP-top5,HumanJailbreaks,GCG,AutoPrompt,PEZ,UAT,GBDA"
-models = all_slms_no_tiny_llama
-defender = "llama_guard_3"
+# methods="DirectRequest,PAP-top5,HumanJailbreaks,GCG,AutoPrompt,PEZ,UAT,GBDA"
+methods="HumanJailbreaks,GCG,AutoPrompt"  # or "all" to use all methods
+models = all_slms
+defender = "ppl"
 # behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="4_and_5"  # or "1", "1.5", "2", "3", "2_and_3"

@@ -74,13 +74,17 @@ class AutoDAN(SingleBehaviorRedTeamingMethod):
 
         # ===== Init Mutate Model =====
         self.mutate_model, allocated_gpus = load_mutate_model(**mutate_model)
+        print('='*100, '\n', allocated_gpus)
+
 
         # ===== Init Target Model =====
         self.model_name_or_path = target_model['model_name_or_path']
         # manually allocate target model into unallocated gpus
         num_gpus = target_model.get("num_gpus", 1)
         max_memory = {i: torch.cuda.mem_get_info(i)[0] if i >= allocated_gpus else 0 for i in range(0, allocated_gpus + num_gpus)}
-        self.model, self.tokenizer = load_model_and_tokenizer(**target_model, max_memory=max_memory)
+        print('='*100, '\n', max_memory)
+        # self.model, self.tokenizer = load_model_and_tokenizer(**target_model, max_memory=max_memory)
+        self.model, self.tokenizer = load_model_and_tokenizer(**target_model, device_map="cuda:1", max_memory=max_memory)
         
         # ====== Init instruction template ====
         self.template = get_template(**target_model)['prompt']

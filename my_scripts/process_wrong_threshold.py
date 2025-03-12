@@ -1,87 +1,84 @@
 import os
-import argparse
 import json
+import argparse
+import numpy as np
 
 from model_and_method_list import method_list, model_list
 
-def process_completions(completion_path, old_threshold, new_threshold):
-    if not os.path.exists(completion_path):
-        print("No such file or directory: " + completion_path)
-        return
-    with open(completion_path, 'r') as f:
-        completions = json.load(f)
+parser = argparse.ArgumentParser(description='Count scores for each method and model.')
 
-    for key, test_cases in completions.items():
-        for test_case in test_cases:
-            if test_case['ppl_score'] < old_threshold and test_case['ppl_score'] > new_threshold:
-                test_case['generation'] = safe_message
+parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_70', help='Base path of the results directory.')
+parser.add_argument('--question_num', type=int, default=70, help='Number of questions in the test set.')
 
-    save_completion_path = completion_path.replace(f'ppl_{old_threshold}', f'ppl')
+args = parser.parse_args()
+
+def process_completions(true_completions_path, wrong_ppl_completions_path):
+    with open(true_completions_path, 'r') as f:
+        true_completions = json.load(f)
+
+    with open(wrong_ppl_completions_path, 'r') as f:
+        wrong_ppl_completions = json.load(f)
+
+    for key, test_cases in wrong_ppl_completions.items():
+        for i, test_case in enumerate(test_cases):
+            if test_case['ppl_score'] < new_threshold and test_case['ppl_score'] > old_threshold:
+                # 找出对应的true_completions
+                true_test_case = true_completions[key][i]
+                wrong_ppl_completions[key][i]['generation'] = true_test_case['generation']
+
+    save_completion_path = wrong_ppl_completions_path.replace('ppl_65.2', 'ppl')
     os.makedirs(os.path.dirname(save_completion_path), exist_ok=True)
     with open(save_completion_path, 'w') as f:
-        json.dump(completions, f, indent=4)
+        json.dump(wrong_ppl_completions, f, indent=4)
 
-def process_results(results_path, old_threshold, new_threshold):
-    if not os.path.exists(completion_path):
-        print("No such file or directory: " + completion_path)
-        return
-    with open(results_path, 'r') as f:
-        results = json.load(f)
+def process_results(true_result_path, wrong_ppl_result_path):
+    with open(true_result_path, 'r') as f:
+        true_results = json.load(f)
 
-    for key, test_cases in results.items():
-        for test_case in test_cases:
-            if test_case['ppl_score'] < old_threshold and test_case['ppl_score'] > new_threshold:
-                test_case['generation'] = safe_message
-                test_case['label'] = 0
+    with open(wrong_ppl_result_path, 'r') as f:
+        wrong_ppl_results = json.load(f)
 
-    save_results_path = results_path.replace(f'ppl_{old_threshold}', f'ppl')
+    for key, test_cases in wrong_ppl_results.items():
+        for i, test_case in enumerate(test_cases):
+            if test_case['ppl_score'] < new_threshold and test_case['ppl_score'] > old_threshold:
+                # 找出对应的true_results
+                true_test_case = true_results[key][i]
+                wrong_ppl_results[key][i]['generation'] = true_test_case['generation']
+                wrong_ppl_results[key][i]['label'] = true_test_case['label']
+
+    save_results_path = wrong_ppl_result_path.replace('ppl_65.2', 'ppl')
     os.makedirs(os.path.dirname(save_results_path), exist_ok=True)
     with open(save_results_path, 'w') as f:
-        json.dump(results, f, indent=4)
+        json.dump(wrong_ppl_results, f, indent=4)
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Count scores for each method and model.')
-
-    parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results', help='Base path of the results directory.')
-    parser.add_argument('--question_num', type=int, default=70, help='Number of questions in the test set.')
-
-    args = parser.parse_args()
-
-    old_threshold = 175.57
-    new_threshold = 65.2
-    safe_message = "Sorry, I cannot answer your question."
-
-    # method_list = ['HumanJailbreaks']
-    # model_list = ['dolly-v2-3b']
+if __name__ == '__main__':
+    base_path = args.base_path
+    question_num = args.question_num
+    old_threshold = 65.2
+    new_threshold = 415.88
 
     for method in method_list:
-        print("\n\nProcessing method " + method)
+        print("Processing method {}".format(method))
         for model in model_list:
+            # 处理llama3 evaluator的结果
             if method == 'DirectRequest':
-                base_dir = os.path.join(args.base_path, method, 'default')
+                checked_result_path = os.path.join(base_path, method, 'default')
             elif method == 'HumanJailbreaks':
-                base_dir = os.path.join(args.base_path, method, 'random_subset_5')
+                checked_result_path = os.path.join(base_path, method, 'random_subset_5')
             elif method == 'PAP':
-                base_dir = os.path.join(args.base_path, method, 'top_5')
+                checked_result_path = os.path.join(base_path, method, 'top_5')
             else:
-                base_dir =  os.path.join(args.base_path, method, model)
-            
-            # 重命名目录
-            completion_dir = os.path.join(base_dir, 'defense_completions', 'ppl')
-            results_dir = completion_dir.replace('defense_completions', 'defense_results')
-            new_completion_dir = completion_dir.replace('ppl', f'ppl_{old_threshold}')
-            new_results_dir = new_completion_dir.replace('defense_completions', 'defense_results')
+                checked_result_path =  os.path.join(base_path, method, model)
 
-            if os.path.exists(completion_dir) and not os.path.exists(new_completion_dir):
-                os.rename(completion_dir, new_completion_dir)
-            if os.path.exists(results_dir) and not os.path.exists(new_results_dir):
-                os.rename(results_dir, new_results_dir)
-                
-            # 处理completions和results
-            completion_path = os.path.join(new_completion_dir, f'{model}.json')
-            results_path = completion_path.replace('defense_completions', 'defense_results')
-            process_completions(completion_path, old_threshold, new_threshold)
-            process_results(results_path, old_threshold, new_threshold)
+            true_completions_path = os.path.join(checked_result_path, 'completions', f'{model}.json')
+            true_result_path = true_completions_path.replace('completions', 'results')
 
-            print(f"Done processing {model}")
-            
+            wrong_ppl_completions_path = os.path.join(checked_result_path, 'defense_completions', 'ppl_65.2', f'{model}.json')
+            wrong_ppl_result_path = wrong_ppl_completions_path.replace('defense_completions', 'defense_results')
+
+            if not os.path.exists(true_completions_path):
+                print(f"Error: Completions file not found: {true_completions_path}")
+                continue
+
+            process_completions(true_completions_path, wrong_ppl_completions_path)
+            process_results(true_result_path, wrong_ppl_result_path)

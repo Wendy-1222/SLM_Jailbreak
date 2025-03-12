@@ -54,7 +54,7 @@ def parse_args():
     parser.add_argument("--first_m", type=int, default=2)
     parser.add_argument("--top_k", type=int, default=10)
     parser.add_argument("--num_common_tokens", type=int, default=5)
-    parser.add_argument("--ppl_threshold", type=float, default=65.2, help="PPL threshold for PPL defense (Default: 65.2 for classed-balanced dataset)")
+    parser.add_argument("--ppl_threshold", type=float, default=415.88, help="PPL threshold for PPL defense (Default: 415.88 for classed-balanced dataset)")
     parser.add_argument("--BPO_dropout_rate", type=float, default=0.2, help="BPE Dropout rate for Retokenization defense (Default: 0.2)")
     parser.add_argument("--paraphase_model", type=str, default="gpt-3.5-turbo-1106")
 

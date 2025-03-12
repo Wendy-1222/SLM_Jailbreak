@@ -1282,8 +1282,14 @@
             "total_cases": 70,
             "Average ASR": 0.471
         },
-        "OLMo-7B-SFT-hf": {},
-        "OLMo-7B-Instruct-hf": {}
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.571
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.614
+        }
     },
     "PEZ": {
         "llama2_7b": {

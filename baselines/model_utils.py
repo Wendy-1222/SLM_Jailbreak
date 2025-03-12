@@ -537,10 +537,22 @@ def load_model_and_tokenizer(
 
     # 检查可用的GPU
     available_device = None   # a6000多卡推理很慢
-    for i in range(torch.cuda.device_count()):
-        if torch.cuda.is_available() and i < num_gpus:
-            available_device = f"cuda:{i}"
-            break
+    # if torch.cuda.device_count() > 1:
+    #     available_device = f"cuda:{torch.cuda.device_count()-1}"
+    # else:
+    #     available_device = f"cuda:0"
+    # print(f"Available device: {available_device}")
+
+    if device_map != 'auto':
+        available_device = device_map
+    else:
+        for i in range(torch.cuda.device_count()):
+            if torch.cuda.is_available() and i < num_gpus:
+                available_device = f"cuda:{i}"
+                # print(f"Available device: {available_device}")
+                break
+
+    print(f"Available device: {available_device}")
 
     if available_device is None:
         raise RuntimeError("No available GPU found.")

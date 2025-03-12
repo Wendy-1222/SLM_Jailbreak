@@ -19,25 +19,22 @@ dclm_series = "DCLM-1B-IT"
 dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 llama_3_2_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
+deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B,DeepSeek-R1-Distill-Qwen-7B"
 
-# all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
-all_slms_no_tiny_llama = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
-
-# 忽略了目前template有点问题的模型
-# parts_slms = qwen_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + h2o_danube_series + ',' + fox_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
-# models_7B = "qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,gemma-7b-it,gemma-1.1-7b-it,dolly-v1-6b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
+all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series + ',' + llama_3_2_series + ',' +  deepseek_r1_series
+models_7B = "qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,gemma-7b-it,gemma-1.1-7b-it,dolly-v1-6b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 models_4B = "phi_3_mini_4k_instruct,phi_3_mini_128k_instruct,phi_3_5_mini_instruct,minicpm3-4B,mobilellama-2.7B-chat,qwen1_5_4b_chat,qwen2_5_3b_instruct,stablelm-zephyr-3b,h2o-danube3-4b-chat"
-# parts_slms_list = parts_slms.split(',')
-# models_list_7B = models_7B.split(',')
-# models_list_4B = models_4B.split(',')
-# parts_slms_list_no_large = [item for item in parts_slms_list if (item not in models_list_7B and item not in models_list_4B)]
-# parts_slms_no_large = ','.join(parts_slms_list_no_large)
-#
-# mid_index = len(parts_slms_list_no_large) // 2
-# first_half = parts_slms_list_no_large[:mid_index]
-# second_half = parts_slms_list_no_large[mid_index:]
-# first_half = ','.join(first_half)
-# second_half = ','.join(second_half)
+all_slms_list = parts_slms.split(',')
+models_list_7B = models_7B.split(',')
+models_list_4B = models_4B.split(',')
+all_slms_list_no_large = [item for item in parts_slms_list if (item not in models_list_7B and item not in models_list_4B)]
+all_slms_no_large = ','.join(parts_slms_list_no_large)
+
+mid_index = len(all_slms_list_no_large) // 2
+first_half = all_slms_list_no_large[:mid_index]
+second_half = all_slms_list_no_large[mid_index:]
+first_half = ','.join(first_half)
+second_half = ','.join(second_half)
 
 
 methods="DirectRequest,HumanJailbreaks,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods

@@ -1,6 +1,7 @@
 import os
 import json
 import argparse
+import numpy as np
 
 from model_and_method_list import method_list, model_list
 
@@ -62,6 +63,10 @@ if __name__ == '__main__':
                         average_score_single_run = sum(single_run_scores) / len(single_run_scores) if single_run_scores else -1
                     else:
                         average_score_single_run = run_data[0][metric]
+
+                    if metric == 'perplexity' and (run_data[0][metric] > 4596250 or np.isnan(run_data[0][metric])):  # 抛弃单个异常值
+                        average_score_single_run = -1
+
                     if average_score_single_run == -1:
                         continue
                     all_run_scores += average_score_single_run

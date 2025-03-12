@@ -1,97 +1,5 @@
 {
     "DirectRequest": {
-        "llama2_7b": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.0816
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9568
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.3293
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 31.3846
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.6396
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 181.8429
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 6.2714
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.5842
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 12.5199
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 36.1061
-            },
-            "coherence_score": {
-                "effective_runs": 70,
-                "average_value": 0.4256
-            }
-        },
-        "vicuna_7b_v1_5": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.0386
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.978
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 5.9999
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 19.8933
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.7485
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 125.4857
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 5.7143
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.5096
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 13.8307
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 53.4801
-            },
-            "coherence_score": {
-                "effective_runs": 62,
-                "average_value": 0.4129
-            }
-        },
         "llama3_2_1b_instruct": {
             "repetition_rate": {
                 "effective_runs": 70,
@@ -2992,98 +2900,6 @@
         }
     },
     "HumanJailbreaks": {
-        "llama2_7b": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.1052
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9393
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.168
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 30.557
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.6427
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 168.1
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 5.82
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.5984
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": NaN
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 38.8906
-            },
-            "coherence_score": {
-                "effective_runs": 70,
-                "average_value": 0.3855
-            }
-        },
-        "vicuna_7b_v1_5": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.1012
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9108
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 6.4291
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 25.5421
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.6958
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 149.3229
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 6.5829
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.3859
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": NaN
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 60.2773
-            },
-            "coherence_score": {
-                "effective_runs": 70,
-                "average_value": 0.3548
-            }
-        },
         "llama3_2_1b_instruct": {
             "repetition_rate": {
                 "effective_runs": 70,
@@ -5984,98 +5800,6 @@
         }
     },
     "PAP": {
-        "llama2_7b": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.1079
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9413
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.8893
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 30.6455
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.5841
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 270.2114
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 9.7714
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.4386
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 10.6499
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 33.1998
-            },
-            "coherence_score": {
-                "effective_runs": 70,
-                "average_value": 0.4291
-            }
-        },
-        "vicuna_7b_v1_5": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.1283
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9259
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.9648
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 25.6249
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.5625
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 299.9029
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 12.9457
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.3072
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 10.6522
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 38.1688
-            },
-            "coherence_score": {
-                "effective_runs": 70,
-                "average_value": 0.4303
-            }
-        },
         "llama3_2_1b_instruct": {
             "repetition_rate": {
                 "effective_runs": 70,
@@ -8976,98 +8700,6 @@
         }
     },
     "GCG": {
-        "llama2_7b": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.1478
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.8992
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.4624
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 51.6352
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.5871
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 232.5857
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 8.3857
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.3835
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 42.9771
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 39.5434
-            },
-            "coherence_score": {
-                "effective_runs": 65,
-                "average_value": 0.4226
-            }
-        },
-        "vicuna_7b_v1_5": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.1532
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9014
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.4357
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 42.1851
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.5612
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 225.9857
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 9.0429
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.2711
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 10.4351
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 48.7241
-            },
-            "coherence_score": {
-                "effective_runs": 65,
-                "average_value": 0.4284
-            }
-        },
         "llama3_2_1b_instruct": {
             "repetition_rate": {
                 "effective_runs": 70,
@@ -11968,98 +11600,6 @@
         }
     },
     "AutoPrompt": {
-        "llama2_7b": {
-            "repetition_rate": {
-                "effective_runs": 69,
-                "average_value": 0.1258
-            },
-            "distinct_3": {
-                "effective_runs": 69,
-                "average_value": 0.9302
-            },
-            "entropy_3": {
-                "effective_runs": 69,
-                "average_value": 7.5459
-            },
-            "average_sentence_length": {
-                "effective_runs": 69,
-                "average_value": 38.89
-            },
-            "lexical_diversity": {
-                "effective_runs": 69,
-                "average_value": 0.6012
-            },
-            "word_nums": {
-                "effective_runs": 69,
-                "average_value": 223.1159
-            },
-            "sentence_nums": {
-                "effective_runs": 69,
-                "average_value": 7.3623
-            },
-            "self_bleu": {
-                "effective_runs": 69,
-                "average_value": 0.4702
-            },
-            "perplexity": {
-                "effective_runs": 69,
-                "average_value": 11.2399
-            },
-            "readability_score": {
-                "effective_runs": 69,
-                "average_value": 39.8033
-            },
-            "coherence_score": {
-                "effective_runs": 68,
-                "average_value": 0.4349
-            }
-        },
-        "vicuna_7b_v1_5": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.1572
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.8806
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.1586
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 44.4898
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.5761
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 218.5
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 9.3286
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.2952
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 10.74
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 42.2397
-            },
-            "coherence_score": {
-                "effective_runs": 63,
-                "average_value": 0.425
-            }
-        },
         "llama3_2_1b_instruct": {
             "repetition_rate": {
                 "effective_runs": 70,
@@ -14868,190 +14408,98 @@
         },
         "OLMo-7B-SFT-hf": {
             "repetition_rate": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.2457
             },
             "distinct_3": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.7985
             },
             "entropy_3": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 6.8291
             },
             "average_sentence_length": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 35.407
             },
             "lexical_diversity": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.5362
             },
             "word_nums": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 229.1571
             },
             "sentence_nums": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 10.3714
             },
             "self_bleu": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.2869
             },
             "perplexity": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": NaN
             },
             "readability_score": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 45.7346
             },
             "coherence_score": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 66,
+                "average_value": 0.4628
             }
         },
         "OLMo-7B-Instruct-hf": {
             "repetition_rate": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.2398
             },
             "distinct_3": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.8492
             },
             "entropy_3": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 8.0522
             },
             "average_sentence_length": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 35.6624
             },
             "lexical_diversity": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.4993
             },
             "word_nums": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 353.9857
             },
             "sentence_nums": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 13.3714
             },
             "self_bleu": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.2577
             },
             "perplexity": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 8.4496
             },
             "readability_score": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 48.7313
             },
             "coherence_score": {
-                "effective_runs": 0,
-                "average_value": -1
+                "effective_runs": 70,
+                "average_value": 0.4117
             }
         }
     },
     "PEZ": {
-        "llama2_7b": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.0851
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9552
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.3472
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 32.798
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.6368
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 181.8686
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 6.0371
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.5919
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 12.5795
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 36.8143
-            },
-            "coherence_score": {
-                "effective_runs": 70,
-                "average_value": 0.4348
-            }
-        },
-        "vicuna_7b_v1_5": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.0368
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.976
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 5.919
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 20.0406
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.7711
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 101.5029
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 4.7686
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.5101
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 24.3687
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 52.803
-            },
-            "coherence_score": {
-                "effective_runs": 69,
-                "average_value": 0.3758
-            }
-        },
         "llama3_2_1b_instruct": {
             "repetition_rate": {
                 "effective_runs": 70,
@@ -17952,98 +17400,6 @@
         }
     },
     "GBDA": {
-        "llama2_7b": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.0924
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9512
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.375
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 33.1362
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.6275
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 187.8686
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 6.1229
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.5915
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 12.2093
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 37.033
-            },
-            "coherence_score": {
-                "effective_runs": 70,
-                "average_value": 0.4363
-            }
-        },
-        "vicuna_7b_v1_5": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.0333
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.981
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 5.8921
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 20.1242
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.7717
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 104.3286
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 5.0114
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.5297
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 15.5265
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 52.7185
-            },
-            "coherence_score": {
-                "effective_runs": 68,
-                "average_value": 0.3785
-            }
-        },
         "llama3_2_1b_instruct": {
             "repetition_rate": {
                 "effective_runs": 70,
@@ -20944,98 +20300,6 @@
         }
     },
     "UAT": {
-        "llama2_7b": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.0812
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9573
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 7.4497
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 34.382
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.6324
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 198.2143
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 6.6714
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.5282
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 14.136
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 37.9586
-            },
-            "coherence_score": {
-                "effective_runs": 69,
-                "average_value": 0.4187
-            }
-        },
-        "vicuna_7b_v1_5": {
-            "repetition_rate": {
-                "effective_runs": 70,
-                "average_value": 0.0841
-            },
-            "distinct_3": {
-                "effective_runs": 70,
-                "average_value": 0.9535
-            },
-            "entropy_3": {
-                "effective_runs": 70,
-                "average_value": 6.5587
-            },
-            "average_sentence_length": {
-                "effective_runs": 70,
-                "average_value": 25.9571
-            },
-            "lexical_diversity": {
-                "effective_runs": 70,
-                "average_value": 0.7101
-            },
-            "word_nums": {
-                "effective_runs": 70,
-                "average_value": 152.8571
-            },
-            "sentence_nums": {
-                "effective_runs": 70,
-                "average_value": 6.4857
-            },
-            "self_bleu": {
-                "effective_runs": 70,
-                "average_value": 0.4267
-            },
-            "perplexity": {
-                "effective_runs": 70,
-                "average_value": 14.991
-            },
-            "readability_score": {
-                "effective_runs": 70,
-                "average_value": 51.2427
-            },
-            "coherence_score": {
-                "effective_runs": 67,
-                "average_value": 0.3761
-            }
-        },
         "llama3_2_1b_instruct": {
             "repetition_rate": {
                 "effective_runs": 70,
