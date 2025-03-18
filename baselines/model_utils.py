@@ -55,10 +55,11 @@ LLAMA2_CHAT_PROMPT = {
     "ICD_prompt": "[INST] <<SYS>>\n"+LLAMA2_DEFAULT_SYSTEM_PROMPT+"\n<</SYS>>\n\n{ICD_instruction} [/INST] {ICD_response} [INST] {instruction} [/INST] "
 }
 
+LLAMA3_1_DEFAULT_SYSTEM_PROMPT = f"""\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n"""
 LLAMA3_1_CHAT_PROMPT = {
     "description": "Template used by llama3_1_8b_instruct",
-    "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA2_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>",
-    "ICD_prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA2_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{ICD_instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n{ICD_response}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"
+    "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_1_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+    "ICD_prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_1_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{ICD_instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n{ICD_response}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
 
 }
 

@@ -26,7 +26,7 @@ import os
 import torch
 from transformers import pipeline
 
-pipe = pipeline("text-generation", model="/data2/SLMs/TinyLlama/TinyLlama-1.1B-Chat-v0.6", torch_dtype=torch.bfloat16, device_map="auto")
+pipe = pipeline("text-generation", model="/data2/llama3.1/Llama-3.1-8B-Instruct", torch_dtype=torch.bfloat16, device_map="auto")
 
 # We use the tokenizer's chat template to format each message - see https://huggingface.co/docs/transformers/main/en/chat_templating
 messages = [

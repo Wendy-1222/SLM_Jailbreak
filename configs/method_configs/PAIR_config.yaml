@@ -1,5 +1,7 @@
 default_method_hyperparameters:
-    targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
+    # targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
+    # targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
+    targets_path: ./data/optimizer_targets/extra_targets/advbench_targets.json
     n_streams: 20 # N Number of concurrent jailbreak conversations.
     steps: 3 # K Number of steps (queries) to run the attack for each behavior.
     keep_last_n: 3 # Number of responses to save in conversation history of attack model. If this is too large, then it may exceed the context window of the model.

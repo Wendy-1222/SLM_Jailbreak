@@ -11,11 +11,14 @@ from fastchat.model import add_model_args
 import argparse
 import pandas as pd
 from .gptfuzzer.fuzzer.selection import MCTSExploreSelectPolicy
+# from .gptfuzzer.fuzzer.mutator import (
+#     MutateRandomSinglePolicy, OpenAIMutatorCrossOver, OpenAIMutatorExpand,
+#     OpenAIMutatorGenerateSimilar, OpenAIMutatorRephrase, OpenAIMutatorShorten)
 from .gptfuzzer.fuzzer.mutator import (
-    MutateRandomSinglePolicy, OpenAIMutatorCrossOver, OpenAIMutatorExpand,
-    OpenAIMutatorGenerateSimilar, OpenAIMutatorRephrase, OpenAIMutatorShorten)
+    MutateRandomSinglePolicy, LocalMutatorCrossOver, LocalMutatorExpand,
+    LocalMutatorGenerateSimilar, LocalMutatorRephrase, LocalMutatorShorten)
 from .gptfuzzer.fuzzer import GPTFuzzer
-from .gptfuzzer.llm import OpenAILLM, LocalVLLM, LocalLLM, PaLM2LLM, ClaudeLLM
+from .gptfuzzer.llm import OpenAILLM, LocalVLLM, LocalLLM, PaLM2LLM, ClaudeLLM, HuggingfaceLLM
 from .gptfuzzer.utils.predict import RoBERTaPredictor
 from .gptfuzzer.utils.template import synthesis_message
 import random
@@ -70,14 +73,19 @@ class GPTFuzz(SingleBehaviorRedTeamingMethod):
 
         self.initial_seed = pd.read_csv(seed_path)['text'].tolist()
 
-        self.openai_model = OpenAILLM(mutate_model_path, openai_key)
+        # self.openai_model = OpenAILLM(mutate_model_path, openai_key)  # 原版的实现
+        self.mutate_model = LocalLLM(mutate_model_path)
+
         # target_model = PaLM2LLM(args.target_model, args.palm_key)
         # target_model = ClaudeLLM(args.target_model, args.claude_key)
         # target_model = LocalLLM(args.target_model) # we suggest using LocalVLLM for better performance, however if you are facing difficulties in installing vl
         target_model['num_gpus'] = num_gpus
-        self.target_model = LocalVLLM(target_model)
-        extra_device = f'cuda:{torch.cuda.device_count()-1}'
-        self.roberta_model = RoBERTaPredictor('hubert233/GPTFuzz', device=extra_device)
+        # self.target_model = LocalVLLM(target_model)
+        self.target_model = HuggingfaceLLM(target_model)
+        # extra_device = f'cuda:{torch.cuda.device_count()-1}'
+        extra_device = 'cuda:1'
+        # self.roberta_model = RoBERTaPredictor('hubert233/GPTFuzz', device=extra_device)
+        self.roberta_model = RoBERTaPredictor('/data2/zwh/models/RoBERTa', device=extra_device)
 
     def generate_test_cases_single_behavior(self, behavior, num_generate, verbose=False):
         # ========== Behavior and Target str ==========
@@ -95,16 +103,23 @@ class GPTFuzz(SingleBehaviorRedTeamingMethod):
 
         fuzzer = GPTFuzzer(
             questions=[behavior],
-            # target_model=openai_model,
             target=self.target_model,
             predictor=self.roberta_model,
             initial_seed=self.initial_seed,
+            # mutate_policy=MutateRandomSinglePolicy([
+            #     OpenAIMutatorCrossOver(self.mutate_model, temperature=0.0),  # for reproduction only, if you want better performance, use temperature>0
+            #     OpenAIMutatorExpand(self.mutate_model, temperature=0.0),
+            #     OpenAIMutatorGenerateSimilar(self.mutate_model, temperature=0.0),
+            #     OpenAIMutatorRephrase(self.mutate_model, temperature=0.0),
+            #     OpenAIMutatorShorten(self.mutate_model, temperature=0.0)],
+            #     concatentate=True,
+            # ),
             mutate_policy=MutateRandomSinglePolicy([
-                OpenAIMutatorCrossOver(self.openai_model, temperature=0.0),  # for reproduction only, if you want better performance, use temperature>0
-                OpenAIMutatorExpand(self.openai_model, temperature=0.0),
-                OpenAIMutatorGenerateSimilar(self.openai_model, temperature=0.0),
-                OpenAIMutatorRephrase(self.openai_model, temperature=0.0),
-                OpenAIMutatorShorten(self.openai_model, temperature=0.0)],
+                LocalMutatorCrossOver(self.mutate_model, temperature=0.0),  # for reproduction only, if you want better performance, use temperature>0
+                LocalMutatorExpand(self.mutate_model, temperature=0.0),
+                LocalMutatorGenerateSimilar(self.mutate_model, temperature=0.0),
+                LocalMutatorRephrase(self.mutate_model, temperature=0.0),
+                LocalMutatorShorten(self.mutate_model, temperature=0.0)],
                 concatentate=True,
             ),
             select_policy=MCTSExploreSelectPolicy(),

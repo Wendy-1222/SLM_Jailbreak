@@ -137,7 +137,8 @@ class GPTFuzzer:
                 seed = self.select_policy.select()
                 mutated_results = self.mutate_policy.mutate_single(seed)
                 self.evaluate(mutated_results)
-                assert len(mutated_results) == 1
+                # assert len(mutated_results) == 1
+                print(mutated_results[0].prompt)
                 self.prompt_history.append(mutated_results[0].prompt)
                 self.update(mutated_results)
                 self.log()

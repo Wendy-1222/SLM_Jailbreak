@@ -66,8 +66,10 @@ class OpenSourceJudge(JudgeBase):
         conv = get_conversation_template(self.judge_name)
         conv.append_message(conv.roles[0], full_prompt)
         conv.append_message(conv.roles[1], self.init_msg)
-        print(conv)
-        return conv.get_prompt()[:-len(conv.sep)]
+        # print(conv)
+        # print(conv.get_prompt())
+        # return conv.get_prompt()[:-len(conv.sep)]
+        return conv.get_prompt()
 
     def score(self, attack_prompt_list, target_response_list, behavior, context_str=None):
         convs_list = [self.create_conv(self.get_judge_prompt(prompt, response, context_str), behavior, context_str) for prompt, response in zip(attack_prompt_list, target_response_list)]

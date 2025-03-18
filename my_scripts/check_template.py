@@ -23,8 +23,7 @@ chat = [
     {"role": "user", "content": question2}
 ]
 
-# model_list = ["recurrentgemma-2b-it"]
-model_list = ['vicuna_7b_v1_5']
+model_list = ['llama3_1_8b_instruct', 'llama3_2_1b_instruct']
 for model_name in model_list:
     model_config = model_configs[model_name]['model']
 

@@ -63,7 +63,7 @@ class LocalLLM(LLM):
 
     @torch.inference_mode()
     def create_model(self, model_path,
-                     device='cuda',
+                     device='cuda:0',
                      num_gpus=1,
                      max_gpu_memory=None,
                      dtype=torch.float16,
@@ -148,6 +148,27 @@ class LocalLLM(LLM):
                 output_ids, skip_special_tokens=True, spaces_between_special_tokens=False))
         return outputs
 
+class HuggingfaceLLM(LLM):  # zwh定制，适用于target_model
+    def __init__(self, model_config):
+        super().__init__()
+        self.model, self.tokenizer = load_model_and_tokenizer(**model_config, device_map="cuda:1")
+        self.template = get_template(model_config['model_name_or_path'], chat_template=model_config.get('chat_template', None))
+
+    def generate(self, prompt, temperature=0, max_tokens=512):
+        prompts = [prompt]
+        return self.generate_batch(prompts, temperature, max_tokens)
+
+    def generate_batch(self, prompts, temperature=0, max_tokens=512):
+        generation_kwargs = dict(max_new_tokens=max_tokens, do_sample=False)
+        inputs = [self.template['prompt'].format(instruction=s) for s in prompts]
+        inputs = self.tokenizer(inputs, return_tensors='pt', padding=True)
+        inputs = inputs.to(self.model.device)
+        with torch.no_grad():
+            outputs = self.model.generate(inputs=inputs['input_ids'], attention_mask=inputs['attention_mask'], **generation_kwargs).cpu()
+        generated_tokens = outputs[:, inputs['input_ids'].shape[1]:]
+        generations = [self.tokenizer.decode(o, skip_special_tokens=True).strip() for o in generated_tokens]
+
+        return generations
 
 class LocalVLLMOriginal(LLM):
     def __init__(self,
