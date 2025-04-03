@@ -152,7 +152,10 @@ class GCG(SingleBehaviorRedTeamingMethod):
             # ========== compute coordinate token_gradient ========== #
             # create input
             optim_ids_onehot = torch.zeros((1, num_optim_tokens, vocab_size), device=device, dtype=model.dtype)
+            # print(optim_ids_onehot)
             optim_ids_onehot.scatter_(2, optim_ids.unsqueeze(2), 1.0).requires_grad_()
+            # print(optim_ids.unsqueeze(2))
+            # print(optim_ids_onehot)
             optim_embeds = torch.matmul(optim_ids_onehot.squeeze(0), vocab_embeds).unsqueeze(0)
 
             # forward pass
@@ -179,6 +182,18 @@ class GCG(SingleBehaviorRedTeamingMethod):
             # print("emo")
             # print("loss", loss.item())
             # print(optim_ids_onehot)
+            # print(loss.device, loss.dtype)  # 检查l的设备和数据类型
+            # print(optim_ids_onehot.device, optim_ids_onehot.dtype)  # 检查optim_ids_onehot的设备和数据类型
+
+            # Zero out previous gradients
+            # optim_ids_onehot.grad = None
+
+            # # Compute loss and backpropagate
+            # loss.backward()
+
+            # # Get the gradient
+            # token_grad = optim_ids_onehot.grad
+
             token_grad = torch.autograd.grad(outputs=[loss], inputs=[optim_ids_onehot])[0]
 
             # ========== Sample a batch of new tokens based on the coordinate gradient. ========== #

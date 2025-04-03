@@ -63,7 +63,7 @@ class LocalLLM(LLM):
 
     @torch.inference_mode()
     def create_model(self, model_path,
-                     device='cuda:0',
+                     device,
                      num_gpus=1,
                      max_gpu_memory=None,
                      dtype=torch.float16,
@@ -151,7 +151,7 @@ class LocalLLM(LLM):
 class HuggingfaceLLM(LLM):  # zwh定制，适用于target_model
     def __init__(self, model_config):
         super().__init__()
-        self.model, self.tokenizer = load_model_and_tokenizer(**model_config, device_map="cuda:1")
+        self.model, self.tokenizer = load_model_and_tokenizer(**model_config, device_map="cuda:0")
         self.template = get_template(model_config['model_name_or_path'], chat_template=model_config.get('chat_template', None))
 
     def generate(self, prompt, temperature=0, max_tokens=512):

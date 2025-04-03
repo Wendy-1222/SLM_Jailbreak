@@ -1,3 +1,6 @@
+"""
+所有方法上取any，max版本
+"""
 import os
 import json
 import pandas as pd

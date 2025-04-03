@@ -205,10 +205,20 @@
 #    ["meta-llama/Llama-3.2-3B-Instruct"]="/data2/llama3.2/Llama-3.2-3B-Instruct"
 #)
 
+# declare -A models=(
+#     ["deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Qwen-1.5B"
+#     ["deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Qwen-7B"
+#     ["deepseek-ai/DeepSeek-R1-Distill-Llama-8B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Llama-8B"
+# )
+
+# declare -A models=(
+#     ["Qwen/Qwen1.5-0.5B-Chat-GPTQ-Int4"]="/data2/SLMs/qwen_series/Qwen1.5-0.5B-Chat-GPTQ-Int4"
+#     ["Qwen/Qwen1.5-7B-Chat-GPTQ-Int4"]="/data2/SLMs/qwen_series/Qwen1.5-7B-Chat-GPTQ-Int4"
+# )
+
 declare -A models=(
-    ["deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Qwen-1.5B"
-    ["deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Qwen-7B"
-    ["deepseek-ai/DeepSeek-R1-Distill-Llama-8B"]="/data2/SLMs/Deepseek-R1/DeepSeek-R1-Distill-Llama-8B"
+    ["meta-llama/Llama-Guard-3-1B"]="/data2/zwh/models/Llama-Guard-3-1B"
+    ["meta-llama/Prompt-Guard-86M"]="/data2/zwh/models/Prompt-Guard-86M"
 )
 
 

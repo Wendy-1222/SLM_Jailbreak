@@ -1,5 +1,5 @@
 # method_list = ['DirectRequest', 'HumanJailbreaks', 'PAP', 'PAIR', 'GCG', 'AutoPrompt', 'PEZ', 'GBDA', 'UAT']
-method_list = ['DirectRequest', 'HumanJailbreaks', 'PAP', 'GCG', 'AutoPrompt', 'PEZ', 'GBDA', 'UAT']
+method_list = ['DirectRequest', 'HumanJailbreaks', 'AutoDAN', 'PAP', 'GCG', 'AutoPrompt', 'PEZ', 'GBDA', 'UAT']
 
 llama_32_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
 deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B,DeepSeek-R1-Distill-Qwen-7B"

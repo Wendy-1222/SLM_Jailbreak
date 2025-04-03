@@ -1,0 +1,34 @@
+{
+    "num_steps": 100,
+    "eval_steps": 5,
+    "num_test_cases_per_behavior": 1,
+    "batch_size": 64,
+    "num_elites": 0.1,
+    "crossover": 0.5,
+    "num_points": 5,
+    "mutation": 0.01,
+    "eval_with_check_refusal": true,
+    "targets_path": "./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json",
+    "mutate_model": {
+        "model_name_or_path": "/data/hzq/models/vicuna1.5_13b",
+        "trust_remote_code": true,
+        "num_gpus": 1,
+        "dtype": "bfloat16"
+    },
+    "target_model": {
+        "model_name_or_path": "/data2/SLMs/phi_series/Phi-3-mini-4k-instruct",
+        "use_fast_tokenizer": false,
+        "trust_remote_code": true,
+        "dtype": "bfloat16",
+        "pad_token": "*********xt|>",
+        "eos_token": "*********xt|>",
+        "chat_template": "phi3_mini",
+        "num_gpus": 1
+    },
+    "dependencies": {
+        "transformers": "4.45.2",
+        "vllm": "dev",
+        "ray": "2.37.0",
+        "fastchat": "0.2.36"
+    }
+}

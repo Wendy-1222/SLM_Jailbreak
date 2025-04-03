@@ -34,8 +34,8 @@ class LanguageModel():
         return getattr(self, attr_name, None)
     
 class HuggingFace(LanguageModel):
-    def __init__(self, model_name_or_path, **model_kwargs):        
-        model, tokenizer = load_model_and_tokenizer(model_name_or_path, **model_kwargs)
+    def __init__(self, model_name_or_path, device_map='cuda:0', **model_kwargs):        
+        model, tokenizer = load_model_and_tokenizer(model_name_or_path, device_map=device_map, **model_kwargs)
         self.model_name = model_name_or_path
         self.model = model 
         self.tokenizer = tokenizer

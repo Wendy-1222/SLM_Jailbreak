@@ -4,6 +4,8 @@ import random
 import json
 from typing import Dict
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig, GPTNeoXForCausalLM
+# from auto_gptq import AutoGPTQForCausalLM
+# from gptqmodel import GPTQModel
 from vllm import LLM
 from huggingface_hub import login as hf_login
 import ray
@@ -558,22 +560,36 @@ def load_model_and_tokenizer(
     if available_device is None:
         raise RuntimeError("No available GPU found.")
 
-    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, 
-        torch_dtype=_STR_DTYPE_TO_TORCH_DTYPE[dtype], 
-        # device_map=device_map,
-        device_map={"": available_device},  # 动态设置为可用的GPU
-        trust_remote_code=trust_remote_code, 
-        revision=revision, 
-        **model_kwargs).eval()
+    if 'int4' in model_name_or_path:
+        # model = AutoGPTQForCausalLM.from_quantized(model_name_or_path,
+        #     torch_dtype=torch.bfloat16,
+        #     device_map={"": available_device},
+        #     trust_remote_code=True,
+        #     disable_exllama=True,
+        #     disable_exllamav2=True
+        # )
+        model = GPTQModel.load(model_name_or_path)
+        tokenizer = AutoTokenizer.from_pretrained(model_name_or_path,
+            trust_remote_code=True
+        )
+    else:
+        model = AutoModelForCausalLM.from_pretrained(model_name_or_path, 
+            torch_dtype=_STR_DTYPE_TO_TORCH_DTYPE[dtype], 
+            # device_map=device_map,
+            device_map={"": available_device},  # 动态设置为可用的GPU
+            trust_remote_code=trust_remote_code, 
+            revision=revision, 
+            **model_kwargs).eval()
     
-    # Init Tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_name_or_path,
-        use_fast=use_fast_tokenizer,
-        trust_remote_code=trust_remote_code,
-        legacy=legacy,
-        padding_side=padding_side,
-    )
+        # Init Tokenizer
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_name_or_path,
+            use_fast=use_fast_tokenizer,
+            trust_remote_code=trust_remote_code,
+            legacy=legacy,
+            padding_side=padding_side,
+        )
+
     # print('='*500)
     # print(tokenizer)
     if pad_token:

@@ -319,6 +319,8 @@ args.metric_function = metric_functions[args.metric]
 
 empty_run_count_dict = {}
 
+method_list = ['AutoDAN']
+
 # 遍历越狱方法和模型（考虑所有回复，不考虑越狱是否成功）
 for method in method_list:
     print(f"Processing method: {method}")

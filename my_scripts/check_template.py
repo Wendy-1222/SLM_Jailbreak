@@ -23,7 +23,7 @@ chat = [
     {"role": "user", "content": question2}
 ]
 
-model_list = ['llama3_1_8b_instruct', 'llama3_2_1b_instruct']
+model_list = ['phi_3_small_8k_instruct']
 for model_name in model_list:
     model_config = model_configs[model_name]['model']
 

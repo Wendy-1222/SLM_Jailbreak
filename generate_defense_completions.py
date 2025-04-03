@@ -47,9 +47,10 @@ def parse_args():
                         help="Whether to incrementally update completions or generate a new completions file from scratch")
 
     # defense parameters
-    parser.add_argument("--defender", type=str, default='ppl', choices=['ppl', 'retokenization', 'self-reminder', 'ICD', 'rain', 'llama_guard_3'])
+    parser.add_argument("--defender", type=str, default='ppl', choices=['ppl', 'retokenization', 'self-reminder', 'ICD', 'rain', 'llama_guard_3', 'llama_guard_3_1B'])
     parser.add_argument("--ppl_calculator", type=str, default='/data2/zwh/models/gpt2')
-    parser.add_argument("--llama_guard_3", type=str, default='/data2/llama3.1/Llama-Guard-3-8B')
+    parser.add_argument("--llama_guard_3_path", type=str, default='/data2/zwh/models/Llama-Guard-3-8B')
+    parser.add_argument("--llama_guard_3_1B_path", type=str, default='/data2/zwh/models/Llama-Guard-3-1B')
     parser.add_argument("--alpha", type=float, default=3)
     parser.add_argument("--first_m", type=int, default=2)
     parser.add_argument("--top_k", type=int, default=10)
@@ -93,10 +94,17 @@ def main():
         test_cases_data = json.load(f)
 
     print("zwh begin generation")
+
+    # 跑mobillama的时候，如果先加载目标模型。再加载llama guard3，会报错tensor size不匹配，不知道为啥。所以这里先加载llama guard3
+    if args.defender == 'llama_guard_3':
+        args.llama_guard_3 = Llama3_guard_Predictor(args.llama_guard_3_path)
+    elif args.defender == 'llama_guard_3_1B':
+        args.llama_guard_3_1B = Llama3_guard_Predictor(args.llama_guard_3_1B_path)
     generation_function = load_generation_function(model_config,
                                                 args.max_new_tokens,
                                                 test_cases_path=args.test_cases_path,
                                                 generate_with_vllm=args.generate_with_vllm)
+    # generation_function = None
     print("zwh end generation")
 
     returned_data = {}
@@ -205,10 +213,13 @@ def get_defense_completions(test_cases, generation_function, args, model_config)
         user_prompts = [test_case + "\nRemember, you should be a responsible AI and should not generate harmful or misleading content!" for test_case in test_cases]
         outputs = generation_function(test_cases=user_prompts)
         return user_prompts, outputs
-    elif args.defender == 'llama_guard_3':
+    elif args.defender == 'llama_guard_3' or args.defender == 'llama_guard_3_1B':
         """检测有害的输入提示"""
-        llama_guard_3 = Llama3_guard_Predictor(args.llama_guard_3)
-        guard_raw_outputs_list, label_list, category_list = llama_guard_3.predict(test_cases)
+        # llama_guard_3 = Llama3_guard_Predictor(args.llama_guard_3_path)
+        if args.defender == 'llama_guard_3':
+            guard_raw_outputs_list, label_list, category_list = args.llama_guard_3.predict(test_cases)
+        else:
+            guard_raw_outputs_list, label_list, category_list = args.llama_guard_3_1B.predict(test_cases)
         
         # 选出label为0的下标（也就是llama_guard_3判断为安全的输入提示）
         safe_indices = [i for i, label in enumerate(label_list) if label == 0]
@@ -275,6 +286,7 @@ def _hf_generate_with_batching(model, tokenizer, test_cases, template, **generat
     def inner_generation_loop(batch_size):
         nonlocal model, tokenizer, test_cases, template, generation_kwargs
         generations = []
+        print(f"target llm batch_size: {batch_size}")
         for i in tqdm(range(0, len(test_cases), batch_size)):
             batched_test_cases = test_cases[i:i+batch_size]
             inputs = [template['prompt'].format(instruction=s) for s in batched_test_cases]
@@ -320,6 +332,7 @@ def load_generation_function(model_config, max_new_tokens, test_cases_path, gene
         model, tokenizer = load_model_and_tokenizer(**model_config)
         generation_kwargs = dict(max_new_tokens=max_new_tokens, do_sample=False)
         TEMPLATE = get_template(model_name_or_path, chat_template=model_config.get('chat_template', None))
+
         return partial(_hf_generate_with_batching, model=model, tokenizer=tokenizer, template=TEMPLATE, **generation_kwargs)
 
 if __name__ == "__main__":

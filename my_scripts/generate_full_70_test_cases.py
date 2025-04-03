@@ -166,16 +166,12 @@ def process_results(method, model, parent_path, defender_name='default', classif
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--classifier_name', type=str, default='default', help='Classifier name')
-    parser.add_argument('--defender_name', type=str, default='default', help='Defender name')
+    parser.add_argument('--defender', type=str, default='default', help='Defender name')
     args = parser.parse_args()
 
-    # tiny_llama_series = "tinyllama-1.1B-chat-v0.1,tinyllama-1.1B-chat-v0.2,tinyllama-1.1B-chat-v0.3,tinyllama-1.1B-chat-v0.4,tinyllama-1.1B-chat-v0.5,tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"
-    # model_list = tiny_llama_series.split(',')
-    # model_list = ["llama3_2_1b_instruct", "llama3_2_3b_instruct", "DeepSeek-R1-Distill-Qwen-1.5B", "DeepSeek-R1-Distill-Qwen-7B"]
-    # model_list = ["tinyllama-1.1B-chat-v0.6,tinyllama-1.1B-chat-v1.0"]
-    # method_list = ["AutoPrompt"]
-    # model_list = ["OLMo-7B-SFT-hf","OLMo-7B-Instruct-hf"]
-
+    # method_list = ["GBDA", "UAT"]
+    # model_list = ["llama2_7b", "vicuna_7b_v1_5", "llama3_1_8b_instruct", "DeepSeek-R1-Distill-Llama-8B"]
+    
     for method in method_list:
         for model in model_list:
             parent_path = os.path.join(base_path, method, model)
@@ -188,8 +184,8 @@ if __name__ == '__main__':
 
             # 依次处理test_cases、completions和results
             process_test_cases(method, model, parent_path)
-            process_completions(method, model, parent_path, defender_name=args.defender_name)
-            process_results(method, model, parent_path, defender_name=args.defender_name, classifier_name=args.classifier_name)
+            process_completions(method, model, parent_path, defender_name=args.defender)
+            process_results(method, model, parent_path, defender_name=args.defender, classifier_name=args.classifier_name)
 
             print("Done processing {} {}".format(method, model))
 

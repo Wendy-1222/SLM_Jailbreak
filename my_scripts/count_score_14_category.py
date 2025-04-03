@@ -1,3 +1,6 @@
+"""
+average版本，同一个test_case取平均，一个类别的所有问题取平均，所有方法取平均
+"""
 import os
 import json
 import pandas as pd
@@ -92,8 +95,8 @@ def process_log_file(method, model):
     max_score_count = count_max_scores(score_counts)
 
     # 按类别统计
-    category_counts = {category: 0 for category in set(id_to_category.values())}
-    category_jailbroken_counts = {category: 0 for category in set(id_to_category.values())}
+    category_counts = {category: 0 for category in category_list}
+    category_jailbroken_counts = {category: 0 for category in category_list}
 
     for key, score_count in score_counts.items():
         category = id_to_category.get(key, None)
@@ -157,6 +160,7 @@ if __name__ == '__main__':
     # 读取 final_adjusted_advbench.csv，获取类别信息
     category_df = pd.read_csv(args.category_file_path)  # 使用第一列作为索引
     id_to_category = category_df['category'].to_dict()
+    category_list = list(set(id_to_category.values()))
 
     # print(id_to_category)
 
@@ -199,47 +203,9 @@ if __name__ == '__main__':
                 print(f"Error: Result file not found: {checked_result_path}")
                 continue
 
-            # # 统计每个类别的结果
-            # category_counts = {category: 0 for category in set(id_to_category.values())}
-            # checked_jailbroken_counts = {category: 0 for category in set(id_to_category.values())}
-            #
-            # # 为每个类别单独进行统计
-            # for key, entry in result_data.items():
-            #     # 获取当前id的类别，通过id_to_category映射
-            #     category = id_to_category.get(key, None)
-            #     if not category:
-            #         print(f"Warning: ID {key} does not have a category in the CSV.")
-            #         continue
-            #
-            #     if category not in results_summary[method][model]:
-            #         results_summary[method][model][category] = {}
-            #
-            #     # 计算已检查的jailbroken数量
-            #     checked_jailbroken_num = max([e['label'] for e in entry])
-            #
-            #     # 增加当前类别的统计数据
-            #     category_counts[category] += 1
-            #     checked_jailbroken_counts[category] += checked_jailbroken_num
-            #
-            # # 更新结果字典
-            # for category in category_counts:
-            #     # 计算每个类别的统计
-            #     total_cases = category_counts[category]
-            #     if total_cases != question_num_per_category:
-            #         print(f"Warning!!! Total cases in category {category} is not {question_num_per_category}: {total_cases}")
-            #         continue
-            #
-            #     checked_jailbroken_num = checked_jailbroken_counts[category]
-            #
-            #     if 'total_cases' not in results_summary[method][model][category]:
-            #         results_summary[method][model][category]['total_cases'] = total_cases
-            #
-            #     results_summary[method][model][category]['checked_jailbroken_num'] = checked_jailbroken_num
-            #     results_summary[method][model][category]['checked_success_rate'] = round(
-            #         checked_jailbroken_num / total_cases, 3) if total_cases > 0 else 0
             # 统计每个类别的结果
-            category_counts = {category: 0 for category in set(id_to_category.values())}
-            category_success_rates = {category: [] for category in set(id_to_category.values())}
+            category_counts = {category: 0 for category in category_list}
+            category_success_rates = {category: [] for category in category_list}
 
             # 为每个类别单独进行统计
             for key, entry in result_data.items():
@@ -273,11 +239,41 @@ if __name__ == '__main__':
                 results_summary[method][model][category]['Average ASR'] = round(
                     np.mean(category_success_rates[category]), 3)
 
-    # 保存最终结果
-    output_file = os.path.join(base_path, 'results_summary_full_70_by_category_v2.json')
+    # 保存中间结果
+    output_file = os.path.join(base_path, 'model_jailbreak_summary_by_category_average_immediate.json')
     with open(output_file, 'w') as json_file:
         json.dump(results_summary, json_file, indent=4)
 
     print(f"Results summary by category saved to {output_file}.")
+
+    # 计算每个模型每个category的ASR
+    final_results = {}
+
+    # 遍历所有模型
+    category_list = list()
+    for model in model_list:
+        final_results[model] = {}
+        # 遍历所有类别
+        for category in category_list:
+            final_results[model][category] = {}
+
+            all_method_asr = []
+            for method in method_list:
+                if method in results_summary and model in results_summary[method] and category in results_summary[method][model]:
+                    all_method_asr.append(results_summary[method][model][category]['Average ASR'])
+
+            final_results[model][category]["total_questions"] = 5
+            # 计算该 model-category 组合的平均 ASR
+            if all_method_asr:
+                final_results[model][category]['asr'] = round(np.mean(all_method_asr), 3)
+            else:
+                final_results[model][category]['asr'] = None  # 如果没有数据，设为空
+
+    # 保存最终结果
+    output_file = os.path.join(base_path, 'model_jailbreak_summary_by_category_average.json')
+    with open(output_file, 'w') as json_file:
+        json.dump(final_results, json_file, indent=4)
+
+    print(f"Final results saved to {output_file}")
 
 

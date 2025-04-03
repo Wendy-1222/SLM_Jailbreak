@@ -1,3 +1,6 @@
+"""
+所有方法取平均，正确的
+"""
 import os
 import json
 import argparse
@@ -121,6 +124,8 @@ if __name__ == '__main__':
     need_process_log = ['PAIR', 'TAP']
 
     results_summary = {}
+
+    # model_list = ["llama2_7b", "vicuna_7b_v1_5", "llama3_1_8b_instruct", "DeepSeek-R1-Distill-Llama-8B"]
 
     for method in method_list:
         print("Processing method {}".format(method))

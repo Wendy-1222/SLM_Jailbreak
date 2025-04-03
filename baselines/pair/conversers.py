@@ -15,7 +15,7 @@ def load_PAIR_models(attackLM_args,
                     max_retries,
                     attack_temp, # default 1
                     ):
-    ray.init(ignore_reinit_error=True)
+    # ray.init(ignore_reinit_error=True)
 
     a_name, t_name, j_name = [args['model_name_or_path'] for args in [attackLM_args, targetLM_args, judgeLM_args]] 
     
@@ -59,6 +59,7 @@ class AttackLM():
                 max_n_tokens: int, 
                 max_retries: int, 
                 temperature: float,
+                device_map='cuda:0',
                 **model_kwargs, 
                 ):
         self.model_name_or_path = model_kwargs['model_name_or_path']
@@ -67,10 +68,11 @@ class AttackLM():
         self.max_retries = max_retries
         
         self.template = get_template(**model_kwargs, return_fschat_conv=True)
-        self.model = load_indiv_model(**model_kwargs)
+        self.model = load_indiv_model(device_map=device_map, **model_kwargs)
 
         # check if model is an opensource model which is a RayActor
-        self.use_ray = isinstance(self.model, ray.actor.ActorHandle)
+        # self.use_ray = isinstance(self.model, ray.actor.ActorHandle)
+        self.use_ray = False
 
     def get_attack(self, convs_list, prompts_list):
         """
@@ -163,6 +165,7 @@ class TargetLM():
             max_n_tokens: int, 
             temperature: float,
             preloaded_model: object = None,
+            device_map='cuda:1',
             **model_kwargs, 
             ):
         
@@ -170,29 +173,32 @@ class TargetLM():
         self.temperature = temperature
         self.max_n_tokens = max_n_tokens
 
-        self.template = get_template(**model_kwargs, return_fschat_conv=True)
-        self.model = preloaded_model if preloaded_model else load_indiv_model(**model_kwargs)
+        # self.template = get_template(**model_kwargs, return_fschat_conv=True)
+        self.template = get_template(**model_kwargs) # 大部分的小模型没有fastchat conv
+        self.model = preloaded_model if preloaded_model else load_indiv_model(device_map=device_map, **model_kwargs)
         
         # check if model is an opensource model which is a RayActor
-        self.use_ray = isinstance(self.model, ray.actor.ActorHandle)
+        # self.use_ray = isinstance(self.model, ray.actor.ActorHandle)
+        self.use_ray = False
 
     def get_response(self, prompts_list, context_str=None):
-        batchsize = len(prompts_list)
-        convs_list = [copy.deepcopy(self.template) for _ in range(batchsize)]
-        full_prompts = []
-        for conv, prompt in zip(convs_list, prompts_list):
-            if context_str:
-                prompt = f"{context_str}\n\n---\n\n{prompt}"
+        # batchsize = len(prompts_list)
+        # convs_list = [copy.deepcopy(self.template) for _ in range(batchsize)]
+        # full_prompts = []
+        # for conv, prompt in zip(convs_list, prompts_list):
+        #     if context_str:
+        #         prompt = f"{context_str}\n\n---\n\n{prompt}"
                 
-            conv.append_message(conv.roles[0], prompt)
-            if "gpt-" in self.model_name_or_path:
-                # Openai does not have separators
-                full_prompts.append(conv.to_openai_api_messages())
-            elif "gemini-" in self.model_name_or_path:
-                full_prompts.append(conv.messages[-1][1])
-            else:
-                conv.append_message(conv.roles[1], None) 
-                full_prompts.append(conv.get_prompt())
+        #     conv.append_message(conv.roles[0], prompt)
+        #     if "gpt-" in self.model_name_or_path:
+        #         # Openai does not have separators
+        #         full_prompts.append(conv.to_openai_api_messages())
+        #     elif "gemini-" in self.model_name_or_path:
+        #         full_prompts.append(conv.messages[-1][1])
+        #     else:
+        #         conv.append_message(conv.roles[1], None) 
+        #         full_prompts.append(conv.get_prompt())
+        full_prompts = [self.template['prompt'].format(instruction=s) for s in prompts_list]
 
         generate_function = self.model.batched_generate if not self.use_ray else self.model.batched_generate.remote
         outputs_list = generate_function(full_prompts, 
@@ -208,25 +214,33 @@ def load_judge(model_name_or_path, max_n_tokens, preloaded_model=None, token=Non
         return GPTJudge(model_name_or_path, max_n_tokens, judge_model)
     else:
         if preloaded_model is None:
-            preloaded_model = load_indiv_model(model_name_or_path=model_name_or_path, **model_kwargs)
+            preloaded_model = load_indiv_model(model_name_or_path=model_name_or_path, device_map='cuda:2', **model_kwargs)
         return OpenSourceJudge(model_name_or_path, max_n_tokens, judge_model=preloaded_model)
 
-def load_indiv_model(model_name_or_path, use_vllm=False, token=None, **model_kwargs):
+def load_indiv_model(model_name_or_path, use_vllm=False, token=None, device_map='cuda:0', **model_kwargs):
     if 'gpt-' in model_name_or_path:
         lm = GPT(model_name_or_path, token=token)
     elif 'claude-' in model_name_or_path:
         lm = Claude(model_name_or_path, token=token)
     elif 'gemini-' in model_name_or_path:
         lm = Gemini(model_name_or_path, token=token)
+    # else:
+    #     # We use ray to manage opensource models here
+    #     num_gpus = model_kwargs.get("num_gpus", 1)
+    #     if use_vllm:
+    #         # need to init as ray actors to load multiple vllm models in one environment (Related issue: https://github.com/vllm-project/vllm/issues/1676)
+    #         # vllm.engine.ray_utils.py will allocate num_gpus for tensor_parallel (num_gpus) > 1 so we don't pass in num_gpus
+    #         options = {"num_gpus": 1} if num_gpus == 1 else {}
+    #         lm = VLLM.options(**options).remote(model_name_or_path, token=token, **model_kwargs)
+    #     else:
+    #         lm = ray.remote(HuggingFace).options(num_gpus=num_gpus).remote(model_name_or_path, token=token, **model_kwargs)
+    #     ray.get(lm.is_initialized.remote()) # init ray model
     else:
-        # We use ray to manage opensource models here
         num_gpus = model_kwargs.get("num_gpus", 1)
         if use_vllm:
-            # need to init as ray actors to load multiple vllm models in one environment (Related issue: https://github.com/vllm-project/vllm/issues/1676)
-            # vllm.engine.ray_utils.py will allocate num_gpus for tensor_parallel (num_gpus) > 1 so we don't pass in num_gpus
-            options = {"num_gpus": 1} if num_gpus == 1 else {}
-            lm = VLLM.options(**options).remote(model_name_or_path, token=token, **model_kwargs)
+            # 直接初始化 VLLM 模型，不使用 Ray
+            lm = VLLM(model_name_or_path, **model_kwargs)
         else:
-            lm = ray.remote(HuggingFace).options(num_gpus=num_gpus).remote(model_name_or_path, token=token, **model_kwargs)
-        ray.get(lm.is_initialized.remote()) # init ray model
+            # 直接初始化 HuggingFace 模型，不使用 Ray
+            lm = HuggingFace(model_name_or_path, device_map = device_map, **model_kwargs)
     return lm

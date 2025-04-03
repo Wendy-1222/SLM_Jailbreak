@@ -83,7 +83,7 @@ class GPTFuzz(SingleBehaviorRedTeamingMethod):
         # self.target_model = LocalVLLM(target_model)
         self.target_model = HuggingfaceLLM(target_model)
         # extra_device = f'cuda:{torch.cuda.device_count()-1}'
-        extra_device = 'cuda:1'
+        extra_device = 'cuda:0'
         # self.roberta_model = RoBERTaPredictor('hubert233/GPTFuzz', device=extra_device)
         self.roberta_model = RoBERTaPredictor('/data2/zwh/models/RoBERTa', device=extra_device)
 

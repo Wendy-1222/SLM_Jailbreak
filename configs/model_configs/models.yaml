@@ -60,7 +60,7 @@ llama2_70b:
 
 llama3_2_1b_instruct:
   model:
-    model_name_or_path: /data2/llama3.2/Llama-3.2-1B-Instruct
+    model_name_or_path: /data2/SLMs/llama3.2/Llama-3.2-1B-Instruct
     use_fast_tokenizer: False
     dtype: bfloat16
     pad_token: <|end_of_text|>
@@ -70,7 +70,7 @@ llama3_2_1b_instruct:
 
 llama3_2_3b_instruct:
   model:
-    model_name_or_path: /data2/llama3.2/Llama-3.2-3B-Instruct
+    model_name_or_path: /data2/SLMs/llama3.2/Llama-3.2-3B-Instruct
     use_fast_tokenizer: False
     dtype: bfloat16
     pad_token: <|end_of_text|>
@@ -80,7 +80,7 @@ llama3_2_3b_instruct:
 
 llama3_1_8b_instruct:
   model:
-    model_name_or_path: /data2/llama3.1/Llama-3.1-8B-Instruct
+    model_name_or_path: /data2/SLMs/llama3.1/Llama-3.1-8B-Instruct
     use_fast_tokenizer: False
     dtype: bfloat16
     pad_token: <|end_of_text|>
@@ -315,31 +315,6 @@ qwen_72b_chat:
   num_gpus: 4
   model_type: open_source
 
-# Qwen base
-qwen_1_8b:
-  model:
-    model_name_or_path: /data2/SLMs/qwen_series/Qwen-1_8B
-    use_fast_tokenizer: True
-    trust_remote_code: True
-    dtype: bfloat16
-    pad_token: <|extra_0|>
-    eos_token: <|im_end|>
-    chat_template: qwen
-  num_gpus: 1
-  model_type: open_source
-
-qwen_7b:
-  model:
-    model_name_or_path: /data2/SLMs/qwen_series/Qwen-7B
-    use_fast_tokenizer: True
-    dtype: bfloat16
-    pad_token: <|extra_0|>
-    eos_token: <|im_end|>
-    trust_remote_code: True
-    chat_template: qwen
-  num_gpus: 1
-  model_type: open_source
-
 # Qwen 1.5
 qwen1_5_0_5b_chat:
   model:
@@ -389,49 +364,13 @@ qwen1_5_7b_chat:
   num_gpus: 1
   model_type: open_source
 
-# Qwen 1.5 base
-qwen1_5_0_5b:
+# Qwen 1.5量化版本
+qwen1_5_0_5b_chat_gptq_int4:
   model:
-    model_name_or_path: /data2/SLMs/qwen_series/Qwen1.5-0.5B
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen1.5-0.5B-Chat-GPTQ-Int4
     use_fast_tokenizer: True
     trust_remote_code: True
-    dtype: bfloat16
-    pad_token: <|endoftext|>
-    eos_token: <|im_end|>
-    chat_template: qwen
-  num_gpus: 1
-  model_type: open_source
-
-qwen1_5_1_8b:
-  model:
-    model_name_or_path: /data2/SLMs/qwen_series/Qwen1.5-1.8B
-    use_fast_tokenizer: True
-    trust_remote_code: True
-    dtype: bfloat16
-    pad_token: <|endoftext|>
-    eos_token: <|im_end|>
-    chat_template: qwen
-  num_gpus: 1
-  model_type: open_source
-
-qwen1_5_4b:
-  model:
-    model_name_or_path: /data2/SLMs/qwen_series/Qwen1.5-4B
-    use_fast_tokenizer: True
-    trust_remote_code: True
-    dtype: bfloat16
-    pad_token: <|endoftext|>
-    eos_token: <|im_end|>
-    chat_template: qwen
-  num_gpus: 1
-  model_type: open_source
-
-qwen1_5_7b:
-  model:
-    model_name_or_path: /data2/SLMs/qwen_series/Qwen1.5-7B
-    use_fast_tokenizer: True
-    trust_remote_code: True
-    dtype: bfloat16
+    dtype: auto
     pad_token: <|endoftext|>
     eos_token: <|im_end|>
     chat_template: qwen

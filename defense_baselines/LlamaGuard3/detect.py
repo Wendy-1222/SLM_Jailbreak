@@ -6,9 +6,11 @@ class Llama3_guard_Predictor():
     def __init__(self, path, device='cuda'):
         self.path = path
         self.device = device
+        print(f"Loading {path}")
         self.model = AutoModelForCausalLM.from_pretrained(
             path,
             torch_dtype=torch.bfloat16,
+            device_map={"": "cuda:0"},
             trust_remote_code=True
         ).to(self.device)
         self.tokenizer = AutoTokenizer.from_pretrained(path)

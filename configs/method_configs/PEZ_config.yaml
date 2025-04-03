@@ -5,7 +5,7 @@ default_method_hyperparameters:
   lr: 0.01
   num_optim_tokens: 20
   targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
-#  targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
+  # targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
 
 # ========== Specific experiment hyperparameters (overrides default_method_hyperparameters) ========== #
 # Experiment names can be used in the save path and to override default hyperparameters.

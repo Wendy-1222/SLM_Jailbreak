@@ -21,6 +21,8 @@ if __name__ == '__main__':
 
     results_summary = {}
 
+    # method_list = ['AutoDAN']
+    
     for method in method_list:
         print("Processing method {}".format(method))
         results_summary[method] = {}

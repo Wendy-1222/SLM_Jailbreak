@@ -4,8 +4,8 @@ default_method_hyperparameters:
   adv_string_init : "! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !"
   use_prefix_cache: True
   num_candidates: 3
-#  targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
-  targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
+ targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
+  # targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
   #== Eval Configs == #
   eval_steps: 2
 

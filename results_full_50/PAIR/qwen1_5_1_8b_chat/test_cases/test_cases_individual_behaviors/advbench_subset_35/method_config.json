@@ -1,0 +1,34 @@
+{
+    "targets_path": "./data/optimizer_targets/extra_targets/advbench_subset_targets.json",
+    "n_streams": 20,
+    "steps": 3,
+    "keep_last_n": 3,
+    "max_retries": 20,
+    "attack_max_n_tokens": 500,
+    "target_max_n_tokens": 150,
+    "judge_max_n_tokens": 5,
+    "attack_temp": 1.0,
+    "attack_model": {
+        "model_name_or_path": "/data/hzq/models/vicuna1.5_13b",
+        "dtype": "bfloat16"
+    },
+    "judge_model": {
+        "model_name_or_path": "/data2/llama3.1/Llama-3.1-8B-Instruct"
+    },
+    "cutoff_score": 10,
+    "target_model": {
+        "model_name_or_path": "/data2/SLMs/qwen_series/Qwen1.5-1.8B-Chat",
+        "use_fast_tokenizer": true,
+        "trust_remote_code": true,
+        "dtype": "bfloat16",
+        "pad_token": "*********xt|>",
+        "eos_token": "******nd|>",
+        "chat_template": "qwen"
+    },
+    "dependencies": {
+        "transformers": "4.45.2",
+        "vllm": "dev",
+        "ray": "2.37.0",
+        "fastchat": "0.2.36"
+    }
+}

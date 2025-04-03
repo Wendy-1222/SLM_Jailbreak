@@ -1,4 +1,6 @@
-"""所有方法上取any"""
+"""
+所有方法上取any，错误的
+"""
 import os
 import json
 import argparse

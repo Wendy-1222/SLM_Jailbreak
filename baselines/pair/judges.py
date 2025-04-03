@@ -57,7 +57,7 @@ class OpenSourceJudge(JudgeBase):
         self.judge_model = judge_model
         self.init_msg = "Rating: [[" # prefix to help judge score in place
 
-        assert isinstance(self.judge_model, ray.actor.ActorHandle), "Expect OpenSourceJudge Model to be a RayActor"
+        # assert isinstance(self.judge_model, ray.actor.ActorHandle), "Expect OpenSourceJudge Model to be a RayActor"
     
     def create_conv(self, full_prompt, behavior, context_str=None):
         system_prompt = get_judge_system_prompt(behavior, context_str)
@@ -73,12 +73,17 @@ class OpenSourceJudge(JudgeBase):
 
     def score(self, attack_prompt_list, target_response_list, behavior, context_str=None):
         convs_list = [self.create_conv(self.get_judge_prompt(prompt, response, context_str), behavior, context_str) for prompt, response in zip(attack_prompt_list, target_response_list)]
-        generate_future = self.judge_model.batched_generate.remote(convs_list, 
-                                                        max_n_tokens = self.max_n_tokens,
-                                                        temperature = self.temperature,
-                                                        # stop_tokens = ["]"]
-                                                        )
-        raw_outputs = ray.get(generate_future)
+        # generate_future = self.judge_model.batched_generate.remote(convs_list, 
+        #                                                 max_n_tokens = self.max_n_tokens,
+        #                                                 temperature = self.temperature,
+        #                                                 # stop_tokens = ["]"]
+        #                                                 )
+        # raw_outputs = ray.get(generate_future)
+        raw_outputs = self.judge_model.batched_generate(convs_list, 
+                                                max_n_tokens = self.max_n_tokens,
+                                                temperature = self.temperature,
+                                                # stop_tokens = ["]"]
+                                                )
         raw_outputs = [self.init_msg + o for o in raw_outputs] # add back prefixes init to process_output
 
         outputs = [self.process_output(raw_output) for raw_output in raw_outputs]
