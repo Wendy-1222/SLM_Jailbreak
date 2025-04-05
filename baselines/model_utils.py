@@ -576,7 +576,8 @@ def load_model_and_tokenizer(
         model = AutoModelForCausalLM.from_pretrained(model_name_or_path, 
             torch_dtype=_STR_DTYPE_TO_TORCH_DTYPE[dtype], 
             # device_map=device_map,
-            device_map={"": available_device},  # 动态设置为可用的GPU
+            # device_map={"": available_device},  # 动态设置为可用的GPU
+            device_map="auto",
             trust_remote_code=trust_remote_code, 
             revision=revision, 
             **model_kwargs).eval()

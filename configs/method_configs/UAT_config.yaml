@@ -4,8 +4,8 @@ default_method_hyperparameters:
   adv_string_init : "! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !"
   use_prefix_cache: True
   num_candidates: 3
- targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
-  # targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
+  # targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
+  targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
   #== Eval Configs == #
   eval_steps: 2
 
@@ -46,3 +46,43 @@ qwen_72b_chat:
   target_model: <model_name1>['model']
   test_cases_batch_size: 1  # to avoid OOM error
   num_test_cases_per_behavior: 1  # 1 is sufficient, and 70b is expensive
+
+gemma-2-2b-it:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+tinyllama-1.1B-chat-v0.1:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+tinyllama-1.1B-chat-v0.2:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+tinyllama-1.1B-chat-v0.3:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+tinyllama-1.1B-chat-v0.4:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+tinyllama-1.1B-chat-v0.5:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+tinyllama-1.1B-chat-v0.6:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+dolly-v1-6b:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+OLMo-7B-SFT-hf:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
+
+OLMo-7B-Instruct-hf:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False 
