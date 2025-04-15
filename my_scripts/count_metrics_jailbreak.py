@@ -8,7 +8,7 @@ from model_and_method_list import method_list, model_list
 parser = argparse.ArgumentParser(description='Count scores for each method and model.')
 
 parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_70', help='Base path of the results directory.')
-parser.add_argument('--question_num', type=int, default=50, help='Number of questions in the test set.')
+parser.add_argument('--question_num', type=int, default=70, help='Number of questions in the test set.')
 
 args = parser.parse_args()
 

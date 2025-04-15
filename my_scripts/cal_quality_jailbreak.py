@@ -313,7 +313,6 @@ metric_functions = {
 }
 args.metric_function = metric_functions[args.metric]
 
-method_list = ['AutoDAN']
 
 # 遍历越狱方法和模型（仅考虑越狱成功的回复）
 for method in method_list:

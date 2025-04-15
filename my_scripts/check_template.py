@@ -75,6 +75,7 @@
 #     {"role": "user", "content": question},
 # ]
 
+# model_list = ["phi_3_mini_4k_instruct"]
 # for model_name in model_list:
 #     model_config = model_configs[model_name]['model']
 
@@ -188,5 +189,3 @@ for test_id, test_cases in json_data.items():
         json.dump(new_json_data, f, indent=4)
 
 print(f"Results saved to {save_path}")
-
-

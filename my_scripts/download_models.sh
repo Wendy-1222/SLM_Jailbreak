@@ -216,9 +216,29 @@
 #     ["Qwen/Qwen1.5-7B-Chat-GPTQ-Int4"]="/data2/SLMs/qwen_series/Qwen1.5-7B-Chat-GPTQ-Int4"
 # )
 
+# declare -A models=(
+#     ["meta-llama/Llama-Guard-3-1B"]="/data2/zwh/models/Llama-Guard-3-1B"
+#     ["meta-llama/Prompt-Guard-86M"]="/data2/zwh/models/Prompt-Guard-86M"
+# )
+
+# declare -A models=(
+#     ["openbmb/MiniCPM-V-2_6"]="/data2/zwh/models/MiniCPM-V-2_6"
+#     ["openbmb/MiniCPM-V-2_6-int4"]="/data2/zwh/models/MiniCPM-V-2_6-int4"
+# )
+
 declare -A models=(
-    ["meta-llama/Llama-Guard-3-1B"]="/data2/zwh/models/Llama-Guard-3-1B"
-    ["meta-llama/Prompt-Guard-86M"]="/data2/zwh/models/Prompt-Guard-86M"
+    ["Qwen/Qwen2-VL-2B-Instruct"]="/data2/zwh/models/Qwen2-VL-2B-Instruct"
+    ["Qwen/Qwen2-VL-2B-Instruct-AWQ"]="/data2/zwh/models/Qwen2-VL-2B-Instruct-AWQ"
+    ["Qwen/Qwen2-VL-2B-Instruct-GPTQ-Int4"]="/data2/zwh/models/Qwen2-VL-2B-Instruct-GPTQ-Int4"
+    ["Qwen/Qwen2-VL-2B-Instruct-GPTQ-Int8"]="/data2/zwh/models/Qwen2-VL-2B-Instruct-GPTQ-Int8"
+    ["Qwen/Qwen2-VL-7B-Instruct"]="/data2/zwh/models/Qwen2-VL-7B-Instruct"
+    ["Qwen/Qwen2-VL-7B-Instruct-AWQ"]="/data2/zwh/models/Qwen2-VL-7B-Instruct-AWQ"
+    ["Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int4"]="/data2/zwh/models/Qwen2-VL-7B-Instruct-GPTQ-Int4"
+    ["Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int8"]="/data2/zwh/models/Qwen2-VL-7B-Instruct-GPTQ-Int8"
+    ["Qwen/Qwen2.5-VL-3B-Instruct"]="/data2/zwh/models/Qwen2.5-VL-3B-Instruct"
+    ["Qwen/Qwen2.5-VL-3B-Instruct-AWQ"]="/data2/zwh/models/Qwen2.5-VL-3B-Instruct-AWQ"
+    ["Qwen/Qwen2.5-VL-7B-Instruct"]="/data2/zwh/models/Qwen2.5-VL-7B-Instruct"
+    ["Qwen/Qwen2.5-VL-7B-Instruct-AWQ"]="/data2/zwh/models/Qwen2.5-VL-7B-Instruct-AWQ"
 )
 
 

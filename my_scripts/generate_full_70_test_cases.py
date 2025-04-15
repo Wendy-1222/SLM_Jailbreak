@@ -162,7 +162,7 @@ def process_results(method, model, parent_path, defender_name='default', classif
     # print(f"Done processing {method} {model} results")
         
 
-
+# method_list = ['HumanJailbreaks']
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--classifier_name', type=str, default='default', help='Classifier name')

@@ -156,10 +156,6 @@
             "total_cases": 70,
             "Average ASR": 0.1
         },
-        "recurrentgemma-2b-it": {
-            "total_cases": 70,
-            "Average ASR": 0.129
-        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "Average ASR": 0.157
@@ -410,15 +406,14 @@
             "total_cases": 70,
             "Average ASR": 0.269
         },
-        "recurrentgemma-2b-it": {
-            "total_cases": 70,
-            "Average ASR": 0.031
-        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "Average ASR": 0.269
         },
-        "minicpm-S-1B-sft": {},
+        "minicpm-S-1B-sft": {
+            "total_cases": 70,
+            "Average ASR": 0.311
+        },
         "minicpm-2B-sft-bf16": {
             "total_cases": 70,
             "Average ASR": 0.263
@@ -657,10 +652,6 @@
         "gemma-2-2b-it": {
             "total_cases": 70,
             "Average ASR": 0.714
-        },
-        "recurrentgemma-2b-it": {
-            "total_cases": 70,
-            "Average ASR": 0.6
         },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
@@ -912,10 +903,6 @@
             "total_cases": 70,
             "Average ASR": 0.271
         },
-        "recurrentgemma-2b-it": {
-            "total_cases": 70,
-            "Average ASR": 0.286
-        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "Average ASR": 0.34
@@ -1162,8 +1149,10 @@
             "total_cases": 70,
             "Average ASR": 0.186
         },
-        "gemma-2-2b-it": {},
-        "recurrentgemma-2b-it": {},
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.3
+        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "Average ASR": 0.143
@@ -1410,8 +1399,10 @@
             "total_cases": 70,
             "Average ASR": 0.1
         },
-        "gemma-2-2b-it": {},
-        "recurrentgemma-2b-it": {},
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.143
+        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "Average ASR": 0.143
@@ -1661,10 +1652,6 @@
         "gemma-2-2b-it": {
             "total_cases": 70,
             "Average ASR": 0.12
-        },
-        "recurrentgemma-2b-it": {
-            "total_cases": 70,
-            "Average ASR": 0.069
         },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
@@ -1916,10 +1903,6 @@
             "total_cases": 70,
             "Average ASR": 0.129
         },
-        "recurrentgemma-2b-it": {
-            "total_cases": 70,
-            "Average ASR": 0.074
-        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "Average ASR": 0.151
@@ -2106,12 +2089,30 @@
             "total_cases": 70,
             "Average ASR": 0.157
         },
-        "tinyllama-1.1B-chat-v0.1": {},
-        "tinyllama-1.1B-chat-v0.2": {},
-        "tinyllama-1.1B-chat-v0.3": {},
-        "tinyllama-1.1B-chat-v0.4": {},
-        "tinyllama-1.1B-chat-v0.5": {},
-        "tinyllama-1.1B-chat-v0.6": {},
+        "tinyllama-1.1B-chat-v0.1": {
+            "total_cases": 70,
+            "Average ASR": 0.486
+        },
+        "tinyllama-1.1B-chat-v0.2": {
+            "total_cases": 70,
+            "Average ASR": 0.129
+        },
+        "tinyllama-1.1B-chat-v0.3": {
+            "total_cases": 70,
+            "Average ASR": 0.443
+        },
+        "tinyllama-1.1B-chat-v0.4": {
+            "total_cases": 70,
+            "Average ASR": 0.486
+        },
+        "tinyllama-1.1B-chat-v0.5": {
+            "total_cases": 70,
+            "Average ASR": 0.329
+        },
+        "tinyllama-1.1B-chat-v0.6": {
+            "total_cases": 70,
+            "Average ASR": 0.729
+        },
         "tinyllama-1.1B-chat-v1.0": {
             "total_cases": 70,
             "Average ASR": 0.686
@@ -2148,8 +2149,10 @@
             "total_cases": 70,
             "Average ASR": 0.086
         },
-        "gemma-2-2b-it": {},
-        "recurrentgemma-2b-it": {},
+        "gemma-2-2b-it": {
+            "total_cases": 70,
+            "Average ASR": 0.214
+        },
         "minicpm-1B-sft-bf16": {
             "total_cases": 70,
             "Average ASR": 0.171
@@ -2222,7 +2225,10 @@
             "total_cases": 70,
             "Average ASR": 0.529
         },
-        "dolly-v1-6b": {},
+        "dolly-v1-6b": {
+            "total_cases": 70,
+            "Average ASR": 0.4
+        },
         "dolly-v2-3b": {
             "total_cases": 70,
             "Average ASR": 0.514
@@ -2231,7 +2237,13 @@
             "total_cases": 70,
             "Average ASR": 0.629
         },
-        "OLMo-7B-SFT-hf": {},
-        "OLMo-7B-Instruct-hf": {}
+        "OLMo-7B-SFT-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.329
+        },
+        "OLMo-7B-Instruct-hf": {
+            "total_cases": 70,
+            "Average ASR": 0.543
+        }
     }
 }
