@@ -190,6 +190,12 @@ QWEN2_5_CHAT_PROMPT = {
     "ICD_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
 }
 
+QWEN3_CHAT_PROMPT = {
+    "description": "Template used by Qwen-3 models",
+    "prompt": "<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "ICD_prompt": "<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
+}
+
 ZEPHYR_ROBUST_PROMPT = {
     "description": "",
     "prompt": "<|user|>\n{instruction}</s>\n<|assistant|>\n",
@@ -409,6 +415,8 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
         TEMPLATE = QWEN_CHAT_PROMPT
     elif chat_template == "qwen2_5":
         TEMPLATE = QWEN2_5_CHAT_PROMPT
+    elif chat_template == "qwen3":
+        TEMPLATE = QWEN3_CHAT_PROMPT
     elif chat_template == "zephyr_7b_robust":
         TEMPLATE = ZEPHYR_ROBUST_PROMPT
     elif chat_template == "pythia":

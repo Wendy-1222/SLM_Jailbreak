@@ -463,6 +463,43 @@ qwen2_5_7b_instruct:
   num_gpus: 1
   model_type: open_source
 
+# Qwen 3
+qwen3_0_6b:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen3-0.6B
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen3
+  num_gpus: 1
+  model_type: open_source
+
+qwen3_1_7b:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen3-1.7B
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen3
+  num_gpus: 1
+  model_type: open_source
+
+qwen3_4b:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen3-4B
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen3
+  num_gpus: 1
+  model_type: open_source
+
 
 # Pythia
 pythia_14m:

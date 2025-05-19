@@ -21,6 +21,7 @@ olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 llama_3_2_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
 deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B,DeepSeek-R1-Distill-Qwen-7B"
 # deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B"
+qwen3_series = "qwen3_0_6b,qwen3_1_7b,qwen3_4b"
 
 all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series + ',' + llama_3_2_series + ',' +  deepseek_r1_series
 models_7B = "DeepSeek-R1-Distill-Qwen-7B,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,gemma-7b-it,gemma-1.1-7b-it,dolly-v1-6b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
@@ -40,9 +41,9 @@ all_slms_no_large = ','.join(all_slms_list_no_large)
 # # 忽略了目前template有点问题的模型
 # all_slms = qwen_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + h2o_danube_series + ',' + fox_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 
-# methods="DirectRequest,PAP-top5,HumanJailbreaks,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
-methods = "AutoDAN"
-models = all_slms
+methods="DirectRequest,HumanJailbreaks,AutoDAN,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
+# methods = "AutoDAN"
+models = qwen3_series
 defender = "self-reminder"
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"

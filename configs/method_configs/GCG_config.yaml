@@ -5,9 +5,9 @@ default_method_hyperparameters:
   allow_non_ascii: False
   search_width: 512 # Number of candidates searched at each step
   use_prefix_cache: True
-  # targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
+  targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
   # targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
-  targets_path: ./data/optimizer_targets/extra_targets/advbench_targets.json
+  # targets_path: ./data/optimizer_targets/extra_targets/advbench_targets.json
   #== Eval Configs == #
   eval_steps: 50
   # if early_stopping: stop when loss <= early_stopping_min_loss (every step)
@@ -70,6 +70,18 @@ qwen_14b_chat:
   use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
 
 qwen_72b_chat:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen3_0_6b:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen3_1_7b:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen3_4b:
   target_model: <model_name1>['model']
   use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
 

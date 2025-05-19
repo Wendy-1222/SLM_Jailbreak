@@ -520,7 +520,46 @@ qwen2_5_7b_instruct:
     developer_name: Alibaba Cloud
     chat_template: <model_name1>['model']['chat_template']
     num_gpus: 1
-  
+
+# Qwen 3
+qwen3_0_6b:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: Qwen
+    developer_name: Alibaba Cloud
+    chat_template: <model_name1>['model']['chat_template']
+    num_gpus: 1
+
+qwen3_1_7b:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: Qwen
+    developer_name: Alibaba Cloud
+    chat_template: <model_name1>['model']['chat_template']
+    num_gpus: 1
+
+qwen3_4b:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: bfloat16
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: Qwen
+    developer_name: Alibaba Cloud
+    chat_template: <model_name1>['model']['chat_template']
+    num_gpus: 1
 
 # Phi
 phi_1_5:
