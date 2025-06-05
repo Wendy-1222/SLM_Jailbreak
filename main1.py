@@ -41,12 +41,16 @@ all_slms_no_large = ','.join(all_slms_list_no_large)
 # # 忽略了目前template有点问题的模型
 # all_slms = qwen_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + h2o_danube_series + ',' + fox_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 
-methods="DirectRequest,HumanJailbreaks,AutoDAN,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
-# methods = "AutoDAN"
-models = qwen3_series
+qwen2_5_quantized_models_int4 = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4"
+qwen2_5_quantized_models_int8 = "qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8"
+qwen2_5_awq_models = "qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
+
+# methods="DirectRequest,HumanJailbreaks,AutoDAN,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
+methods = "AutoDAN,GCG,AutoPrompt"
+models = qwen2_5_quantized_models_int4 + ',' + qwen2_5_quantized_models_int8 + ',' + qwen2_5_awq_models
 defender = "self-reminder"
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
-# behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+# behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="4_and_5"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
@@ -54,6 +58,6 @@ mode="local"
 cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
 
 # 注意defender和incremental_update，还有save_dir
-# os.system(f"python ./scripts/run_pipeline.py --defender {defender} --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
-os.system(f"python ./scripts/run_pipeline.py --base_save_dir ./results_full_50 --defender {defender} --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+os.system(f"python ./scripts/run_pipeline.py --defender {defender} --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+# os.system(f"python ./scripts/run_pipeline.py --base_save_dir ./results_full_50 --defender {defender} --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
 

@@ -4,8 +4,8 @@ default_method_hyperparameters:
   adv_string_init : "! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !"
   use_prefix_cache: True
   num_candidates: 3
-  targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
-  # targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
+  # targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
+  targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
   #== Eval Configs == #
   eval_steps: 2
 
@@ -46,6 +46,58 @@ qwen_72b_chat:
   target_model: <model_name1>['model']
   test_cases_batch_size: 1  # to avoid OOM error
   num_test_cases_per_behavior: 1  # 1 is sufficient, and 70b is expensive
+
+
+
+qwen2_5_0_5b_instruct_awq:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_0_5b_instruct_gptq_int4:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_0_5b_instruct_gptq_int8:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_1_5b_instruct_awq:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_1_5b_instruct_gptq_int4:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_1_5b_instruct_gptq_int8:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_3b_instruct_awq:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_3b_instruct_gptq_int4:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_3b_instruct_gptq_int8:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_7b_instruct_awq:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_7b_instruct_gptq_int4:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+qwen2_5_7b_instruct_gptq_int8:
+  target_model: <model_name1>['model']
+  use_prefix_cache: False  # Unknown error causes issues when using KV cache during optimization with Qwen
+
+
 
 qwen3_0_6b:
   target_model: <model_name1>['model']

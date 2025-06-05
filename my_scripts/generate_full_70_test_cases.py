@@ -162,15 +162,17 @@ def process_results(method, model, parent_path, defender_name='default', classif
     # print(f"Done processing {method} {model} results")
         
 
-# method_list = ['HumanJailbreaks']
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--classifier_name', type=str, default='default', help='Classifier name')
     parser.add_argument('--defender', type=str, default='default', help='Defender name')
     args = parser.parse_args()
 
-    # method_list = ["GBDA", "UAT"]
-    # model_list = ["llama2_7b", "vicuna_7b_v1_5", "llama3_1_8b_instruct", "DeepSeek-R1-Distill-Llama-8B"]
+    # qwen2_5_quantized_series = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4,qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8,qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
+    # qwen3_series = "qwen3_0_6b,qwen3_1_7b,qwen3_4b"
+    # qwen2_5_quantized_series = qwen2_5_quantized_series.split(',')  # 转换成列表
+    # qwen3_series = qwen3_series.split(',')  # 转换成列表
+    # model_list = qwen2_5_quantized_series + qwen3_series  # 添加到模型列表中
     
     for method in method_list:
         for model in model_list:

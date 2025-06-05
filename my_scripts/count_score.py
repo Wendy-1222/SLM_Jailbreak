@@ -125,8 +125,6 @@ if __name__ == '__main__':
 
     results_summary = {}
 
-    # model_list = ["llama2_7b", "vicuna_7b_v1_5", "llama3_1_8b_instruct", "DeepSeek-R1-Distill-Llama-8B"]
-
     for method in method_list:
         print("Processing method {}".format(method))
         results_summary[method] = {}
@@ -192,7 +190,7 @@ if __name__ == '__main__':
                 results_summary[method][model]['total_cases'] = total_cases
             results_summary[method][model]['Average ASR'] = round(np.mean(success_rates),3)
 
-    output_file = os.path.join(base_path, 'results_summary_full_70_v2.json')
+    output_file = os.path.join(base_path, 'results_summary_full_70_v3.json')
     with open(output_file, 'w') as json_file:
         json.dump(results_summary, json_file, indent=4)
 

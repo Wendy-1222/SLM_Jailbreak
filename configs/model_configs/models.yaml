@@ -463,6 +463,151 @@ qwen2_5_7b_instruct:
   num_gpus: 1
   model_type: open_source
 
+# Qwen 2.5量化版本
+qwen2_5_0_5b_instruct_awq:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-0.5B-Instruct-AWQ
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_0_5b_instruct_gptq_int4:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-0.5B-Instruct-GPTQ-Int4
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_0_5b_instruct_gptq_int8:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-0.5B-Instruct-GPTQ-Int8
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_1_5b_instruct_awq:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-1.5B-Instruct-AWQ
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_1_5b_instruct_gptq_int4:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-1.5B-Instruct-GPTQ-Int4
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_1_5b_instruct_gptq_int8:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-1.5B-Instruct-GPTQ-Int8
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_3b_instruct_awq:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-3B-Instruct-AWQ
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_3b_instruct_gptq_int4:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-3B-Instruct-GPTQ-Int4
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_3b_instruct_gptq_int8:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-3B-Instruct-GPTQ-Int8
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_7b_instruct_awq:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-7B-Instruct-AWQ
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_7b_instruct_gptq_int4:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-7B-Instruct-GPTQ-Int4
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
+qwen2_5_7b_instruct_gptq_int8:
+  model:
+    model_name_or_path: /data2/SLMs/qwen_series/Qwen2.5-7B-Instruct-GPTQ-Int8
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    chat_template: qwen2_5
+  num_gpus: 1
+  model_type: open_source
+
 # Qwen 3
 qwen3_0_6b:
   model:
@@ -628,7 +773,7 @@ phi_3_mini_4k_instruct:
   model:
     model_name_or_path: /data2/SLMs/phi_series/Phi-3-mini-4k-instruct
     use_fast_tokenizer: False
-    trust_remote_code: True
+    trust_remote_code: False
     dtype: bfloat16
     pad_token: <|endoftext|>
     eos_token: <|endoftext|>
@@ -640,7 +785,7 @@ phi_3_mini_128k_instruct:
   model:
     model_name_or_path: /data2/SLMs/phi_series/Phi-3-mini-128k-instruct
     use_fast_tokenizer: False
-    trust_remote_code: True
+    trust_remote_code: False
     dtype: bfloat16
     pad_token: <|endoftext|>
     eos_token: <|endoftext|>
@@ -676,7 +821,7 @@ phi_3_5_mini_instruct:
   model:
     model_name_or_path: /data2/SLMs/phi_series/Phi-3.5-mini-instruct
     use_fast_tokenizer: False
-    trust_remote_code: True
+    trust_remote_code: False
     dtype: bfloat16
     pad_token: <|endoftext|>
     eos_token: <|endoftext|>

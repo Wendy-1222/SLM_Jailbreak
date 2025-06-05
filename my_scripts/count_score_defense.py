@@ -20,7 +20,7 @@ if __name__ == '__main__':
     question_num = args.question_num
 
     results_summary = {}
-
+    
     for method in method_list:
         print("Processing method {}".format(method))
         results_summary[method] = {}

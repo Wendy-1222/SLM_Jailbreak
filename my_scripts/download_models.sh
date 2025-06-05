@@ -241,10 +241,25 @@
 #     ["Qwen/Qwen2.5-VL-7B-Instruct-AWQ"]="/data2/zwh/models/Qwen2.5-VL-7B-Instruct-AWQ"
 # )
 
+# declare -A models=(
+#     ["Qwen/Qwen3-0.6B"]="/data2/SLMs/qwen_series/Qwen3-0.6B"
+#     ["Qwen/Qwen3-1.7B"]="/data2/SLMs/qwen_series/Qwen3-1.7B"
+#     ["Qwen/Qwen3-4B"]="/data2/SLMs/qwen_series/Qwen3-4B"
+# )
+
 declare -A models=(
-    ["Qwen/Qwen3-0.6B"]="/data2/SLMs/qwen_series/Qwen3-0.6B"
-    ["Qwen/Qwen3-1.7B"]="/data2/SLMs/qwen_series/Qwen3-1.7B"
-    ["Qwen/Qwen3-4B"]="/data2/SLMs/qwen_series/Qwen3-4B"
+    ["Qwen/Qwen2.5-0.5B-Instruct-AWQ"]="/data2/SLMs/qwen_series/Qwen2.5-0.5B-Instruct-AWQ"
+    ["Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int4"]="/data2/SLMs/qwen_series/Qwen2.5-0.5B-Instruct-GPTQ-Int4"
+    ["Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int8"]="/data2/SLMs/qwen_series/Qwen2.5-0.5B-Instruct-GPTQ-Int8"
+    ["Qwen/Qwen2.5-1.5B-Instruct-AWQ"]="/data2/SLMs/qwen_series/Qwen2.5-1.5B-Instruct-AWQ"
+    ["Qwen/Qwen2.5-1.5B-Instruct-GPTQ-Int4"]="/data2/SLMs/qwen_series/Qwen2.5-1.5B-Instruct-GPTQ-Int4"
+    ["Qwen/Qwen2.5-1.5B-Instruct-GPTQ-Int8"]="/data2/SLMs/qwen_series/Qwen2.5-1.5B-Instruct-GPTQ-Int8"
+    ["Qwen/Qwen2.5-3B-Instruct-AWQ"]="/data2/SLMs/qwen_series/Qwen2.5-3B-Instruct-AWQ"
+    ["Qwen/Qwen2.5-3B-Instruct-GPTQ-Int4"]="/data2/SLMs/qwen_series/Qwen2.5-3B-Instruct-GPTQ-Int4"
+    ["Qwen/Qwen2.5-3B-Instruct-GPTQ-Int8"]="/data2/SLMs/qwen_series/Qwen2.5-3B-Instruct-GPTQ-Int8"
+    ["Qwen/Qwen2.5-7B-Instruct-AWQ"]="/data2/SLMs/qwen_series/Qwen2.5-7B-Instruct-AWQ"
+    ["Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4"]="/data2/SLMs/qwen_series/Qwen2.5-7B-Instruct-GPTQ-Int4"
+    ["Qwen/Qwen2.5-7B-Instruct-GPTQ-Int8"]="/data2/SLMs/qwen_series/Qwen2.5-7B-Instruct-GPTQ-Int8"
 )
 
 

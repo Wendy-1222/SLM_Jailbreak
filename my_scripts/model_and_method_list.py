@@ -21,6 +21,8 @@ smollm_series = "smollm-135M-instruct,smollm-360M-instruct,smollm-1.7B-instruct,
 # dclm_series = "DCLM-1B-IT"
 dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
+qwen2_5_quantized_series = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4,qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8,qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
+qwen3_series = "qwen3_0_6b,qwen3_1_7b,qwen3_4b"
 
 # 转换成列表
 llama_32_series = llama_32_series.split(',')
@@ -40,6 +42,8 @@ smollm_series = smollm_series.split(',')
 # dclm_series = dclm_series.split(',')
 dolly_series = dolly_series.split(',')
 olmo_series = olmo_series.split(',')
-# model_list = ['llama2_7b', 'vicuna_7b_v1_5']
-# model_list += qwen_series + pythia_series + phi_series + stablelm_series + tiny_llama_series + mobile_llama_series + mobi_llama_series + gemma_series + minicpm_series + h2o_danube_series + fox_series + smollm_series + dclm_series + dolly_series + olmo_series
-model_list = llama_32_series + deepseek_r1_series + qwen_series + phi_series + stablelm_series + tiny_llama_series + mobile_llama_series + mobi_llama_series + gemma_series + minicpm_series + h2o_danube_series + fox_series + smollm_series + dolly_series + olmo_series
+qwen2_5_quantized_series = qwen2_5_quantized_series.split(',')
+qwen3_series = qwen3_series.split(',')
+
+model_list = ['llama2_7b', 'vicuna_7b_v1_5']
+model_list += llama_32_series + deepseek_r1_series + qwen_series + phi_series + stablelm_series + tiny_llama_series + mobile_llama_series + mobi_llama_series + gemma_series + minicpm_series + h2o_danube_series + fox_series + smollm_series + dolly_series + olmo_series + qwen2_5_quantized_series + qwen3_series

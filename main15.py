@@ -41,10 +41,14 @@ all_slms_no_large = ','.join(all_slms_list_no_large)
 # # 忽略了目前template有点问题的模型
 # all_slms = qwen_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + h2o_danube_series + ',' + fox_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
 
-methods="DirectRequest,HumanJailbreaks,AutoDAN,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
-# methods = "AutoDAN"
-models = qwen3_series
-defender = "llama_guard_3_1B"
+qwen2_5_quantized_models_int4 = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4"
+qwen2_5_quantized_models_int8 = "qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8"
+qwen2_5_awq_models = "qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
+
+# methods="DirectRequest,HumanJailbreaks,AutoDAN,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
+methods = "UAT"
+models = "qwen2_5_7b_instruct_awq"
+defender = "self-reminder"
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
 step="4_and_5"  # or "1", "1.5", "2", "3", "2_and_3"

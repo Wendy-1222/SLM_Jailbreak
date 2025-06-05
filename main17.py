@@ -21,6 +21,7 @@ olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
 llama_3_2_series = "llama3_2_1b_instruct,llama3_2_3b_instruct"
 deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B,DeepSeek-R1-Distill-Qwen-7B"
 # deepseek_r1_series = "DeepSeek-R1-Distill-Qwen-1.5B"
+qwen3_series = "qwen3_0_6b,qwen3_1_7b,qwen3_4b"
 
 all_slms = other_series + ',' + qwen_series + ',' + phi_series + ',' + stablelm_series + ',' + tiny_llama_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + minicpm_series + ',' + h2o_danube_series + ',' + fox_series + ',' + smollm_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series + ',' + llama_3_2_series + ',' +  deepseek_r1_series
 models_7B = "DeepSeek-R1-Distill-Qwen-7B,qwen_7b_chat,qwen1_5_7b_chat,qwen2_7b_instruct,qwen2_5_7b_instruct,gemma-7b-it,gemma-1.1-7b-it,dolly-v1-6b,dolly-v2-7b,OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
@@ -31,21 +32,32 @@ models_list_4B = models_4B.split(',')
 all_slms_list_no_large = [item for item in all_slms_list if (item not in models_list_7B and item not in models_list_4B)]
 all_slms_no_large = ','.join(all_slms_list_no_large)
 
-mid_index = len(all_slms_list_no_large) // 2
-first_half = all_slms_list_no_large[:mid_index]
-second_half = all_slms_list_no_large[mid_index:]
-first_half = ','.join(first_half)
-second_half = ','.join(second_half)
+# mid_index = len(all_slms_list_no_large) // 2
+# first_half = all_slms_list_no_large[:mid_index]
+# second_half = all_slms_list_no_large[mid_index:]
+# first_half = ','.join(first_half)
+# second_half = ','.join(second_half)
 
-methods = "GCG"
-models = second_half
-behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors.csv"
-step="all"  # or "1", "1.5", "2", "3", "2_and_3"
+# # 忽略了目前template有点问题的模型
+# all_slms = qwen_series + ',' + stablelm_series + ',' + mobile_llama_series + ',' + mobi_llama_series + ',' + gemma_series + ',' + h2o_danube_series + ',' + fox_series + ',' + dolly_series + ',' + olmo_series + ',' + dclm_series
+
+qwen2_5_quantized_models_int4 = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4"
+qwen2_5_quantized_models_int8 = "qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8"
+qwen2_5_awq_models = "qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
+
+# methods="DirectRequest,HumanJailbreaks,AutoDAN,PAP-top5,GCG,AutoPrompt,PEZ,UAT,GBDA"  # or "all" to use all methods
+methods = "UAT"
+models = "qwen2_5_7b_instruct_awq"
+defender = "llama_guard_3"
+behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
+# behaviors_path = "./data/behavior_datasets/extra_behavior_datasets/adjusted_advbench_added_behaviors.csv"
+step="4_and_5"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
 cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
 
 # 注意defender和incremental_update，还有save_dir
-os.system(f"python ./scripts/run_pipeline.py --base_save_dir ./results_full_520 --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+# os.system(f"python ./scripts/run_pipeline.py --defender {defender} --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+os.system(f"python ./scripts/run_pipeline.py --base_save_dir ./results_full_50 --defender {defender} --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
 

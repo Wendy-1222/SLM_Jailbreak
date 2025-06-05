@@ -1,8 +1,12 @@
 import os
 
-methods = "DirectRequest,HumanJailbreaks,PAP-top5"
-models = "qwen1_5_0_5b_chat_gptq_int4"
-# step="4"
+qwen2_5_quantized_models_int4 = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4"
+qwen2_5_quantized_models_int8 = "qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8"
+qwen2_5_awq_models = "qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
+
+# methods = "DirectRequest,HumanJailbreaks,PAP-top5"
+methods = "HumanJailbreaks"
+models = "dolly-v1-6b"
 step="2_and_3"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"

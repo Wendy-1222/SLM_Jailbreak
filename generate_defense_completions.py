@@ -282,8 +282,8 @@ def _vllm_generate(model, test_cases, template, **generation_kwargs):
     return generations
 
 def _hf_generate_with_batching(model, tokenizer, test_cases, template, **generation_kwargs):
-    # @find_executable_batch_size(starting_batch_size=len(test_cases))
-    @find_executable_batch_size(starting_batch_size=1)
+    @find_executable_batch_size(starting_batch_size=len(test_cases))
+    # @find_executable_batch_size(starting_batch_size=4)
     def inner_generation_loop(batch_size):
         nonlocal model, tokenizer, test_cases, template, generation_kwargs
         generations = []

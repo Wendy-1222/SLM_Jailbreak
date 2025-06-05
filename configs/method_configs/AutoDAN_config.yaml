@@ -274,6 +274,164 @@ qwen_72b_chat:
     chat_template: <model_name1>['model']['chat_template']
   forward_batch_size: 8
 
+
+qwen2_5_0_5b_instruct_awq:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_0_5b_instruct_gptq_int4:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_0_5b_instruct_gptq_int8:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_1_5b_instruct_awq:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_1_5b_instruct_gptq_int4:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_1_5b_instruct_gptq_int8:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_3b_instruct_awq:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_3b_instruct_gptq_int4:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_3b_instruct_gptq_int8:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_7b_instruct_awq:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_7b_instruct_gptq_int4:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+qwen2_5_7b_instruct_gptq_int8:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: True
+    trust_remote_code: True
+    dtype: auto
+    pad_token: <|endoftext|>
+    eos_token: <|im_end|>
+    model_short_name: QianWen
+    developer_name: Alibaba Cloud
+    num_gpus: 1
+    chat_template: <model_name1>['model']['chat_template']
+
+
 # llama 3.1 series
 llama3_1_8b_instruct:
   target_model:

@@ -150,9 +150,9 @@ def delete_files_and_dirs_with_suffix(parent_dir, suffix="None"):
 
 
 if __name__ == "__main__":
-    parent_directory = "/data2/zwh/HarmBench/results_full_70"
-    delete_files_and_dirs_with_prefix(parent_directory, "metrics")
-    # delete_files_and_dirs_with_suffix(parent_directory, "_full_70.json")
+    parent_directory = "/data2/zwh/HarmBench/results_full_50"
+    # delete_files_and_dirs_with_prefix(parent_directory, "metrics")
+    delete_files_and_dirs_with_suffix(parent_directory, "results_llama3_2_8b")
     print("done")
 
 

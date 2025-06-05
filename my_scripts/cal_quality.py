@@ -319,6 +319,12 @@ args.metric_function = metric_functions[args.metric]
 
 empty_run_count_dict = {}
 
+# qwen2_5_quantized_series = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4,qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8,qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
+# qwen3_series = "qwen3_0_6b,qwen3_1_7b,qwen3_4b"
+# qwen2_5_quantized_series = qwen2_5_quantized_series.split(',')  # 转换成列表
+# qwen3_series = qwen3_series.split(',')  # 转换成列表
+# model_list = qwen2_5_quantized_series + qwen3_series  # 添加到模型列表中
+
 # 遍历越狱方法和模型（考虑所有回复，不考虑越狱是否成功）
 for method in method_list:
     print(f"Processing method: {method}")

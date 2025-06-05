@@ -568,36 +568,30 @@ def load_model_and_tokenizer(
     if available_device is None:
         raise RuntimeError("No available GPU found.")
 
-    if 'int4' in model_name_or_path:
-        # model = AutoGPTQForCausalLM.from_quantized(model_name_or_path,
-        #     torch_dtype=torch.bfloat16,
-        #     device_map={"": available_device},
-        #     trust_remote_code=True,
-        #     disable_exllama=True,
-        #     disable_exllamav2=True
-        # )
-        model = GPTQModel.load(model_name_or_path)
-        tokenizer = AutoTokenizer.from_pretrained(model_name_or_path,
-            trust_remote_code=True
-        )
-    else:
-        model = AutoModelForCausalLM.from_pretrained(model_name_or_path, 
-            torch_dtype=_STR_DTYPE_TO_TORCH_DTYPE[dtype], 
-            # device_map=device_map,
-            # device_map={"": available_device},  # 动态设置为可用的GPU
-            device_map="auto",
-            trust_remote_code=trust_remote_code, 
-            revision=revision, 
-            **model_kwargs).eval()
-    
-        # Init Tokenizer
-        tokenizer = AutoTokenizer.from_pretrained(
-            model_name_or_path,
-            use_fast=use_fast_tokenizer,
-            trust_remote_code=trust_remote_code,
-            legacy=legacy,
-            padding_side=padding_side,
-        )
+    # if 'awq' or 'gptq' in model_name_or_path.lower():
+    #     print("\n\nQuantized model\n\n")
+    #     model = GPTQModel.load(model_name_or_path)
+    #     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path,
+    #         trust_remote_code=True
+    #     )
+    # else:
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, 
+        torch_dtype=_STR_DTYPE_TO_TORCH_DTYPE[dtype], 
+        # device_map=device_map,
+        # device_map={"": available_device},  # 动态设置为可用的GPU
+        device_map="auto",
+        trust_remote_code=trust_remote_code, 
+        revision=revision, 
+        **model_kwargs).eval()
+
+    # Init Tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name_or_path,
+        use_fast=use_fast_tokenizer,
+        trust_remote_code=trust_remote_code,
+        legacy=legacy,
+        padding_side=padding_side,
+    )
 
     # print('='*500)
     # print(tokenizer)
