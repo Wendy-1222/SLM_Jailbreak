@@ -103,7 +103,7 @@ def process_project(completions_path):
 base_path = '/data2/zwh/HarmBench/results/'
 results_summary = {}
 
-method_list = ["GCG"]
+method_list = ["UAT"]
 for method in method_list:
     print("Processing method {}".format(method))
     results_summary[method] = {}
