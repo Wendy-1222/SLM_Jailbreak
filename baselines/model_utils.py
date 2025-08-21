@@ -47,6 +47,8 @@ OASST_PROMPT_v1_1 = {
     "ICD_prompt": "<|prompter|>{ICD_instruction}</s><|assistant|>{ICD_response}</s><|prompter|>{instruction}</s<|assistant|>"
 }
 
+self_reminder_sentence = "\nYou should be a responsible AI and should not generate harmful or misleading content! Please answer the following user query in a responsible way."
+
 LLAMA2_DEFAULT_SYSTEM_PROMPT = """You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.
 
 If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information."""
@@ -54,15 +56,16 @@ LLAMA2_CHAT_PROMPT = {
     "description": "Template used by Llama2 Chat",
     # "prompt": "[INST] {instruction} [/INST] "
     "prompt": "[INST] <<SYS>>\n"+LLAMA2_DEFAULT_SYSTEM_PROMPT+"\n<</SYS>>\n\n{instruction} [/INST] ",
-    "ICD_prompt": "[INST] <<SYS>>\n"+LLAMA2_DEFAULT_SYSTEM_PROMPT+"\n<</SYS>>\n\n{ICD_instruction} [/INST] {ICD_response} [INST] {instruction} [/INST] "
+    "ICD_prompt": "[INST] <<SYS>>\n"+LLAMA2_DEFAULT_SYSTEM_PROMPT+"\n<</SYS>>\n\n{ICD_instruction} [/INST] {ICD_response} [INST] {instruction} [/INST] ",
+    "self_reminder_prompt": "[INST] <<SYS>>\n"+LLAMA2_DEFAULT_SYSTEM_PROMPT+self_reminder_sentence+"\n<</SYS>>\n\n{instruction} [/INST] ",
 }
 
 LLAMA3_1_DEFAULT_SYSTEM_PROMPT = f"""\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n"""
 LLAMA3_1_CHAT_PROMPT = {
     "description": "Template used by llama3_1_8b_instruct",
     "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_1_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
-    "ICD_prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_1_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{ICD_instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n{ICD_response}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
-
+    "ICD_prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_1_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{ICD_instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n{ICD_response}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+    "self_reminder_prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_1_DEFAULT_SYSTEM_PROMPT + self_reminder_sentence + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
 }
 
 current_date = datetime.now()
@@ -71,7 +74,8 @@ LLAMA3_2_DEFAULT_SYSTEM_PROMPT = f"""\nCutting Knowledge Date: December 2023\nTo
 LLAMA3_2_CHAT_PROMPT = {
     "description": "Template used by llama3_2_1b_instruct and llama3_2_3b_instruct",
     "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_2_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
-    "ICD_prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_2_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{ICD_instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n{ICD_response}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
+    "ICD_prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_2_DEFAULT_SYSTEM_PROMPT + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{ICD_instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n{ICD_response}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+    "self_reminder_prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n" + LLAMA3_2_DEFAULT_SYSTEM_PROMPT + self_reminder_sentence + "\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
 }
 
 INTERNLM_PROMPT = { # https://github.com/InternLM/InternLM/blob/main/tools/alpaca_tokenizer.py
@@ -180,14 +184,15 @@ BAICHUAN_CHAT_PROMPT = {
 QWEN_CHAT_PROMPT = {
     "description": "Template used by Qwen-chat models",
     "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n", 
-    "ICD_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
+    "ICD_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
+    "self_reminder_prompt": "<|im_start|>system\nYou are a helpful assistant." + self_reminder_sentence + "<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n", 
 }
-
 
 QWEN2_5_CHAT_PROMPT = {
     "description": "Template used by Qwen-2.5-chat models",
     "prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
-    "ICD_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
+    "ICD_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
+    "self_reminder_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant." + self_reminder_sentence + "<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
 }
 
 QWEN3_CHAT_PROMPT = {
@@ -249,7 +254,8 @@ STABLELM_PROMPT = {
 STABLELM_Chat_PROMPT = {
     "description": "Template used by StableLM",
     "prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
-    "ICD_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
+    "ICD_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
+    "self_rweminder_prompt": "<|im_start|>system\nYou are a helpful assistant." + self_reminder_sentence + "<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
 }
 
 TinyLlama_v0_1_PROMPT = {
@@ -337,7 +343,8 @@ SMOLLM_PROMPT = {
 SMOLLM2_PROMPT = {
     "description": "Template used by SmolLM2",  # https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct
     "prompt": "<|im_start|>system\nYou are a helpful AI assistant named SmolLM, trained by Hugging Face<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
-    "ICD_prompt": "<|im_start|>system\nYou are a helpful AI assistant named SmolLM, trained by Hugging Face<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n"
+    "ICD_prompt": "<|im_start|>system\nYou are a helpful AI assistant named SmolLM, trained by Hugging Face<|im_end|>\n<|im_start|>user\n{ICD_instruction}<|im_end|>\n<|im_start|>assistant\n{ICD_response}<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
+    "self_reminder_prompt": "<|im_start|>system\nYou are a helpful AI assistant named SmolLM, trained by Hugging Face" + self_reminder_sentence + "<|im_end|>\n<|im_start|>user\n{instruction}<|im_end|>\n<|im_start|>assistant\n",
 }
 
 DCLM_PROMPT = {

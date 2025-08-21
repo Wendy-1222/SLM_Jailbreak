@@ -1,13 +1,13 @@
 {
     "DirectRequest": {},
     "HumanJailbreaks": {},
-    "AutoDAN": {},
-    "PAP": {},
-    "GCG": {},
-    "AutoPrompt": {},
-    "PEZ": {},
-    "GBDA": {},
-    "UAT": {
-        "qwen2_5_7b_instruct_awq": 0
+    "AutoDAN": {
+        "qwen2_5_1_5b_instruct_gptq_int4": 0,
+        "qwen2_5_3b_instruct_gptq_int4": 0,
+        "qwen2_5_7b_instruct_gptq_int4": 0,
+        "qwen2_5_0_5b_instruct_gptq_int8": 0,
+        "qwen2_5_1_5b_instruct_gptq_int8": 0,
+        "qwen2_5_3b_instruct_gptq_int8": 0,
+        "qwen2_5_7b_instruct_gptq_int8": 0
     }
 }

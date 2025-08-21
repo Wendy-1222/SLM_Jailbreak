@@ -174,6 +174,13 @@ if __name__ == '__main__':
     # qwen3_series = qwen3_series.split(',')  # 转换成列表
     # model_list = qwen2_5_quantized_series + qwen3_series  # 添加到模型列表中
     
+    llama_series = "llama2_7b,llama3_1_8b_instruct,llama3_2_1b_instruct,llama3_2_3b_instruct"
+    qwen_series = "qwen_1_8b_chat,qwen_7b_chat,qwen1_5_0_5b_chat,qwen1_5_1_8b_chat,qwen1_5_4b_chat,qwen1_5_7b_chat,qwen2_0_5b_instruct,qwen2_1_5b_instruct,qwen2_7b_instruct,qwen2_5_0_5b_instruct,qwen2_5_1_5b_instruct,qwen2_5_3b_instruct,qwen2_5_7b_instruct"
+    smollm_series = "smollm2-135M-instruct,smollm2-360M-instruct,smollm2-1.7B-instruct"
+    slms_with_system_prompt = llama_series + ',' + qwen_series + ',' + smollm_series
+    model_list = slms_with_system_prompt.split(',')  # 转换成列表
+
+
     for method in method_list:
         for model in model_list:
             parent_path = os.path.join(base_path, method, model)

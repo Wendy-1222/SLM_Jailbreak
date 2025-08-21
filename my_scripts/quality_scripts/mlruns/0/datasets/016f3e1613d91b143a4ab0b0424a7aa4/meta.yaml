@@ -1,0 +1,8 @@
+digest: 0a50afe1
+name: dataset
+profile: '{"features_shape": [1, 1], "features_size": 1, "features_nbytes": 8}'
+schema: '{"mlflow_tensorspec": {"features": "[{\"type\": \"tensor\", \"tensor-spec\":
+  {\"dtype\": \"object\", \"shape\": [-1, 1]}}]", "targets": null}}'
+source: '{"tags": {"mlflow.user": "zwh", "mlflow.source.name": "test_relevance.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "bc8da66b372611d45e9b0c10d7e6db626b03f429"}}'
+source_type: code

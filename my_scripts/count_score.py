@@ -191,6 +191,7 @@ if __name__ == '__main__':
             results_summary[method][model]['Average ASR'] = round(np.mean(success_rates),3)
 
     output_file = os.path.join(base_path, 'results_summary_full_70_v3.json')
+    # output_file = os.path.join(base_path, 'pap_vicuna_results.json')
     with open(output_file, 'w') as json_file:
         json.dump(results_summary, json_file, indent=4)
 

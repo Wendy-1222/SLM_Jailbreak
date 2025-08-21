@@ -1,0 +1,95 @@
+import os
+import json
+import argparse
+import sys
+
+# 动态添加项目根目录到 Python 路径
+current_file_path = os.path.abspath(__file__)
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_file_path)))
+sys.path.insert(0, project_root)
+
+from my_scripts.model_and_method_list import method_list, model_list
+
+parser = argparse.ArgumentParser(description='Count scores for each method and model.')
+
+parser.add_argument('--base_path', type=str, default='/data2/zwh/HarmBench/results_full_70', help='Base path of the results directory.')
+parser.add_argument('--question_num', type=int, default=70, help='Number of questions in the test set.')
+
+args = parser.parse_args()
+
+# metric_list = ['repetition_rate', 'distinct_3', 'entropy_3', 'average_sentence_length', 'lexical_diversity',
+#                'word_nums', 'sentence_nums', 'self_bleu', 'perplexity', 'readability_score', 'coherence_score']
+
+metric_list = ['repetition_rate', 'distinct_3', 'entropy_3', 'average_sentence_length', 'lexical_diversity',
+               'word_nums', 'sentence_nums', 'self_bleu', 'perplexity', 'readability_score', 'coherence_score', 
+               'cosine_similarity']
+
+if __name__ == '__main__':
+    base_path = args.base_path
+    question_num = args.question_num
+
+    results_summary = {}
+
+    # method_list = ['AutoDAN']
+    
+    for method in method_list:
+        print("Processing method {}".format(method))
+        results_summary[method] = {}
+        for model in model_list:
+            results_summary[method][model] = {}
+           
+            # 得到结果的路径
+            if method == 'DirectRequest':
+                base_result_path = os.path.join(base_path, method, 'default')
+            elif method == 'HumanJailbreaks':
+                base_result_path = os.path.join(base_path, method, 'random_subset_5')
+            elif method == 'PAP':
+                base_result_path = os.path.join(base_path, method, 'top_5')
+            else:
+                base_result_path = os.path.join(base_path, method, model)
+            
+            # 处理不同metric的结果
+            for metric in metric_list:
+                results_summary[method][model][metric] = {}
+
+                result_path = os.path.join(base_result_path, 'metrics', metric, f'{model}.json')
+
+                if os.path.exists(result_path):
+                    print(f"Processing {result_path}...")
+                else:
+                    print(f"Error: Result file not found: {result_path}")
+                    results_summary[method][model][metric]['effective_runs'] = 0
+                    results_summary[method][model][metric]['average_value'] = -1
+                    continue
+
+                with open(result_path, 'r') as result_file:
+                    result_data = json.load(result_file)
+
+                all_run_scores = 0
+                effective_runs = 0
+                for run_id, run_data in result_data.items():
+                    # 首先对run_data包含多个test_case的情况计算平均值
+                    if len(run_data) > 1:
+                        single_run_scores = [item[metric] for item in run_data if item[metric] != -1]
+                        average_score_single_run = sum(single_run_scores) / len(single_run_scores) if single_run_scores else -1
+                    else:
+                        average_score_single_run = run_data[0][metric]
+                    if average_score_single_run == -1:
+                        continue
+                    all_run_scores += average_score_single_run
+                    effective_runs += 1
+
+                average_score = round(all_run_scores / effective_runs, 4) if effective_runs > 0 else -1
+                
+                # 将统计结果存储到字典中
+                if question_num != effective_runs:
+                    print(f"Warning!!! Total effective runs of {method} {model} {metric} is not {question_num}: {effective_runs}")
+                if 'effective_runs' not in results_summary[method][model]:
+                    results_summary[method][model][metric]['effective_runs'] = effective_runs
+                results_summary[method][model][metric]['average_value'] = average_score
+    
+    output_file = os.path.join(base_path, 'results_summary_different_metrics.json')
+    with open(output_file, 'w') as json_file:
+        json.dump(results_summary, json_file, indent=4)
+
+    print(f"Results summary saved to {output_file}.")
