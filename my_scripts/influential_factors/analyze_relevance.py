@@ -1,5 +1,6 @@
 """
 spearman检验、Kendall检验、Mann-Whitney U检验 和 Kruskal-Wallis H检验
+在本地而不是A6000上运行
 """
 import pandas as pd
 import numpy as np

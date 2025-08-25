@@ -22,7 +22,7 @@ args = parser.parse_args()
 
 metric_list = ['repetition_rate', 'distinct_3', 'entropy_3', 'average_sentence_length', 'lexical_diversity',
                'word_nums', 'sentence_nums', 'self_bleu', 'perplexity', 'readability_score', 'coherence_score', 
-               'cosine_similarity']
+               'cosine_similarity', 'llm_relevance', 'flow_judge']
 
 if __name__ == '__main__':
     base_path = args.base_path

@@ -1,0 +1,342 @@
+{
+    "llama2_7b": {
+        "total_questions": 70,
+        "successful_jailbreaks": 35,
+        "asr": 0.5
+    },
+    "vicuna_7b_v1_5": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "llama3_2_1b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 57,
+        "asr": 0.814
+    },
+    "llama3_2_3b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "DeepSeek-R1-Distill-Qwen-1.5B": {
+        "total_questions": 70,
+        "successful_jailbreaks": 66,
+        "asr": 0.943
+    },
+    "DeepSeek-R1-Distill-Qwen-7B": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    },
+    "DeepSeek-R1-Distill-Llama-8B": {
+        "total_questions": 0,
+        "successful_jailbreaks": 0,
+        "asr": 0
+    },
+    "qwen_1_8b_chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "qwen_7b_chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "qwen1_5_0_5b_chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "qwen1_5_1_8b_chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "qwen1_5_4b_chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "qwen1_5_7b_chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    },
+    "qwen2_0_5b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 64,
+        "asr": 0.914
+    },
+    "qwen2_1_5b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 64,
+        "asr": 0.914
+    },
+    "qwen2_7b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 66,
+        "asr": 0.943
+    },
+    "qwen2_5_0_5b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "qwen2_5_1_5b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 65,
+        "asr": 0.929
+    },
+    "qwen2_5_3b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "qwen2_5_7b_instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    },
+    "phi_3_mini_4k_instruct": {
+        "total_questions": 0,
+        "successful_jailbreaks": 0,
+        "asr": 0
+    },
+    "phi_3_mini_128k_instruct": {
+        "total_questions": 0,
+        "successful_jailbreaks": 0,
+        "asr": 0
+    },
+    "phi_3_small_8k_instruct": {
+        "total_questions": 0,
+        "successful_jailbreaks": 0,
+        "asr": 0
+    },
+    "phi_3_small_128k_instruct": {
+        "total_questions": 0,
+        "successful_jailbreaks": 0,
+        "asr": 0
+    },
+    "phi_3_5_mini_instruct": {
+        "total_questions": 0,
+        "successful_jailbreaks": 0,
+        "asr": 0
+    },
+    "stablelm-2-zephyr-1_6b": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    },
+    "stablelm-2-1_6b-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "stablelm-zephyr-3b": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "tinyllama-1.1B-chat-v0.1": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "tinyllama-1.1B-chat-v0.2": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "tinyllama-1.1B-chat-v0.3": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "tinyllama-1.1B-chat-v0.4": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "tinyllama-1.1B-chat-v0.5": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "tinyllama-1.1B-chat-v0.6": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "tinyllama-1.1B-chat-v1.0": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    },
+    "mobilellama-1.4B-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "mobilellama-2.7B-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "mobillama-0.5B-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "mobillama-1B-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "gemma-2b-it": {
+        "total_questions": 70,
+        "successful_jailbreaks": 62,
+        "asr": 0.886
+    },
+    "gemma-7b-it": {
+        "total_questions": 70,
+        "successful_jailbreaks": 63,
+        "asr": 0.9
+    },
+    "gemma-1.1-2b-it": {
+        "total_questions": 70,
+        "successful_jailbreaks": 65,
+        "asr": 0.929
+    },
+    "gemma-1.1-7b-it": {
+        "total_questions": 70,
+        "successful_jailbreaks": 60,
+        "asr": 0.857
+    },
+    "gemma-2-2b-it": {
+        "total_questions": 70,
+        "successful_jailbreaks": 65,
+        "asr": 0.929
+    },
+    "recurrentgemma-2b-it": {
+        "total_questions": 70,
+        "successful_jailbreaks": 51,
+        "asr": 0.729
+    },
+    "minicpm-1B-sft-bf16": {
+        "total_questions": 70,
+        "successful_jailbreaks": 65,
+        "asr": 0.929
+    },
+    "minicpm-S-1B-sft": {
+        "total_questions": 70,
+        "successful_jailbreaks": 65,
+        "asr": 0.929
+    },
+    "minicpm-2B-sft-bf16": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    },
+    "minicpm-2B-dpo-bf16": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "minicpm3-4B": {
+        "total_questions": 70,
+        "successful_jailbreaks": 61,
+        "asr": 0.871
+    },
+    "h2o-danube-1.8b-sft": {
+        "total_questions": 70,
+        "successful_jailbreaks": 66,
+        "asr": 0.943
+    },
+    "h2o-danube-1.8b-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "h2o-danube2-1.8b-sft": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "h2o-danube2-1.8b-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    },
+    "h2o-danube3-500m-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "h2o-danube3-4b-chat": {
+        "total_questions": 70,
+        "successful_jailbreaks": 68,
+        "asr": 0.971
+    },
+    "fox-1-1.6B-Instruct-v0.1": {
+        "total_questions": 70,
+        "successful_jailbreaks": 65,
+        "asr": 0.929
+    },
+    "smollm-135M-instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 66,
+        "asr": 0.943
+    },
+    "smollm-360M-instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "smollm-1.7B-instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "smollm2-135M-instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 62,
+        "asr": 0.886
+    },
+    "smollm2-360M-instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "smollm2-1.7B-instruct": {
+        "total_questions": 70,
+        "successful_jailbreaks": 67,
+        "asr": 0.957
+    },
+    "dolly-v1-6b": {
+        "total_questions": 70,
+        "successful_jailbreaks": 66,
+        "asr": 0.943
+    },
+    "dolly-v2-3b": {
+        "total_questions": 70,
+        "successful_jailbreaks": 70,
+        "asr": 1.0
+    },
+    "dolly-v2-7b": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    },
+    "OLMo-7B-SFT-hf": {
+        "total_questions": 70,
+        "successful_jailbreaks": 64,
+        "asr": 0.914
+    },
+    "OLMo-7B-Instruct-hf": {
+        "total_questions": 70,
+        "successful_jailbreaks": 69,
+        "asr": 0.986
+    }
+}
