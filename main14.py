@@ -20,18 +20,17 @@ smollm_series = "smollm-135M-instruct,smollm-360M-instruct,smollm-1.7B-instruct,
 # dclm_series = "DCLM-1B-IT"
 dolly_series = "dolly-v1-6b,dolly-v2-3b,dolly-v2-7b"
 olmo_series = "OLMo-7B-SFT-hf,OLMo-7B-Instruct-hf"
-qwen2_5_quantized_series = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4,qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8,qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
-qwen3_series = "qwen3_0_6b,qwen3_1_7b,qwen3_4b"
+# qwen2_5_quantized_series = "qwen2_5_0_5b_instruct_gptq_int4,qwen2_5_1_5b_instruct_gptq_int4,qwen2_5_3b_instruct_gptq_int4,qwen2_5_7b_instruct_gptq_int4,qwen2_5_0_5b_instruct_gptq_int8,qwen2_5_1_5b_instruct_gptq_int8,qwen2_5_3b_instruct_gptq_int8,qwen2_5_7b_instruct_gptq_int8,qwen2_5_0_5b_instruct_awq,qwen2_5_1_5b_instruct_awq,qwen2_5_3b_instruct_awq,qwen2_5_7b_instruct_awq"
+# qwen3_series = "qwen3_0_6b,qwen3_1_7b,qwen3_4b"
 
 all_slms = llama_32_series + "," + deepseek_r1_series + "," + qwen_series + "," + phi_series + "," + stablelm_series + "," + tiny_llama_series + "," + mobile_llama_series + "," + mobi_llama_series + "," + gemma_series + "," + minicpm_series + "," + h2o_danube_series + "," + fox_series + "," + smollm_series + "," + dolly_series + "," + olmo_series
 
-# 把all_slms分成四个部分，长度相同
-all_slms = all_slms.split(',')
-all_slms = [','.join(all_slms[i:i+len(all_slms)//2]) for i in range(0, len(all_slms), len(all_slms)//2)]
+# all_slms = all_slms.split(',')
+# print(len(all_slms))
 
 methods = "PAP-top5"
-models = "minicpm3-4B"
-step="2_and_3"  # or "1", "1.5", "2", "3", "2_and_3"
+models = all_slms
+step="1"  # or "1", "1.5", "2", "3", "2_and_3"
 mode="local"
 # mode="slurm"
 # partition="your_partition"
@@ -39,4 +38,4 @@ cls_path="/data/zwh/models/HarmBench-Llama-2-13b-cls"
 
 behaviors_path="./data/behavior_datasets/extra_behavior_datasets/advbench_behaviors_subset.csv"
 # 注意defender和incremental_update，还有save_dir
-os.system(f"python ./scripts/run_pipeline.py --base_save_dir ./results_full_50_new --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")
+os.system(f"python ./scripts/run_pipeline.py --base_save_dir ./results_full_50_for_cost_analysis --incremental_update --methods {methods} --models {models} --behaviors_path {behaviors_path} --step {step} --mode {mode} --cls_path {cls_path}")

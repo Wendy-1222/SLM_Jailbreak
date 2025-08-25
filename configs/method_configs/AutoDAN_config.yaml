@@ -8,8 +8,8 @@ default_method_hyperparameters:
     num_points: 5
     mutation: 0.01
     eval_with_check_refusal: True
-    # targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
-    targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
+    targets_path: ./data/optimizer_targets/extra_targets/advbench_subset_targets.json
+    # targets_path: ./data/optimizer_targets/extra_targets/adjusted_advbench_added_targets.json
     # using gpt mutate model
     # mutate_target_model:
     #   model_name_or_path: gpt-3.5-turbo-1106

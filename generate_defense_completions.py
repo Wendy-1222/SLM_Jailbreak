@@ -48,7 +48,7 @@ def parse_args():
 
     # defense parameters
     parser.add_argument("--defender", type=str, default='ppl', choices=['ppl', 'retokenization', 'self-reminder', 'self-reminder-with-system-prompt',
-                                                                        'self-reminder-only-system-prompt', 'ICD', 'rain', 'llama_guard_3', 'llama_guard_3_1B'])
+                                                                        'self-reminder-only-system-prompt', 'ICD', 'rain', 'llama_guard_3', 'llama_guard_3_1B', 'no_defense'])
     parser.add_argument("--ppl_calculator", type=str, default='/data2/zwh/models/gpt2')
     parser.add_argument("--llama_guard_3_path", type=str, default='/data2/zwh/models/Llama-Guard-3-8B')
     parser.add_argument("--llama_guard_3_1B_path", type=str, default='/data2/zwh/models/Llama-Guard-3-1B')
@@ -167,6 +167,8 @@ def main():
 def get_defense_completions(test_cases, generation_function, args, model_config):
     print(f'Generating defense completions for {args.defender} ...')
     model_name_or_path = model_config['model_name_or_path']
+    if args.defender == 'no_defense':
+        return [None] * len(test_cases), generation_function(test_cases=test_cases)
     if args.defender == 'ppl':
         ppl_calculator = PPL_Calculator(args.ppl_calculator)
 
@@ -219,7 +221,7 @@ def get_defense_completions(test_cases, generation_function, args, model_config)
         outputs = generation_function(test_cases=user_prompts)
         return user_prompts, outputs
     elif args.defender == 'self-reminder-only-system-prompt':
-        return test_cases, generation_function(test_cases)
+        return test_cases, generation_function(test_cases=test_cases)
     elif args.defender == 'llama_guard_3' or args.defender == 'llama_guard_3_1B':
         """检测有害的输入提示"""
         # llama_guard_3 = Llama3_guard_Predictor(args.llama_guard_3_path)
@@ -279,7 +281,7 @@ def get_defense_completions(test_cases, generation_function, args, model_config)
         pass
     else:
         print("No defense method deployed, return default generation completion")
-        return None, generation_function(test_cases)
+        return None, generation_function(test_cases=test_cases)
 
 
 def _vllm_generate(model, test_cases, template, **generation_kwargs):
@@ -297,10 +299,10 @@ def _hf_generate_with_batching(model, tokenizer, test_cases, template, **generat
         print(f"target llm batch_size: {batch_size}")
         for i in tqdm(range(0, len(test_cases), batch_size)):
             batched_test_cases = test_cases[i:i+batch_size]
-            print("Using self_reminder_prompt template")
             
             inputs = [template['prompt'].format(instruction=s) for s in batched_test_cases]
             # 仅当使用self-reminder-with-system-prompt或者self-reminder-only-system-prompt防御的时候使用
+            # print("Using self_reminder_prompt template")
             # inputs = [template['self_reminder_prompt'].format(instruction=s) for s in batched_test_cases]
             
             inputs = tokenizer(inputs, return_tensors='pt', padding=True)

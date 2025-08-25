@@ -1,0 +1,110 @@
+[
+  {
+    "method": "AutoDAN",
+    "model": "llama3_2_1b_instruct",
+    "num_prompts": 1,
+    "ppl_calculator_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "ppl_calculator_mem_bytes_avg": -1,
+    "llama_guard_3_1B_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "llama_guard_3_1B_mem_bytes_avg": -1,
+    "test_cases_path": "/data2/zwh/HarmBench/results_full_50/AutoDAN/llama3_2_1b_instruct/test_cases/test_cases.json"
+  },
+  {
+    "method": "GCG",
+    "model": "llama3_2_1b_instruct",
+    "num_prompts": 1,
+    "ppl_calculator_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "ppl_calculator_mem_bytes_avg": -1,
+    "llama_guard_3_1B_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "llama_guard_3_1B_mem_bytes_avg": -1,
+    "test_cases_path": "/data2/zwh/HarmBench/results_full_50/GCG/llama3_2_1b_instruct/test_cases/test_cases.json"
+  },
+  {
+    "method": "AutoPrompt",
+    "model": "llama3_2_1b_instruct",
+    "num_prompts": 1,
+    "ppl_calculator_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "ppl_calculator_mem_bytes_avg": -1,
+    "llama_guard_3_1B_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "llama_guard_3_1B_mem_bytes_avg": -1,
+    "test_cases_path": "/data2/zwh/HarmBench/results_full_50/AutoPrompt/llama3_2_1b_instruct/test_cases/test_cases.json"
+  },
+  {
+    "method": "PEZ",
+    "model": "llama3_2_1b_instruct",
+    "num_prompts": 1,
+    "ppl_calculator_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "ppl_calculator_mem_bytes_avg": -1,
+    "llama_guard_3_1B_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "llama_guard_3_1B_mem_bytes_avg": -1,
+    "test_cases_path": "/data2/zwh/HarmBench/results_full_50/PEZ/llama3_2_1b_instruct/test_cases/test_cases.json"
+  },
+  {
+    "method": "GBDA",
+    "model": "llama3_2_1b_instruct",
+    "num_prompts": 1,
+    "ppl_calculator_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "ppl_calculator_mem_bytes_avg": -1,
+    "llama_guard_3_1B_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "llama_guard_3_1B_mem_bytes_avg": -1,
+    "test_cases_path": "/data2/zwh/HarmBench/results_full_50/GBDA/llama3_2_1b_instruct/test_cases/test_cases.json"
+  },
+  {
+    "method": "UAT",
+    "model": "llama3_2_1b_instruct",
+    "num_prompts": 1,
+    "ppl_calculator_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "ppl_calculator_mem_bytes_avg": -1,
+    "llama_guard_3_1B_mem_bytes": [
+      -1,
+      -1,
+      -1
+    ],
+    "llama_guard_3_1B_mem_bytes_avg": -1,
+    "test_cases_path": "/data2/zwh/HarmBench/results_full_50/UAT/llama3_2_1b_instruct/test_cases/test_cases.json"
+  }
+]

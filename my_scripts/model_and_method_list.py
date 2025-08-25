@@ -45,5 +45,6 @@ olmo_series = olmo_series.split(',')
 # qwen2_5_quantized_series = qwen2_5_quantized_series.split(',')
 # qwen3_series = qwen3_series.split(',')
 
-model_list = ['llama2_7b', 'vicuna_7b_v1_5']
-model_list += llama_32_series + deepseek_r1_series + qwen_series + phi_series + stablelm_series + tiny_llama_series + mobile_llama_series + mobi_llama_series + gemma_series + minicpm_series + h2o_danube_series + fox_series + smollm_series + dolly_series + olmo_series
+# model_list = ['llama2_7b', 'vicuna_7b_v1_5']
+# model_list += llama_32_series + deepseek_r1_series + qwen_series + phi_series + stablelm_series + tiny_llama_series + mobile_llama_series + mobi_llama_series + gemma_series + minicpm_series + h2o_danube_series + fox_series + smollm_series + dolly_series + olmo_series
+model_list = llama_32_series + deepseek_r1_series + qwen_series + phi_series + stablelm_series + tiny_llama_series + mobile_llama_series + mobi_llama_series + gemma_series + minicpm_series + h2o_danube_series + fox_series + smollm_series + dolly_series + olmo_series

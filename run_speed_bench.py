@@ -1,3 +1,8 @@
+"""
+调用test_model_speed.py，测试所有模型的速度，并保存到cost_analysis/slm_speed_metrics.json
+注意要放在HarmBench的根目录下运行
+"""
+
 import os
 
 other_series = "llama2_7b,vicuna_7b_v1_5"

@@ -1,3 +1,9 @@
+"""
+测试模型的速度，包括prefill、decode、throughput、memory footprint
+使用的prompt是DirectRequest的前5个prompt，重复三次
+注意要放在HarmBench的根目录下运行
+时间的单位是秒
+"""
 import transformers
 import json
 import argparse
@@ -5,9 +11,16 @@ import os
 import time
 from tqdm import tqdm 
 import torch
+
+# Ensure project root in path
+CURRENT_FILE = os.path.abspath(__file__)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(CURRENT_FILE))
+sys.path.insert(0, PROJECT_ROOT)
+
 from baselines import get_template, load_model_and_tokenizer
 from functools import partial
 import yaml
+
 
 # Set this to disable warning messages in the generation mode.
 transformers.utils.logging.set_verbosity_error()
