@@ -25,21 +25,21 @@ The directory structure of our framework is organized as follows:
 ├── configs  # method, SLM and pipeline configs
 ├── cost_analysis  # the cost analysis results
 ├── data  # the jailbreak questions, you can use AdvBench Subset~(50), AdvBench~(520) or RedAgent dataset~(14 × 5 = 70)
-├── defense_baselines  # defense methods
+├── defense_baselines  # defense methods added by us
 ├── docs  # documents of HarmBench
 ├── environment.yml # our python environment
-├── evaluate_completions.py  # original script of HarmBench
-├── eval_utils.py  # original script of HarmBench
-├── generate_completions.py  # original script of HarmBench
-├── generate_defense_completions.py  # original script of HarmBench
-├── generate_test_cases.py # original script of HarmBench
+├── evaluate_completions.py  # step3 and step 5
+├── eval_utils.py  
+├── generate_completions.py  # step2
+├── generate_defense_completions.py  # step4
+├── generate_test_cases.py # step1
 ├── LICENSE
-├── merge_test_cases.py  # original script of HarmBench
+├── merge_test_cases.py  # step1.5
 ├── multimodalmodels  # original script of HarmBench (not used in our evaluation)
 ├── my_run_scripts  # the scripts used to run our evaluation
 ├── my_scripts # the scripts to analyze our evaluation results
 ├── notebooks # original notbooks of HarmBench (not used in our evaluation)
-├── figures_and_tables  # the xlsx files and figures of our evaluation, as well as the ipython script for drawing figures (draw.ipynb)
+├── figures_and_tables  # the xlsx files and figures of our evaluation, as well as the jupyter notebook for drawing figures (draw.ipynb)
 ├── __pycache__
 ├── README.md
 ├── results # result of RedAgent dataset exclude question in AdvBench Subset
