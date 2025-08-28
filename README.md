@@ -1,167 +1,91 @@
+
+# Can Small Language Models Reliably Resist Jailbreak Attacks? A Comprehensive Evaluation
 <p align="center">
-
-<img src="assets/harmbench_splash.png" alt="HarmBench"/>
-
+📄 <a href="https://arxiv.org/abs/2503.06519">Paper</a> | 
+💻 <a href="https://github.com/Wendy-1222/SLM_Jailbreak">Code</a> | 
+🌐 <a href="https://github.com/Wendy-1222/SLM_Jailbreak_Website">Website</a>
 </p>
 
-<div align="center">
+## What did we introduce?
+We develop a framework~(based on [HarmBench](https://arxiv.org/abs/2402.04249)) to systematically assess the vulnerability of SLMs to jailbreak attacks. This framework encompasses 14 risk categories and 9 attack methods, and it covers 15 SLM families consists of 62 SLMs, ensuring a thorough and diverse evaluation.
 
-# 🗡️ HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal 🛡️
+                        
+## What did we find? 
+Through systematically evaluation on 62 SLMs from 15 mainstream SLM families against 9 state-of-the-art jailbreak methods, we demonstrate that 51.6% of evaluated SLMs show high susceptibility to jailbreak attacks (ASR > 40%) and 38.7% of them can not even resist direct harmful query (ASR > 50%). Through correlation analysis, we identify that the primary factors behind SLM vulnerabilities lie in the training details (e.g., training dataset and method) rather than model size scaling. Additionally, we evaluate the effectiveness of mainstream defense methods that can be applied to SLMs and find that none of them achieve satisfactory results, exhibiting limited performance and poor generalization across different attack methods. Building upon these findings, we highlight the need for security-by-design approaches in SLM development and provide valuable insights for building more trustworthy SLM ecosystem.
 
-</div>
+## Structure
+The directory structure of our framework is organized as follows:
 
-<div align="center">
+./SLM_Jailbreak
+├── adversarial_training  # the original code of HarmBench (not used in our evaluation)
+├── allfiles.txt
+├── api_models.py  # API models class (not used in our evaluation)
+├── baselines # attack methods, including the SLM chat template
+├── configs  # method, SLM and pipeline configs
+├── cost_analysis  # the cost analysis results
+├── data  # the jailbreak questions, you can use AdvBench Subset~(50), AdvBench~(520) or RedAgent dataset~(14 × 5 = 70)
+├── defense_baselines  # defense methods
+├── docs  # documents of HarmBench
+├── environment.yml # our python environment
+├── evaluate_completions.py  # original script of HarmBench
+├── eval_utils.py  # original script of HarmBench
+├── generate_completions.py  # original script of HarmBench
+├── generate_defense_completions.py  # original script of HarmBench
+├── generate_test_cases.py # original script of HarmBench
+├── LICENSE
+├── merge_test_cases.py  # original script of HarmBench
+├── multimodalmodels  # original script of HarmBench (not used in our evaluation)
+├── my_run_scripts  # the scripts used to run our evaluation
+├── my_scripts # the scripts to analyze our evaluation results
+├── notebooks # original notbooks of HarmBench (not used in our evaluation)
+├── figures_and_tables  # the xlsx files and figures of our evaluation, as well as the ipython script for drawing figures (draw.ipynb)
+├── __pycache__
+├── README.md
+├── results # result of RedAgent dataset exclude question in AdvBench Subset
+├── results_full_50 # result of AdvBench Subset
+├── results_full_50_PAP_transfer # result using PAP-released prompts
+├── results_full_70 # result of RedAgent dataset
+└── scripts # originals script of HarmBench
 
+## Reproduce Our Results
 
-</div>
+To reproduce our results, just follow **three simple steps**:
 
-
-#### A fast, scalable, and open-source framework for evaluating automated red teaming methods and LLM attacks/defenses
-
-
-<!-- Three language version (Eng/Chinese/Japanese)  -->
-
-
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-## Table of Contents
-
-- [📰 Latest News 📰](#-latest-news-)
-- [🗡️ What is HarmBench 🛡️](#%EF%B8%8F-what-is-harmbench-%EF%B8%8F)
-- [🌐 Overview 🌐](#-overview-)
-- [☕ Quick Start ☕](#-quick-start-)
-  - [⚙️ Installation](#%EF%B8%8F-installation)
-  - [🛠️ Running the Evaluation Pipeline](#%EF%B8%8F-running-the-evaluation-pipeline)
-  - [➕ Using your own models in HarmBench](#➕-using-your-own-models-in-harmbench)
-  - [➕ Using your own red teaming methods in HarmBench](#➕-using-your-own-red-teaming-methods-in-harmbench)
-- [🤗 Classifiers](#-classifiers)
-- [⚓ Documentation ⚓](#-documentation-)
-- [🌱 HarmBench's Roadmap 🌱](#-harmbench-roadmap-)
-- [🙏 Acknowledgement and Citation 🙏](#-acknowledgements-and-citation-)
-
-<!-- markdown-toc end -->
-
-## 📰 Latest News 📰
-
-* ***[2024/02/26] 🚀 [HarmBench 1.0: adversarial training code+model, precomputed test cases, and various improvements](https://github.com/centerforaisafety/HarmBench/pull/19)*** 🚀
-* ***[2024/02/06] 🚀 [Initial release of HarmBench with 33 evaluated LLMs and 18 red teaming methods]()*** 🚀
-
-
-## 🗡️ What is HarmBench 🛡️
-
-Automated red teaming holds substantial promise for uncovering and mitigating the risks associated with the malicious use of large language models (LLMs), yet the field lacks a standardized evaluation framework to rigorously assess these methods. To address this issue, we introduce HarmBench, a standardized evaluation framework for automated red teaming. We identify key considerations previously unaccounted for in red teaming evaluations and systematically design HarmBench to meet these criteria. Using HarmBench, we conduct a large-scale comparison of $18$ red teaming methods and $33$ target LLMs and defenses, yielding novel insights. We also introduce a highly efficient adversarial training method that greatly enhances LLM robustness across a wide range of attacks, demonstrating how HarmBench enables codevelopment of attacks and defenses.
-
-## 🌐 Overview 🌐
-<div align="center">
-
-<img src="assets/eval_pipeline-1.png" alt="HarmBench Evaluation Pipeline"/>
-
-</div>
-
-There are two primary ways to use HarmBench: (1) evaluating red teaming methods against a set of LLMs, and (2) evaluating LLMs against a set of red teaming methods. These use cases are both supported by the same evaluation pipeline, illustrated above. The process for running this evaluation pipeline is described below in the Quick Start section and in the [evaluation pipeline docs](./docs/evaluation_pipeline.md)
-
-HarmBench has out-of-the-box support for transformers-compatible LLMs, numerous closed-source APIs, and several multimodal models. To add new red teaming methods and models that aren't compatible with transformers, it may help to learn more about how the codebase is structured. We provide a set of docs to help with more advanced usage.
-
-
-## ☕ Quick Start ☕
-
-
-### ⚙️ Installation
-
+1. **Set up your environment**  
+Create your own environment from the provided `environment.yaml` file:  
 ```bash
-git clone https://github.com/centerforaisafety/HarmBench.git
-cd HarmBench
-pip install -r requirements.txt
-python -m spacy download en_core_web_sm
+conda env create -f environment.yaml
+conda activate your_env_name
 ```
 
-### 🛠️ Running The Evaluation Pipeline
-The HarmBench evaluation pipeline consists of three steps (with an optional merging step), shown in the figure above: (1) generating test cases, (1.5) merging test cases, (2) generating completions, (3) evaluating completions. We provide two ways of running the evaluation pipeline:
-- A higher-level run_pipeline.py utility that automates parts of the pipeline
-- Scripts for running individual steps of the pipeline manually
-
-#### Using run_pipeline.py
-The easiest way to run the evaluation pipeline is with `./scripts/run_pipeline.py`. Examples are given below.
+2. **Download the required models**
+Run the following script to download all necessary models:
 ```bash
-# Run GCG against all compatible models using a SLURM cluster
-python ./scripts/run_pipeline.py --methods GCG --models all --step all --mode slurm
-
-# Run all compatible attacks against Llama 2 7B Chat using a SLURM cluster
-python ./scripts/run_pipeline.py --methods all --models llama2_7b --step all --mode slurm
-
-# ---
-
-# Generate test cases for a subset of methods and models using a SLURM cluster
-python ./scripts/run_pipeline.py --methods ZeroShot,PEZ,TAP --models baichuan2_7b,mistral_7b,llama2_70b --step 1 --mode slurm
-
-# Merge test cases for the above methods on a local machine
-python ./scripts/run_pipeline.py --methods ZeroShot,PEZ,TAP --models baichuan2_7b,mistral_7b,llama2_70b --step 1.5 --mode local
-
-# Generate and evaluate completions for the above methods and models using a SLURM cluster
-python ./scripts/run_pipeline.py --methods ZeroShot,PEZ,TAP --models baichuan2_7b,mistral_7b,llama2_70b --step 2_and_3 --mode slurm
+chmod +x my_scripts/utils/download_models.sh
+my_scripts/utils/download_models.sh
 ```
-In the `slurm` mode, jobs are submitted with appropriate dependencies. In the `local` mode, steps of the pipeline are sequentially run on the current machine. In the `local_parallel` mode, Ray is used to parallelize jobs across GPUs in a single machine without needing to install Slurm. We recommend using the `slurm` mode (or submitting a PR for a different cluster manager) to enable parallelizing test case generation across multiple machines. For single machines with multiple GPUs, we recommend using `local_parallel` mode. Additional details on how to use `run_pipeline.py` are in the [evaluation pipeline docs](./docs/evaluation_pipeline.md).
 
-#### Running individual steps
-For more control over the evaluation pipeline, you can manually run individual steps using `scripts/generate_test_cases.sh`, `scripts/merge_test_cases.sh`, `scripts/generate_completions.sh`, and `scripts/evaluate_completions.sh`. For more information on how to do this, see the [evaluation pipeline docs](./docs/evaluation_pipeline.md).
-
-### ➕ Using your own models in HarmBench
-You can easily add new Hugging Face transformers models in [configs/model_configs/models.yaml](configs/model_configs/models.yaml) by simply adding an entry for your model. This model can then be directly evaluated on most red teaming methods without modifying the method configs (using our dynamic experiment config parsing code, described in [./docs/configs.md](./docs/configs.md)). Some methods (AutoDAN, PAIR, TAP) require manually adding experiment configs for new models.
-<!-- Additional details on how to add new models are in [./docs/adding_models.md](./docs/adding_models.md) -->
-
-### ➕ Using your own red teaming methods in HarmBench
-All of our red teaming methods are implemented in [baselines](baselines), imported through [baselines/__init__.py](baselines/__init__.py), and managed by [configs/method_configs](configs/method_configs). You can easily improve on top of existing red teaming methods or add new methods by simply making a new subfolder in the `baselines` directory. New attacks are required to implement the methods in the `RedTeamingMethod` class in `baselines/baseline.py`.
-<!-- Additional details on how to add new red teaming methods are in [./docs/adding_methods.md](./docs/adding_methods.md) -->
-
-## 🤗 Classifiers
-HarmBench provide 3 classifier models:
-  - 🤗 [cais/HarmBench-Llama-2-13b-cls](https://huggingface.co/cais/HarmBench-Llama-2-13b-cls) for standard and contextual behaviors. Example to use can be found [here](https://github.com/centerforaisafety/HarmBench/blob/main/notebooks/run_classifier.ipynb)
-  - 🤗 [cais/HarmBench-Llama-2-13b-cls-multimodal-behaviors](https://huggingface.co/cais/HarmBench-Llama-2-13b-cls-multimodal-behaviors) for multimodal behaviors. Example to use can be found [here](https://github.com/centerforaisafety/HarmBench/blob/main/notebooks/run_classifier_multimodal.ipynb)
-  - 🤗 [cais/HarmBench-Mistral-7b-val-cls](https://huggingface.co/cais/HarmBench-Mistral-7b-val-cls) is a validation classifier and support standard, contextual and multimodal behaviors.
-## ⚓ Documentation ⚓
-
-For more details documentation about each component in the framework
-  - [**Codebase Structure**](./docs/codebase_structure.md)
-  - [**Method and Model Configs**](./docs/configs.md)
-  - [**Evaluation Pipeline**](./docs/evaluation_pipeline.md)
-  <!-- - [**Adding Models**](./docs/adding_models.md)
-  - [**Adding Methods**](./docs/adding_methods.md) -->
-
-<!-- We also provide a notebook version for each of the red teaming attack to foster future development and improvement over each of the red teaming methods.
-  - [**Notebooks**](notebooks/) -->
-
-## 🌱 HarmBench Roadmap 🌱
-
-We plan to update to HarmBench over the next few weeks with the following:
-- Tutorials for adding attacks and defenses
-- Validation classifiers
-- Additional red teaming methods
-- Additional target models
-- Additional harmful behaviors
-- Support for system prompt attacks
-
-## 🙏 Acknowledgements and Citation 🙏
-
-We thank the following open-source repositories. If aspects of these repositories appearing in HarmBench are useful to you in your research, we ask that you consider citing the accompanying papers.
-
-    [1] https://github.com/llm-attacks/llm-attacks
-    [2] https://github.com/patrickrchao/JailbreakingLLMs
-    [3] https://github.com/RICommunity/TAP
-    [4] https://github.com/SheltonLiu-N/AutoDAN
-    [5] https://github.com/lm-sys/FastChat/tree/main/fastchat
-    [6] https://github.com/ray-project/ray
-    [7] https://github.com/vllm-project/vllm
-    [8] https://github.com/huggingface/transformers
-    [10] https://github.com/CHATS-lab/persuasive_jailbreaker
-    [11] https://github.com/huggingface/alignment-handbook
-
-If you find HarmBench useful in your research, please consider citing our [paper](https://arxiv.org/abs/2402.04249):
+3. **Run your own tests**
+Edit and run the main script for testing:
+```bash
+python my_run_scripts/main1.py
 ```
+
+
+If you find our project useful, please cite:
+
+```
+@article{zhang2025can,
+  title={Can Small Language Models Reliably Resist Jailbreak Attacks? A Comprehensive Evaluation},
+  author={Zhang, Wenhui and Xu, Huiyu and Wang, Zhibo and He, Zeqing and Zhu, Ziqi and Ren, Kui},
+  journal={arXiv preprint arXiv:2503.06519},
+  year={2025}
+}
+
 @article{mazeika2024harmbench,
-  title={HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal},
-  author={Mantas Mazeika and Long Phan and Xuwang Yin and Andy Zou and Zifan Wang and Norman Mu and Elham Sakhaee and Nathaniel Li and Steven Basart and Bo Li and David Forsyth and Dan Hendrycks},
-  year={2024},
-  eprint={2402.04249},
-  archivePrefix={arXiv},
-  primaryClass={cs.LG}
+  title={Harmbench: A standardized evaluation framework for automated red teaming and robust refusal},
+  author={Mazeika, Mantas and Phan, Long and Yin, Xuwang and Zou, Andy and Wang, Zifan and Mu, Norman and Sakhaee, Elham and Li, Nathaniel and Basart, Steven and Li, Bo and others},
+  journal={arXiv preprint arXiv:2402.04249},
+  year={2024}
 }
 ```
