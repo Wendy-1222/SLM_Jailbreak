@@ -16,6 +16,7 @@ Through systematically evaluation on 62 SLMs from 15 mainstream SLM families aga
 ## Structure
 The directory structure of our framework is organized as follows:
 
+```
 ./SLM_Jailbreak
 ├── adversarial_training  # the original code of HarmBench (not used in our evaluation)
 ├── allfiles.txt
@@ -46,6 +47,7 @@ The directory structure of our framework is organized as follows:
 ├── results_full_50_PAP_transfer # result using PAP-released prompts
 ├── results_full_70 # result of RedAgent dataset
 └── scripts # originals script of HarmBench
+```
 
 ## Reproduce Our Results
 
